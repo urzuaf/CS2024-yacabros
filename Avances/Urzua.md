@@ -1,0 +1,1 @@
+[05/04] 16:30 - 17:40, creación del repositorio y de la estructura base del proyecto, además se configuró la protección de rama del main para requerir pull request aprovado por administrador para hacer merge. 
