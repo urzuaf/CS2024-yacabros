@@ -18,3 +18,5 @@ server.get('/a', (req, res)=>{
 server.listen(puerto, ()=>{
     console.log("Servidor activo en puerto: ", puerto)
 })
+
+export default server;
