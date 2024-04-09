@@ -1,0 +1,1 @@
+[09/04] 19:00 - 20:00, instalación de dependencias npm, conexión con la base de datos, configuración en GitHub 
