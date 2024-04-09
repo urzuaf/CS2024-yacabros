@@ -38,31 +38,38 @@ import Layout from "../layouts/Visualizacion.astro"
 
 
 <script>
-import db from "../../../BACKEND/DB/dbconnect";
 
-    window.onload=()=>{
-        console.log("hola");
+    var data={
+        user:"",
+        pass:"",
     }
 
-    var usernameValue="",passwordValue="";
     var btn = document.getElementById("login").addEventListener('click', async (event)=>{
 
-        console.log("ejecutando boton");
-        var username = document.getElementById("user") as HTMLInputElement;;
-        var password = document.getElementById("psw") as HTMLInputElement;;    
-        
-        usernameValue=username.value;
-        passwordValue=password.value;
+        var username = document.getElementById("user") as HTMLInputElement;
+        var password = document.getElementById("psw") as HTMLInputElement;    
 
-       try{
-            const respo = await db.query("SELECT * FROM usuarios WHERE nombre");
+        data.user= username.value,
+        data.pass= password.value
 
-            console.log(respo.rows);
-        }catch(e){
-            console.log(e)
-        }
+    try{
+        const response = await fetch('http://localhost:3000/');
+        console.log(response+ " jolaaaaa");
+
+        if(!response.ok)
+            throw new Error('Error al obtener los datos del servidor');
         
+        const rows = await response.json();
+        console.log('Datos recibidos:', rows);
+    }
+
+    catch(error){
+        console.error('Error:', error);
+    }
+
     });
+
+    
 
     
 
