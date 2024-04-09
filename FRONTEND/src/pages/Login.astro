@@ -2,6 +2,7 @@
 import Layout from "../layouts/Acceso.astro"
 ---
 
+
 <Layout title="Login | Sportify">
     <div class="flex flex-col justify-between items-center w-auto h-auto my-auto py-8 px-16 bg-gray-100 dark:bg-stone-950 border rounded-lg border-gray-300 dark:border-black">
         <header class="my-6">
@@ -30,3 +31,43 @@ import Layout from "../layouts/Acceso.astro"
         </aside>
     </div>
 </Layout>
+
+
+<script>
+
+    var data={
+        user:"",
+        pass:"",
+    }
+
+    var btn = document.getElementById("login").addEventListener('click', async (event)=>{
+
+        var username = document.getElementById("user") as HTMLInputElement;
+        var password = document.getElementById("psw") as HTMLInputElement;    
+
+        data.user= username.value,
+        data.pass= password.value
+
+    try{
+        const response = await fetch('http://localhost:3000/');
+        console.log(response+ " jolaaaaa");
+
+        if(!response.ok)
+            throw new Error('Error al obtener los datos del servidor');
+        
+        const rows = await response.json();
+        console.log('Datos recibidos:', rows);
+    }
+
+    catch(error){
+        console.error('Error:', error);
+    }
+
+    });
+
+    
+
+    
+
+
+</script>
