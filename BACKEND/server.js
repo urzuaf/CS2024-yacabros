@@ -34,7 +34,7 @@ server.get('/username', async (req,res)=>{
 })
 
 // Ruta para el inicio de sesión
-app.post('/login', async (req, res) => {
+server.post('/login', async (req, res) => {
     const { email, password } = req.body; //extrae el email y la contraseña
   
     try {
