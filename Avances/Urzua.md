@@ -5,3 +5,7 @@
 [09/04] 10:40 - 11:10, Actualizado el login para usar componente de svelte.
 
 1 hora a lo largo de la semana para revisar y aprobar pull requests, ademas de solucionar los merge conflict.
+
+30 minutos para investigar/recordar el funcionamiento de express y libreria 'pg' para conectarse a base de datos psql.
+
+Total semana 1: 5 horas 10 minutos
