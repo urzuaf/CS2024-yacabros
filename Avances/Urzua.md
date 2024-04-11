@@ -4,4 +4,4 @@
 
 [09/04] 10:40 - 11:10, Actualizado el login para usar componente de svelte.
 
- 
+1 hora a lo largo de la semana para revisar y aprobar pull requests, ademas de solucionar los merge conflict.
