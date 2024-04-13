@@ -1,15 +1,15 @@
 ---
 import Layout from "../layouts/Acceso.astro"
-import FormLogin from "../Componentes/FormLogin.svelte";
+import Formlogin from "../Componentes/FormLogin.svelte";
 ---
 
 
-<Layout title="Login | Sportify">
+<Layout title="login | Sportify">
     <div class="flex flex-col justify-between items-center w-auto h-auto my-auto py-8 px-16 bg-gray-100 dark:bg-stone-950 border rounded-lg border-gray-300 dark:border-black">
         <header class="my-6">
             <h1 class="font-semibold text-4xl">Bienvenido</h1>
         </header> 
-       <FormLogin client:load /> 
+       <Formlogin client:load /> 
         <aside class="flex flex-col items-center gap-1 mt-2">
             <a href="#" class="text-green-600 text-xs font-medium hover:underline">
                 ¿Olvidaste tu contraseña?
@@ -20,5 +20,3 @@ import FormLogin from "../Componentes/FormLogin.svelte";
         </aside>
     </div>
 </Layout>
-
-
