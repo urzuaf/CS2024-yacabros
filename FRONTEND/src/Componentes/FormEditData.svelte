@@ -2,6 +2,7 @@
     let nombre = '';
     let email = '';
     let descripcion = '';
+    let password = '';
     async function handleSubmit(event) {
         event.preventDefault();
         try {
@@ -37,20 +38,19 @@
 
     <div class="min-w-72">
         <input
-            type="email"
-            id="email"
-            placeholder="Correo electrónico"
+            type="descripcion"
+            placeholder="Descripción"
             class="w-full px-4 py-2 bg-white dark:bg-gray-800 border rounded-lg border-gray-400 dark:border-gray-600 focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
-            bind:value={email}
+            bind:value={descripcion}
         />
     </div>
 
     <div class="min-w-72">
         <input
-            type="descripcion"
-            placeholder="Descripción"
+            type="password"
+            placeholder="Contraseña"
             class="w-full px-4 py-2 bg-white dark:bg-gray-800 border rounded-lg border-gray-400 dark:border-gray-600 focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
-            bind:value={descripcion}
+            bind:value={password}
         />
     </div>
 

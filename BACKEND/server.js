@@ -54,6 +54,25 @@ server.post('/register', async (req, res) => {
     }
 });
 
+server.post('/editData', async (req, res) => {
+  const { nombre, email, password,descripcion} = req.body;
+  const fnacimiento = '2001-10-21';
+  const rol = 'usuario';
+  console.log(req.body)
+
+  try {
+      const query = {
+          text: 'UPDATE usuario SET username = $1, descripcion = $2, password = $3 WHERE email = $4',
+          values: [nombre,descripcion,password,email],
+      };
+
+      const result = await db.query(query);
+      res.status(201).json(result.rows[0]);
+  } catch (error) {
+      console.error('Error al registrar el usuario:', error);
+      res.status(500).json({ error: 'Error al registrar el usuario' });
+  }
+});
 
 // Ruta para el inicio de sesión
 server.post('/login', async (req, res) => {

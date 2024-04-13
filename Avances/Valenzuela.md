@@ -7,3 +7,4 @@ Semana 2:
 [13/04] 10:30 - 12:00, Creación del formulario de edición de datos, se le agrega funcionalidad al boton de "Ingresar 
 ubicado en el login (solo se encarga de cambiar de pagina, no verifica que el usuario este registrado), se crea una 
 ventana de usuario intermediaria la cual da paso a la ventana de edicion de datos.
+[13/04] 14:30 - 15:00, Creación de query y actualización semifuncional de los datos.
