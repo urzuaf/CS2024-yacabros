@@ -37,9 +37,9 @@ server.get('/username', async (req,res)=>{
 server.get('/getTorneos', async(req,res)=>{
   db.query("select * from torneo",(error,result)=>{
     if(error) throw error;
-    else{
-      res.status(200).json(result.rows);
-    }
+    
+    res.status(200).json(result.rows);
+    
   })
 })
 

@@ -1,10 +1,12 @@
 <script>
-    let rows;
+    import { onMount } from 'svelte';
 
-    async function getData() {
-        console.log("holaA")
+    let rows = [];
+
+    onMount( async () => {
+        console.log("holaA");
         try{
-            console.log("hola")
+            console.log("hola");
             const resp = await fetch("http://localhost:3000/getTorneos");
             if (!resp.ok)
                 throw new Error("Error al obtener los datos del servidor");
@@ -15,18 +17,13 @@
         }catch(error){
             console.log("Error: ",error);
         }
-    }
-
-    window.onload = getData;
+    });
     
-
+    
 </script>
 
-
-
-
   
-<div>
+
     <table class="table-auto">
         <thead>
           <tr>
@@ -50,4 +47,3 @@
         </tbody>
       </table>
     
-</div>

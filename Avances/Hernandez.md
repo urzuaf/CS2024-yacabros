@@ -8,4 +8,4 @@
 
 ------------------------------
 10:56 inicio vista creacion 11:47 pausa
-14.42 retomar
+14.42 retomar        - pausa 16.23
