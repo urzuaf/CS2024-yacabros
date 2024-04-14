@@ -12,11 +12,6 @@ server.use(cors());
 //Separamos las rutas a otro archivo para evitar que el archivo server.js crezca mucho
 server.use(router)
 
-
-server.get('/a', (req, res)=>{
-        res.send("wena")
-})
-
 server.listen(puerto, ()=>{
     console.log("Servidor activo en puerto: ", puerto)
 })
