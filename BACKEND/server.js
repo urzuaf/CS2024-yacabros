@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import db from "./DB/dbconnect.js";
+import router from "./Rutas/Rutas.js";
 
 const server = express()
 const puerto = 3000
@@ -8,15 +9,14 @@ const puerto = 3000
 server.use(express.json())
 server.use(cors());
 
-server.get('/', (req, res)=>{
-    db.query("select * from usuario", (error, results)=>{
-        if(error) throw error
-        res.status(200).json(results.rows)
-    })
-})
+//Separamos las rutas a otro archivo para evitar que el archivo server.js crezca mucho
+server.use(router)
+
+
 server.get('/a', (req, res)=>{
         res.send("wena")
 })
+
 server.listen(puerto, ()=>{
     console.log("Servidor activo en puerto: ", puerto)
 })
