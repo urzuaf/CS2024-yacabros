@@ -2,11 +2,10 @@
     let nombre = '';
     let email = '';
     let password = '';
-
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/register", {
+            const response = await fetch("http://localhost:4321/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -20,7 +19,7 @@
             const data = await response.json();
             console.log("Usuario registrado:", data);
         } catch (error) {
-            console.error("Error:", error);
+            //console.error("Error:", error);
         }
     }
 </script>

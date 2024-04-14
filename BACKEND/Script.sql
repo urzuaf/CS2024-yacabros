@@ -1,3 +1,5 @@
+-- PRIMERA SEMANA
+
 create table usuario (
 	email text primary key,
 	username text,
@@ -20,3 +22,64 @@ insert into usuario values ('howshirtdress@mail.com', 'howshirtdress', 'hpasswor
 insert into usuario values ('staff1@mail.com', 'staff1', 'staff', 'me gusta staffear', '1998-12-14', 'staff' );
 insert into usuario values ('creador1@mail.com', 'creador1', 'creador', 'me gusta crear', '2001-10-21', 'creador' );
 insert into usuario values ('admin@admin.com', 'admin', 'admin', 'me gusta administrar', '2000-02-22', 'admin' );
+
+-- SEGUNDA SEMANA
+
+-- Agregamos 2 más de cada tipo para pruebas
+insert into usuario values ('staff2@mail.com', 'staff2', 'staff2', 'me gusta staffear', '1998-12-14', 'staff' );
+insert into usuario values ('creador2@mail.com', 'creador2', 'creador2', 'me gusta crear', '2001-10-21', 'creador' );
+insert into usuario values ('admin2@admin.com', 'admin2', 'admin2', 'me gusta administrar', '2000-02-22', 'admin' );
+
+-- Creamos tabla torneos
+
+create table torneo (
+-- que el id sea serial implica que no hay que agregarlo cuando se cree un torneo, es automatico.
+id serial primary key,
+nombre text,
+bases text,
+finicio date,
+ftermino date,
+premio text,
+deporte text,
+formato text,
+creador text references usuario(email) on update cascade on delete cascade
+);
+
+insert into torneo (nombre, bases, finicio, ftermino, premio, deporte, formato, creador)values ('Torneo1','sin bases', '2024-04-20', '2024-08-10', '20.000 USD', 'ajedrez', 'bracket', 'creador1@mail.com' );
+
+-- creamos la tabla para los equipos
+create table equipo(
+id  serial primary key,
+nombre text,
+descripcion text,
+deporte text,
+staff text references usuario(email) on update cascade on delete cascade
+);
+insert into equipo(nombre,descripcion,deporte,staff) values ('Equipo1', 'somos el equipo 1', 'ajedrez', 'staff1@mail.com')
+
+create table integrante(
+	id serial primary key,
+	nombre text,
+	equipo serial references equipo(id) on update cascade on delete cascade
+);
+
+insert into integrante (nombre, equipo) values ('integrante generico 1', 1);
+insert into integrante (nombre, equipo) values ('integrante generico 2', 1);
+insert into integrante (nombre, equipo) values ('integrante generico 3', 1);
+
+
+create table solicitud(
+	id serial primary key,
+	descripcion text,
+	visto bool, -- es true si el usuario ha abierto la notificacion
+	estado text, -- aceptada si el usuario acepto la solicitud, rechazada si la rechazo, pendiente si ninguna
+emisor text references usuario(email) on delete cascade on update cascade, -- quien envia la solicitud
+destinatario text references usuario(email) on delete cascade on update cascade -- quien recibe la solicitud
+
+);
+
+insert into solicitud (descripcion, visto, estado, emisor, destinatario)
+values ('Quiero invitarte al torneo 1', false, 'pendiente', 'creador1@mail.com', 'staff1@mail.com' );
+insert into solicitud (descripcion, visto, estado, emisor, destinatario)
+values ('Quiero invitarte al torneo 1', false, 'pendiente', 'creador1@mail.com', 'staff2@mail.com' );
+
