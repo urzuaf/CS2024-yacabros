@@ -33,6 +33,18 @@ server.get('/username', async (req,res)=>{
     })
 })
 
+//peticion para torneos
+server.get('/getTorneos', async(req,res)=>{
+  db.query("select * from torneo",(error,result)=>{
+    if(error) throw error;
+    
+    res.status(200).json(result.rows);
+    
+  })
+})
+
+
+
 server.post('/register', async (req, res) => {
     const { nombre, email, password } = req.body;
     const descripcion = 'descripcion';
