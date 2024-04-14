@@ -10,3 +10,5 @@
 10:56 inicio vista creacion 11:47 pausa
 14.42 retomar        - pausa 16.23
 19.20 retomar    - pausa 20.35
+
+10.03 retomar
