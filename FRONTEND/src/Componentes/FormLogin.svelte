@@ -5,7 +5,13 @@
   async function handleSubmit() {
     let rows;
     try {
-      const response = await fetch("http://localhost:3000/");
+      const response = await fetch("http://localhost:3000/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({email, password})
+      });
       //console.log(response + " jolaaaaa");
 
       if (!response.ok)
@@ -30,9 +36,8 @@
         return;
       }
     });
-    if(!find)
-        console.log("Datos Incorrectos");
-  }
+        console.log(email);
+  } 
   
 </script>
 
