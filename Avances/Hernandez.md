@@ -11,4 +11,4 @@
 14.42 retomar        - pausa 16.23
 19.20 retomar    - pausa 20.35
 
-10.03 retomar
+10.03 retomar    11.32- fin primera version

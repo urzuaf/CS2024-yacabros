@@ -45,22 +45,25 @@
 </script>
 
   
-<div class="flex justify-center ">
-<table class="table-auto fixed flex-row bg-green-600 text-white max-h-80 font-bold overscroll-contain mx-auto">
-    <thead>
-        <tr>
-            <th class="px-4 py-2">Id</th>
-            <th class="px-4 py-2">Creador</th>
-            <th class="px-4 py-2">Nombre</th>
-            <th class="px-4 py-2">Deporte</th>
-            <th class="px-4 py-2">Formato</th>
-            <th class="px-4 py-2">Fecha de Inicio</th>
-            <th class="px-4 py-2">Fecha de Cierre</th>
-        </tr>
-    </thead>
-
-    <tbody id=data class="border px-4 py-2">
-    </tbody>
-
-</table>
+<div class="flex justify-center">
+    <div class="w-auto max-h-64 overflow-y-auto">
+        <table class="table-auto bg-green-600 text-white font-bold mx-auto">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Id</th>
+                    <th class="px-4 py-2">Creador</th>
+                    <th class="px-4 py-2">Nombre</th>
+                    <th class="px-4 py-2">Deporte</th>
+                    <th class="px-4 py-2">Formato</th>
+                    <th class="px-4 py-2">Fecha de Inicio</th>
+                    <th class="px-4 py-2">Fecha de Cierre</th>
+                </tr>
+            </thead>
+        
+            <tbody id=data class="border px-4 py-2">
+                
+            </tbody>
+        
+        </table>
+    </div>
 </div>
