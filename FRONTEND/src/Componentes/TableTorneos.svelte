@@ -10,8 +10,8 @@
                 throw new Error("Error al obtener los datos del servidor");
 
             rows = await resp.json();
-            console.log("Datos recibidos:", rows);
-            console.log(rows[0].id);
+            //console.log("Datos recibidos:", rows);
+            //console.log(rows[0].id);
 
             addRow();
 
@@ -26,29 +26,29 @@
         let data= document.getElementById("data");
         
 
-        rows.forEach(e => {
-        
-            table += '<tr>';
-                table+='<td class="border px-4 py-2">'+e.id+'</td>';
-                table+='<td class="border px-4 py-2">'+e.creador+'</td>';
-                table+='<td class="border px-4 py-2">'+e.nombre+'</td>';
-                table+='<td class="border px-4 py-2">'+e.deporte+'</td>';
-                table+='<td class="border px-4 py-2">'+e.formato+'</td>';
-                table+='<td class="border px-4 py-2">'+e.finicio+'</td>';
-                table+='<td class="border px-4 py-2">'+e.ftermino+'</td>';
-            table+='</tr>';
+        rows.forEach(row => {
+            let tr = document.createElement("tr");
+            const cells = ["id", "creador", "nombre", "deporte", "formato", "finicio", "ftermino"];
+            cells.forEach(cell => {
+                const td = document.createElement("td");
+                td.textContent = row[cell];
+                td.style.border = "1px solid black";
+                td.style.textAlign="center"
+                tr.appendChild(td);
+            });
+            
+            data.appendChild(tr);
         });
-        
     }
     
     
 </script>
 
   
-
-    <table class="table-auto">
-        <thead>
-          <tr>
+<div class="flex justify-center ">
+<table class="table-auto fixed flex-row bg-green-600 text-white max-h-80 font-bold overscroll-contain mx-auto">
+    <thead>
+        <tr>
             <th class="px-4 py-2">Id</th>
             <th class="px-4 py-2">Creador</th>
             <th class="px-4 py-2">Nombre</th>
@@ -56,19 +56,11 @@
             <th class="px-4 py-2">Formato</th>
             <th class="px-4 py-2">Fecha de Inicio</th>
             <th class="px-4 py-2">Fecha de Cierre</th>
-          </tr>
-        </thead>
+        </tr>
+    </thead>
 
-        <tbody id=data>
-            {#each table as item}
-                {item}
-            {/each}
-          <tr>
-            <td class="border px-4 py-2">Intro to CSS</td>
-            <td class="border px-4 py-2">Adam</td>
-            <td class="border px-4 py-2">858</td>
-          </tr>
+    <tbody id=data class="border px-4 py-2">
+    </tbody>
 
-        </tbody>
-      </table>
-    
+</table>
+</div>

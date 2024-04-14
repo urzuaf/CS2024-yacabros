@@ -4,26 +4,29 @@ import Layout from "../layouts/Acceso.astro"
 ---
 
 <Layout title="Sportify">
-    <body>
+    <body >
         
-        <div class="fixed flex-row justify-between w-full h-auto py-8 px-16 top-0 bg-white-100 dark:bg-stone-950 border rounded-lg border-gray-300 dark:border-black">
-            <header class="my-0">
+        <div class="fixed flex-row justify-between w-full h-full mt-0 py-8 px-16 top-0 bg-white-100 dark:text-white ">
+            <header class="my-6" >
                 <h1 class="font-semibold text-4xl">Creacion de Torneo</h1>
             </header> 
 
-            <aside class="flex flex-col gap-1 my-4">
-                <span class="text-l font-medium ">
-                    En esta ventana podrás crear los torneos que necesites, además de poder visualizar tu historial de torneos creados!
+            <aside class="flex flex-col gap-1 my-4 text-justify">
+                <span class="text-l font-medium dark: text-white-600">
+                    ¡Bienvenido a nuestra plataforma de torneos en línea! Aquí, puedes dar vida a tus ideas deportivas y explorar una variedad de torneos emocionantes creados por la comunidad. Desde competiciones de fútbol hasta desafíos de ajedrez, nuestra plataforma te ofrece la oportunidad de crear y descubrir eventos deportivos de todo tipo. Con una interfaz fácil de usar, puedes crear tus propios torneos en minutos y unirte a otros en la competencia. Únete a nosotros y sumérgete en el apasionante mundo de los torneos deportivos en línea.
+
                 </span>
             </aside>
 
-            <button class="w-36 bg-green-600 text-black mt-6 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+            <button class="flex-row w-36 bg-green-600 text-black mt-6 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mb-20">
                 Crear Torneo
             </button>
 
+            <TableTorneo client:load/>
+
         </div>
 
-        <TableTorneo client:load/>
+        
         
 
     </body>
