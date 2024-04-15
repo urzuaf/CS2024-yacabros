@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import db from "./DB/dbconnect.js";
+import router from "./Rutas/Rutas.js";
 
 const server = express()
 const puerto = 3000
@@ -8,15 +9,9 @@ const puerto = 3000
 server.use(express.json())
 server.use(cors());
 
-server.get('/', (req, res)=>{
-    db.query("select * from usuario", (error, results)=>{
-        if(error) throw error
-        res.status(200).json(results.rows)
-    })
-})
-server.get('/a', (req, res)=>{
-        res.send("wena")
-})
+//Separamos las rutas a otro archivo para evitar que el archivo server.js crezca mucho
+server.use(router)
+
 server.listen(puerto, ()=>{
     console.log("Servidor activo en puerto: ", puerto)
 })
@@ -66,6 +61,25 @@ server.post('/register', async (req, res) => {
     }
 });
 
+server.post('/editData', async (req, res) => {
+  const { nombre, email, password,descripcion} = req.body;
+  const fnacimiento = '2001-10-21';
+  const rol = 'usuario';
+  console.log(req.body)
+
+  try {
+      const query = {
+          text: 'UPDATE usuario SET username = $1, descripcion = $2, password = $3 WHERE email = $4',
+          values: [nombre,descripcion,password,email],
+      };
+
+      const result = await db.query(query);
+      res.status(201).json(result.rows[0]);
+  } catch (error) {
+      console.error('Error al registrar el usuario:', error);
+      res.status(500).json({ error: 'Error al registrar el usuario' });
+  }
+});
 
 // Ruta para el inicio de sesión
 server.post('/login', async (req, res) => {
