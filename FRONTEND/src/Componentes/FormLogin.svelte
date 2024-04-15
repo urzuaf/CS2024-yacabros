@@ -5,7 +5,13 @@
   async function handleSubmit() {
     let rows;
     try {
-      const response = await fetch("http://localhost:3000/");
+      const response = await fetch("http://localhost:3000/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({email, password})
+      });
       //console.log(response + " jolaaaaa");
 
       if (!response.ok)
@@ -30,6 +36,9 @@
         return;
       }
     });
+
+        console.log(email);
+
     if(!find)
         console.log("Datos Incorrectos");
   }
@@ -57,10 +66,19 @@
     />
   </div>
 
-  <button
+  <!-- Boton de Ingresar -->
+  <button      
+    id="usuario"
     class="w-full px-6 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105"
     type="submit"
   >
-    Ingresar
+  Ingresar
   </button>
+
+  <script>  //Redirecciona a la pagina de inicio de usuario
+    document.getElementById('usuario').addEventListener('click', function() {
+      window.location.href = '/user';
+    });
+  </script>
+
 </form>
