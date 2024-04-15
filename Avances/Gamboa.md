@@ -2,4 +2,4 @@
 
 [15:42 - 18:40] 07/04/2024: Remodelación de la página login, anteriormente la había hecho negrita y sin haberle aplicado casi nada de tailwind, ahora la vista está terminada y lista para su uso. La mayor parte del tiempo la invertí entendiendo como funcionaba el layout para agregar la imagen de fondo, tuve problemas con las carpetas, con los commit ya que agregué información que no debía y elimine una página pruebas.astro que había subido anteriormente al main. Tambien me reuní con los ayudantes y ese tiempo lo considero como investigación y aprendizaje.
 
-
+[19:00 - 19:14] 09/04/2024: Cree el FormRegister.svelte e hice la modificiación en el register de astro
