@@ -105,3 +105,31 @@ server.post('/login', async (req, res) => {
     res.status(500).json({ success: false, message: "Error del servidor" });
   }
 });
+
+server.post('/participantes', async (req, res) => {
+  const participantes = req.body.participantes; // Se espera que req.body contenga un arreglo de objetos {nombre, equipo}
+  console.log(participantes);
+  
+  try {
+      // Iterar sobre cada participante y realizar una inserción individual en la base de datos
+      for (const participante of participantes) {
+          const { nombre, equipo } = participante;
+
+          const query = {
+              text: 'INSERT INTO integrante(nombre, equipo) VALUES($1, $2) RETURNING id', // Consulta para insertar un participante con su equipo y retornar el ID generado
+              values: [nombre, equipo], // Pasar el nombre y equipo como valores
+          };
+
+          const result = await db.query(query);
+          console.log('ID generado:', result.rows[0].id); // Imprime el ID generado para referencia
+          console.log('Participante registrado:', nombre);
+      }
+    
+      res.status(201).json({ message: 'Participantes registrados correctamente' });
+  } catch (error) {
+      console.error('Error al registrar los participantes:', error);
+      res.status(500).json({ error: 'Error al registrar los participantes' });
+  }
+});
+
+  
