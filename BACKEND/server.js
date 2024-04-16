@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import db from "./DB/dbconnect.js";
+import router from "./Rutas/Rutas.js";
 
 const server = express()
 const puerto = 3000
@@ -8,15 +9,9 @@ const puerto = 3000
 server.use(express.json())
 server.use(cors());
 
-server.get('/', (req, res)=>{
-    db.query("select * from usuario", (error, results)=>{
-        if(error) throw error
-        res.status(200).json(results.rows)
-    })
-})
-server.get('/a', (req, res)=>{
-        res.send("wena")
-})
+//Separamos las rutas a otro archivo para evitar que el archivo server.js crezca mucho
+server.use(router)
+
 server.listen(puerto, ()=>{
     console.log("Servidor activo en puerto: ", puerto)
 })
@@ -32,6 +27,18 @@ server.get('/username', async (req,res)=>{
         res.status(200).json(result.rows);
     })
 })
+
+//peticion para torneos
+server.get('/getTorneos', async(req,res)=>{
+  db.query("select * from torneo",(error,result)=>{
+    if(error) throw error;
+    
+    res.status(200).json(result.rows);
+    
+  })
+})
+
+
 
 server.post('/register', async (req, res) => {
     const { nombre, email, password } = req.body;
@@ -76,40 +83,25 @@ server.post('/editData', async (req, res) => {
 
 // Ruta para el inicio de sesión
 server.post('/login', async (req, res) => {
-    const { email, password } = req.body; //extrae el email y la contraseña
-  
-    try {
-      const query = 'SELECT * FROM usuario WHERE email = $1 AND password = $2'; //selecciona dentro de la bd el email y la contraseña que se ingresaron
-      const result = await pool.query(query, [email, password]); //guarda el resultado de los datos
-  
-      if (result.rows.length > 0) { //valida que encontro un usuario con lo ingresado en la bd
-        const user = result.rows[0]; //toma el primer usuario de la lista
-        // Aquí puedes verificar el rol del usuario
-        let mensajeRol; 
-        switch (user.rol) { //revisa el rol de usuario y lo guarda en mensajeRol
-          case 'usuario':
-            mensajeRol = 'Usuario';
-            break;
-          case 'staff':
-            mensajeRol = 'Staff';
-            break;
-          case 'creador':
-            mensajeRol = 'Creador';
-            break;
-          case 'admin':
-            mensajeRol = 'Administrador';
-            break;
-          default:
-            mensajeRol = 'Desconocido';
-            break;
-        }
-        res.send(`Bienvenido ${user.username}, rol: ${mensajeRol}`); //envia un mensaje de bienvenida con el nombre de usuario y su rol
-      } else {
-        res.send('Credenciales incorrectas. Por favor, inténtelo de nuevo.'); //si no encuentra un usuario con los datos ingresados envia un mensaje de error
-      }
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      res.status(500).send('Error interno del servidor');
-    }
+  const { email, password } = req.body;
+  console.log(email);
+  const query = {
+    text: 'SELECT * FROM usuario WHERE email = $1 AND password = $2',
+    values: [email, password],
+  };
+
+  try {
+    const result = await db.query(query);
+    console.log(result.rows);
+
+    // Verificar si se encontró un usuario con el email y contraseña proporcionados
+    const usuario = result.rows[0];
+    const rol = usuario.rol; // Guardar el rol del usuario en una variable
+    console.log(rol);
+    
+    res.status(200).json({ success: true, rol });
+  } catch (error) {
+    console.error('Error al buscar usuario en la base de datos:', error);
+    res.status(500).json({ success: false, message: "Error del servidor" });
+  }
 });
-  
