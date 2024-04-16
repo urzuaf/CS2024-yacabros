@@ -86,7 +86,7 @@ server.post('/login', async (req, res) => {
   const { email, password } = req.body;
   console.log(email);
   const query = {
-    text: 'SELECT * FROM usuario WHERE email = $1 AND password = $2',
+    text: 'SELECT email,username,descripcion,fnacimiento,rol FROM usuario WHERE email = $1 AND password = $2',
     values: [email, password],
   };
 
@@ -95,11 +95,11 @@ server.post('/login', async (req, res) => {
     console.log(result.rows);
 
     // Verificar si se encontró un usuario con el email y contraseña proporcionados
-    const usuario = result.rows[0];
+    const usuario = result.rows;
     const rol = usuario.rol; // Guardar el rol del usuario en una variable
     console.log(rol);
     
-    res.status(200).json({ success: true, rol });
+    res.status(200).json(usuario);
   } catch (error) {
     console.error('Error al buscar usuario en la base de datos:', error);
     res.status(500).json({ success: false, message: "Error del servidor" });
