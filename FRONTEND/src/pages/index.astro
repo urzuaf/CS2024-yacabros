@@ -1,9 +1,11 @@
 ---
 import Layout from "../layouts/Visualizacion.astro"
+import Notificacion from "../Componentes/Notificacion.svelte"
 ---
 
 <Layout title="Sportify">
     <body>
         <h1>Astro</h1>
+        <Notificacion client:only />
     </body>
 </Layout>
