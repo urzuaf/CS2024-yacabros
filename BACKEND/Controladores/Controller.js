@@ -31,6 +31,13 @@ const decision = (req, res) =>{
     }
 }
 
+const enviarNotificacion = (req,res) =>{
+    const {desc, emisor, destinatario} = req.body
+    db.query({text: Queries.sendNotificacion, values: [desc,emisor,destinatario]}, (error, results)=>{
+        if(error) throw error
+        res.status(200).json(results.rows)
+    })
+}
 
 
 
@@ -42,5 +49,6 @@ export default {
     getUsers,
     decirWena,
     decision,
-    postNotificacion
+    postNotificacion,
+    enviarNotificacion
 }
