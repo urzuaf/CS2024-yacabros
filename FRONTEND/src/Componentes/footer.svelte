@@ -7,7 +7,7 @@
       { href: 'javascript:void(0)', name: 'Support' }
     ];
   </script>
-  <footer class="text-gray-500 bg-white px-4 py-5 max-w-screen-xl mx-auto md:px-8 border-2 border-gray  ">
+  <footer class="text-gray-500 bg-white px-4 py-5 w-screen-xl mx-auto md:px-8 border-2 border-gray  ">
     <div class="max-w-lg sm:mx-auto sm:text-center">
       <img src="/sportify-favicon.svg" class="w-20 sm:mx-auto" alt="Logo"/>
       <p class="leading-relaxed mt-2 text-[15px]">
@@ -22,8 +22,8 @@
         </li>
       {/each}
     </ul>
-    <div class="mt-8 items-center justify-between sm:flex">
-      <div class="mt-4 sm:mt-0">
+    <div class="mt-8 items-center flex-col-reverse gap-2 sm:flex">
+      <div class="mt-4 sm:mt-0 m-auto">
         2024 Sportify derechos reservados.
       </div>
       <div class="mt-6 sm:mt-0">
