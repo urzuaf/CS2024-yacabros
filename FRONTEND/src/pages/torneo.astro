@@ -1,30 +1,38 @@
+---
 
-<div class="flex justify-between items-center">
-  <div class="mr-4 flex-auto">
-    <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarBases()">Cambiar Bases</button>
-    <button type="button" class= "px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarDatos()">Cambiar Datos</button>
+import Footer from "../Componentes/Footer.svelte";
+import Layout from "../layouts/Acceso.astro"
+
+---
+
+<Layout title= "Gestion de torneos | Sportify">
+  <div class="flex justify-between items-center">
+    <div class="mr-4 flex-auto">
+      <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarBases()">Cambiar Bases</button>
+      <button type="button" class= "px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarDatos()">Cambiar Datos</button>
+    </div>
+    <div>
+      <input type="text" placeholder="Buscar equipos del torneo" class="px-4 py-2 border rounded-lg">
+    </div>
+    <div>
+    </div>
   </div>
-  <div>
-    <input type="text" placeholder="Buscar equipos del torneo" class="px-4 py-2 border rounded-lg">
+
+  <div class="mt-8 border border-gray-300 p-4 rounded-lg flex-grow overflow-y-auto">
+    <img src="/brackets.jpg" alt="Brackets del torneo" class="w-1/2 h-auto mx-auto">
+    <!-- Aquí irán los brackets de torneos -->
   </div>
-  <div>
-  </div>
-</div>
-
-<div class="mt-8 border border-gray-300 p-4 rounded-lg flex-grow overflow-y-auto">
-  <img src="/brackets.jpg" alt="Brackets del torneo" class="w-1/2 h-auto mx-auto">
-  <!-- Aquí irán los brackets de torneos -->
-</div>
 
 
-<script>
-  function cambiarBases() {
-    // Colocar lógica bases
-    console.log("Cambiar bases");
-  }
+  <script>
+    function cambiarBases() {
+      // Colocar lógica bases
+      console.log("Cambiar bases");
+    }
 
-  function cambiarDatos() {
-    // Colocar lógica datos
-    console.log("cambiar datos");
-  }
-</script>
+    function cambiarDatos() {
+      // Colocar lógica datos
+      console.log("cambiar datos");
+    }
+  </script>
+</Layout>

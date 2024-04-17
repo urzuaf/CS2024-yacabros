@@ -2,18 +2,15 @@
     let footerNavs = [
       { href: 'javascript:void(0)', name: 'Nosotros' },
       { href: 'javascript:void(0)', name: 'Blog' },
-      { href: 'javascript:void(0)', name: '' },
       { href: 'javascript:void(0)', name: 'Equipo' },
       { href: 'javascript:void(0)', name: 'Carreras' },
       { href: 'javascript:void(0)', name: 'Support' }
     ];
   </script>
-  
-  <footer class="text-gray-500 bg-white px-4 py-5 max-w-screen-xl mx-auto md:px-8">
+  <footer class="text-gray-500 bg-white px-4 py-5 max-w-screen-xl mx-auto md:px-8 border-2 border-gray  ">
     <div class="max-w-lg sm:mx-auto sm:text-center">
-      <img src="/sportify-favicon.svg" class="w-32 sm:mx-auto" alt="Logo"/>
+      <img src="/sportify-favicon.svg" class="w-20 sm:mx-auto" alt="Logo"/>
       <p class="leading-relaxed mt-2 text-[15px]">
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
       </p>
     </div>
     <ul class="items-center justify-center mt-8 space-y-5 sm:flex sm:space-x-4 sm:space-y-0">
@@ -34,7 +31,7 @@
           <li
             class="w-10 h-10 border rounded-full flex items-center justify-center"
           >
-            <a href="javascript:void()">
+            <a href="">
               <svg
                 class="svg-icon w-6 h-6 text-blue-400"
                 viewBox="0 0 20 20"
@@ -50,7 +47,7 @@
           <li
             class="w-10 h-10 border rounded-full flex items-center justify-center"
           >
-            <a href="javascript:void()">
+            <a href="">
               <svg
                 class="svg-icon w-6 h-6 text-blue-700"
                 viewBox="0 0 20 20"
@@ -66,7 +63,7 @@
           <li
             class="w-10 h-10 border rounded-full flex items-center justify-center"
           >
-            <a href="javascript:void()">
+            <a href="">
               <svg
                 class="svg-icon w-6 h-6 text-blue-500"
                 viewBox="0 0 20 20"
@@ -82,7 +79,7 @@
           <li
             class="w-10 h-10 border rounded-full flex items-center justify-center"
           >
-            <a href="javascript:void()">
+            <a href="">
               <svg
                 class="svg-icon w-6 h-6 text-red-600"
                 viewBox="0 0 20 20"
@@ -100,9 +97,9 @@
   </footer>
   
   <style>
-    .svg-icon path,
-    .svg-icon polygon,
-    .svg-icon rect {
+    .svg-icon ,
+    .svg-icon ,
+    .svg-icon{
         fill: currentColor;
     }
   </style>
