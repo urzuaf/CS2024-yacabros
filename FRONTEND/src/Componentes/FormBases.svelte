@@ -1,22 +1,51 @@
 <script>
     let bases = '';
+    let isOpen = false;
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center gap-4 my-4">
-    <h2 class="text-2xl font-semibold text-center text-white">Bases y Condiciones</h2>
-    <div class="min-w-72">
-        <input
-            type="text"
-            placeholder="Ingrese aquí las Bases y Condiciones de su Torneo"
-            class="w-full px-4 py-2 bg-white dark:bg-gray-800 border rounded-lg border-gray-400 dark:border-gray-600 focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
-            bind:value={bases}
-        />
-    </div>
+<!-- 
+    Añadir a página como:
+    <FormBases client:load/> 
+-->
 
-    <button
-        class="w-4/5 px-6 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105"
-        type="submit"
-    >
-        Guardar
-    </button>
-</form>
+<!-- Botón para mostrar el Modal -->
+<button 
+    on:click={()=>{isOpen=!isOpen}} 
+    type="button" aria-label="toggle bases modal"
+    class="w-auto px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105"
+>
+Modificar Bases
+</button>
+
+<!-- Modal -->
+{#if isOpen}
+    <div class="sticky top-0 bottom-0 w-full h-screen bg-black opacity-70"></div>
+    <div class="sticky top-0 bottom-0 w-full h-screen">
+        <div class="flex justify-center items-center w-full h-full">
+            <div class="w-1/2 bg-stone-800 rounded-md">
+                <form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center gap-4 my-4">
+                    <h2 class="text-2xl font-semibold text-center text-white">Bases y Condiciones</h2>
+                    <div class="w-full flex justify-center">
+                        <textarea
+                            placeholder="Ingrese aquí las Bases y Condiciones de su Torneo"
+                            class="field-content w-4/5 min-h-52 max-h-96 px-4 py-2 text-black dark:text-white bg-white dark:bg-gray-800 border rounded-lg border-gray-400 dark:border-gray-600 focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
+                            bind:value={bases}
+                        />
+                    </div>
+                    <button
+                        class="w-4/5 px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105"
+                        type="submit"
+                    >
+                        Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{/if} 
+
+<style>
+    .field-content {
+        field-sizing: content;
+    }
+</style>
