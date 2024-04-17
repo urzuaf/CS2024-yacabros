@@ -106,35 +106,36 @@ server.post('/login', async (req, res) => {
   }
 });
 
-// Agrega participantes a la tabla integrante
-server.post('/participantes', async (req, res) => {
-  const participantes = req.body.participantes; // Se espera que req.body contenga un arreglo de objetos {nombre, equipo}
-  console.log(participantes);// Imprimir los participantes recibidos en la consola
-  
+// Ruta para agregar los integrantes de un equipo
+server.post('/integrante', async (req, res) => {
   try {
-      // Iterar sobre cada participante y realizar una inserción individual en la base de datos
-      for (const participante of participantes) {
-          const { nombre, equipo } = participante;// Extraer el nombre y equipo de cada participante
+    const { nombre, equipo } = req.body; // Acceder a las propiedades nombre y nombreEquipo del cuerpo de la solicitud
+    console.log(nombre, equipo); // Para verificar que estás recibiendo los datos correctamente
 
-          const query = {
-              text: 'INSERT INTO integrante(nombre, equipo) VALUES($1, $2) RETURNING id', // Consulta para insertar un participante con su equipo y retornar el ID generado
-              values: [nombre, equipo], // Pasar el nombre y equipo como valores
-          };
+    const query = {
+      text: 'insert into integrante(nombre, equipo) values($1, $2) RETURNING id',
+      values: [nombre, equipo], // Pasar el nombre y equipo como valores
+    };
 
-          const result = await db.query(query);// Ejecutar la consulta y guardar el resultado
-          console.log('ID generado:', result.rows[0].id); // Imprime el ID generado para referencia
-          console.log('Participante registrado:', nombre);
-      }
-    
-      res.status(201).json({ message: 'Participantes registrados correctamente' });
+    const result = await db.query(query); // Ejecutar la consulta y guardar el resultado
+
+    // Verificar si se generó un ID y luego imprimirlo
+    if (result.rows.length > 0 && result.rows[0].id) {
+      console.log('ID generado:', result.rows[0].id);
+    } else {
+      console.log('No se generó ningún ID');
+    }
+    res.status(201).json({ message: 'Participantes registrados correctamente' });
   } catch (error) {
-      console.error('Error al registrar los participantes:', error);
-      res.status(500).json({ error: 'Error al registrar los participantes' });
+    console.error('Error al registrar los participantes:', error);
+    res.status(500).json({ error: 'Error al registrar los participantes' });
   }
 });
 
+
+
 // Editar el nombre de un integrante por su ID
-server.put('/participantes/:id', async (req, res) => {
+server.put('/editarIntegrantes/:id', async (req, res) => {
   const id = req.params.id; // Se espera que req.params contenga el ID del integrante
   const { NewNombre } = req.body; // Se espera que req.body contenga el nuevo nombre del integrante
   
@@ -155,7 +156,7 @@ server.put('/participantes/:id', async (req, res) => {
 });
 
 // Borrar un integrante por su ID
-server.delete('/participantes/:id', async (req, res) => {
+server.delete('/borrarIntegrantes/:id', async (req, res) => {
   const id = req.params.id; // Se espera que req.params contenga el ID del integrante a eliminar
   
   try {
