@@ -4,4 +4,8 @@
 
 [19:00 - 19:14] 09/04/2024: Cree el FormRegister.svelte e hice la modificiación en el register de astro
 
-[23:25 - 00:40] 15/04/2024: Navbar sin estilos pero funcional ni modificaciones. Búsqueda de componentes en svelte del navbar.
+[23:25 - 00:40] 14/04/2024: Navbar sin estilos pero funcional ni modificaciones. Búsqueda de componentes en svelte del navbar.
+
+[21:15 - 22:15] 15/04/2024: Navbar con estilos y con menú eaaaasy. Pre diseño de vista de gestion.
+
+[04:53 - 6:00] 17/04/2024: Creación del footer, botones de la vista torneo (boton para cambiar bases y cambiar datos) y barra de busqueda. También cree el espacio donde irá el bracket con una imagen por ahora.
