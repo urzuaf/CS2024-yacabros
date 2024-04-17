@@ -1,12 +1,16 @@
 <script>
     import { onMount } from "svelte";
+    import {Usuario} from '../stores/login_store.js'
 
     let isOpen = false;
     //esto deberia ser el correo que se ingrese en el login no variables, guardarlo en una store
-    let email = "staff1@mail.com";
+    let email = "";
     let data = [];
+    console.log($Usuario + "en mount")
+    
     
     onMount(() => {
+        email = $Usuario
         request()
         setInterval(() => {
             request();
