@@ -43,7 +43,7 @@
     <div class="sticky top-0 bottom-0 w-full h-screen bg-black opacity-70"></div>
     <div class="sticky top-0 bottom-0 w-full h-screen">
         <div class="flex justify-center items-center w-full h-full">
-            <div class="w-1/2 bg-stone-800 rounded-md">
+            <div class="w-1/2 bg-stone-800 rounded-lg">
                 <form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center gap-4 my-4">
                     <h2 class="text-2xl font-semibold text-center text-white">Bases y Condiciones</h2>
                     <div class="w-full flex justify-center">
