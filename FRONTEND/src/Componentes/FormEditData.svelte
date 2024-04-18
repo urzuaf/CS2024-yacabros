@@ -1,9 +1,11 @@
 <script>
+    import { Usuario } from "../stores/login_store";
     let nombre = '';
-    let email = '';
     let descripcion = '';
     let password = '';
+
     async function handleSubmit(event) {
+        let emisor = $Usuario;
         event.preventDefault();
         try {
             const response = await fetch("http://localhost:3000/editData", {
@@ -11,7 +13,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ nombre, email, descripcion })
+                body: JSON.stringify({ nombre,descripcion,emisor,password})
             });
 
             if (!response.ok)

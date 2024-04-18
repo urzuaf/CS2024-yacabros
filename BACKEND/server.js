@@ -16,7 +16,6 @@ server.listen(puerto, ()=>{
     console.log("Servidor activo en puerto: ", puerto)
 })
 
-
 server.get('/username', async (req,res)=>{
     db.query("select * from usuario",(error,result)=>{
         if (error) {
@@ -62,31 +61,61 @@ server.post('/register', async (req, res) => {
 });
 
 server.post('/editData', async (req, res) => {
-  const { nombre, email, password,descripcion} = req.body;
-  const fnacimiento = '2001-10-21';
-  const rol = 'usuario';
+  const { nombre, descripcion,emisor,password} = req.body;
   console.log(req.body)
+  
+  //se inicia la query
+  let queryText = 'UPDATE usuario SET ';
+  let values = [];
+  let contador = 0;
+
+  // se construye la query
+  if (nombre !== '') {
+    queryText += 'username = $'+(contador+1)+', ';
+    values.push(nombre);
+    contador++;
+  }
+  if (descripcion !== '') {
+    queryText += 'descripcion = $'+(contador+1)+', ';
+    values.push(descripcion);
+    contador++;
+  }
+  if (password !== '') {
+    queryText += 'password = $'+(contador+1)+', ';
+    values.push(password);
+    contador++;
+  }
+
+  // se añade where
+  queryText += 'WHERE email = $'+(contador+1);
+  values.push(emisor);
+
+  // se encarga de eliminar la coma anterior al where para evitar errores de sintaxis
+  let ultimacoma = queryText.lastIndexOf(',');
+  let newqueryText = queryText.substring(0, ultimacoma) + queryText.substring(ultimacoma + 1);
+  console.log(newqueryText);
+
+  // prepara la query
+  const query = {
+  text: newqueryText,
+  values: values,
+  };
 
   try {
-      const query = {
-          text: 'UPDATE usuario SET username = $1, descripcion = $2, password = $3 WHERE email = $4',
-          values: [nombre,descripcion,password,email],
-      };
-
-      const result = await db.query(query);
-      res.status(201).json(result.rows[0]);
-  } catch (error) {
-      console.error('Error al registrar el usuario:', error);
-      res.status(500).json({ error: 'Error al registrar el usuario' });
-  }
-});
+  const result = await db.query(query);
+  res.status(201).json(result.rows[0]);
+  }catch (error) {
+        console.error('Error al registrar el usuario:', error);
+        res.status(500).json({ error: 'Error al registrar el usuario' });
+    }
+  });
 
 // Ruta para el inicio de sesión
 server.post('/login', async (req, res) => {
   const { email, password } = req.body;
   console.log(email);
   const query = {
-    text: 'SELECT * FROM usuario WHERE email = $1 AND password = $2',
+    text: 'SELECT email,username,descripcion,fnacimiento,rol FROM usuario WHERE email = $1 AND password = $2',
     values: [email, password],
   };
 
@@ -95,11 +124,11 @@ server.post('/login', async (req, res) => {
     console.log(result.rows);
 
     // Verificar si se encontró un usuario con el email y contraseña proporcionados
-    const usuario = result.rows[0];
+    const usuario = result.rows;
     const rol = usuario.rol; // Guardar el rol del usuario en una variable
     console.log(rol);
     
-    res.status(200).json({ success: true, rol });
+    res.status(200).json(usuario);
   } catch (error) {
     console.error('Error al buscar usuario en la base de datos:', error);
     res.status(500).json({ success: false, message: "Error del servidor" });

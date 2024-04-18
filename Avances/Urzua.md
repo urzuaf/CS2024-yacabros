@@ -14,4 +14,10 @@ Total semana 1: 5 horas 10 minutos
 
 # Semana 2
 [13/04] 11:30 - 12:30 creación de las tablas necesarias para esta semana en la base de datos
+[15/04] 16:50 - 19:00 un usuario puede ver y aceptar/rechazar solicitudes/notificaciones
+[15/04] 22:30 - 23:00 guardar el email del usuario en localhost y en svelte store para usarlo en varios componentes
+[17/04] 15:30 - 16:15 permitir enviar y recibir notificaciones entre usuarios
 
+1 hora a lo largo de la semana para revisar y aprobar pull requests, ademas de solucionar los merge conflict.
+
+total semana 2 : 5 horas 25 minutos 
