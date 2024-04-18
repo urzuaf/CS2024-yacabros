@@ -3,6 +3,7 @@
   let equipo = "";
   let newNombre = "";
   let idIntegrante = "";
+  let idIntegrante2 = "";
   let opcion = "agregar"; // Opción por defecto
 
   async function handleSubmit(event) {
@@ -20,6 +21,10 @@
         url = "http://localhost:3000/integrante";
         method = 'PUT';
         bodyData = { newNombre, idIntegrante};
+      } else if (opcion === "borrar") {
+        url = "http://localhost:3000/integrante";
+        method = 'DELETE';
+        bodyData = { idIntegrante2 };
       }
 
       const response = await fetch(url, {
@@ -73,6 +78,7 @@
       <select bind:value={opcion} class="w-full px-4 py-2 bg-white border rounded-lg border-gray-400 text-black focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40">
         <option value="agregar">Agregar integrante</option>
         <option value="cambiar">Cambiar nombre de integrante</option>
+        <option value="borrar">Borrar integrante</option>
       </select>
 
       <!-- Campos adicionales para cambiar nombre -->
@@ -97,12 +103,25 @@
       </div>
       {/if}
 
+      <!-- Campo para introducir ID del participante a borrar -->
+      {#if opcion === "borrar"}
+      <div class="min-w-72">
+        <input
+          type="text"
+          id="idIntegrante"
+          placeholder="ID del Integrante a Borrar"
+          class="w-full px-4 py-2 bg-white border rounded-lg border-gray-400 text-black focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
+          bind:value={idIntegrante2}
+        />
+      </div>
+      {/if}
+
       <!-- Botón de acción -->
       <button
         class="w-full px-6 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105"
         type="submit"
       >
-        {opcion === "agregar" ? "Agregar integrante" : "Cambiar nombre"}
+        {opcion === "agregar" ? "Agregar integrante" : opcion === "cambiar" ? "Cambiar nombre" : "Borrar integrante"}
       </button>
     </form>
   </div>

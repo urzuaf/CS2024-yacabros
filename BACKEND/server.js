@@ -136,21 +136,15 @@ server.post('/integrante', async (req, res) => {
 // Editar el nombre de un integrante por su ID
 server.put('/integrante', async (req, res) => {
   try {
-    const { newnombre, id } = req.body;
-    console.log(newnombre, id); // Para verificar que estás recibiendo los datos correctamente
+    const { newNombre, idIntegrante } = req.body;
+    console.log(newNombre, idIntegrante); // Para verificar que estás recibiendo los datos correctamente
 
     const query = {
       text: 'UPDATE integrante SET nombre = $1 WHERE id = $2',
-      values: [newnombre, id],
+      values: [newNombre, idIntegrante],
     };
-    const result = await db.query(query); // Ejecutar la consulta y guardar el resultado
 
-    // Verificar si se generó un ID y luego imprimirlo
-    if (result.rows.length > 0 && result.rows[0].id) {
-      console.log('ID:', result.rows[0].id);
-    } else {
-      console.log('No se cambio ningun nombre');
-    }
+    await db.query(query); // Ejecutar la consulta
 
     res.status(201).json({ message: 'nombre cambiado' });
   } catch (error) {
@@ -162,13 +156,12 @@ server.put('/integrante', async (req, res) => {
 // Borrar un integrante por su ID
 server.delete('/integrante', async (req, res) => {  
   try {
-      const { id } = req.body; // Acceder al ID del integrante a eliminar
-      console.log(id); // Para verificar que estás recibiendo el ID correctamente
+      const { idIntegrante2 } = req.body; // Acceder al ID del integrante a eliminar
+      console.log(idIntegrante2); // Para verificar que estás recibiendo el ID correctamente
       const query = {
           text: 'DELETE FROM integrante WHERE id = $1', // Consulta para eliminar un integrante por su ID
-          values: [id],
+          values: [idIntegrante2],
       };
-
 
       await db.query(query);// Ejecutar la consulta
     
