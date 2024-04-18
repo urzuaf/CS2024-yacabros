@@ -5,7 +5,7 @@
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/gestion-torneo", {
+            const response = await fetch("http://localhost:3000/gestiontorneo", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
