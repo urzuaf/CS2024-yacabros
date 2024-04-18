@@ -9,4 +9,5 @@
 [00:30-1:00] Creando funcion que guarde del participante de un torneo, para mas adeltante guardar varios nombres...
 [21:30-22:00] Modificaciones de la funcion para agregar integrantes durante la reunion de equipo resolviendo dudas
 [23:00-23:30] Creando las funciones para editar o borrar un participante reconociendolos mediante su id y tambien agregando las nuevas tablas con su respectiva informacion en la base de dato...
-[9:00-9-40] creacion de un .svelte y .astro provicional para poder probar las tareas asignadas
+[9:00-10:00] creacion de un .svelte y .astro provicional para poder probar las tareas asignadas
+[9:00-10:30] solucion de problemas y finalizacion de tareas.

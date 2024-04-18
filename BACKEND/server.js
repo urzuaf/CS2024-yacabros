@@ -140,8 +140,8 @@ server.put('/integrante', async (req, res) => {
     console.log(newNombre, idIntegrante); // Para verificar que estás recibiendo los datos correctamente
 
     const query = {
-      text: 'UPDATE integrante SET nombre = $1 WHERE id = $2',
-      values: [newNombre, idIntegrante],
+      text: 'UPDATE integrante SET nombre = $1 WHERE id = $2',// Consulta para cambiar el nombre de un integrante por su ID
+      values: [newNombre, idIntegrante],// Pasar el nuevo nombre y el ID del integrante
     };
 
     await db.query(query); // Ejecutar la consulta
@@ -162,9 +162,8 @@ server.delete('/integrante', async (req, res) => {
           text: 'DELETE FROM integrante WHERE id = $1', // Consulta para eliminar un integrante por su ID
           values: [idIntegrante2],
       };
-
       await db.query(query);// Ejecutar la consulta
-    
+
       res.status(200).json({ message: 'Integrante eliminado correctamente' });
   } catch (error) {
       console.error('Error al eliminar el integrante:', error);
