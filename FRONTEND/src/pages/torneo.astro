@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Acceso.astro"
-
+import FormBases from "../Componentes/FormBases.svelte"
 ---
 
 <Layout title= "Gestion de torneos | Sportify">
   <div class="flex justify-between items-center mt-8">
     <div class="mr-4 flex-auto">
-      <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarBases()">Cambiar Bases</button>
+      <FormBases client:load />
       <button type="button" class= "px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarDatos()">Cambiar Datos</button>
       <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="invitaEquipo()">Invitar Equipo</button>
       <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="verCondiciones()">Condiciones</button>

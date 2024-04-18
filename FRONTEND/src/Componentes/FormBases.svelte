@@ -1,16 +1,17 @@
 <script>
     let bases = '';
+    let id = 1;
     let isOpen = false;
 
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/gestiontorneo", {
+            const response = await fetch("http://localhost:3000/torneo", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ bases })
+                body: JSON.stringify({ id, bases })
             });
             if (!response.ok){
                 throw new Error("Error al editar bases");
