@@ -7,7 +7,7 @@
       { href: 'javascript:void(0)', name: 'Support' }
     ];
   </script>
-  <footer class="text-gray-500 bg-white px-4 py-5 w-screen-xl mx-auto md:px-8 border-2 border-gray  ">
+  <footer class="text-gray-500 bg-white px-4 py-5 w-screen mx-auto md:px-8 border-2 border-gray  ">
     <div class="max-w-lg sm:mx-auto sm:text-center">
       <img src="/sportify-favicon.svg" class="w-20 sm:mx-auto" alt="Logo"/>
       <p class="leading-relaxed mt-2 text-[15px]">

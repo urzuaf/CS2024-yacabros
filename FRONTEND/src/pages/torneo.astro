@@ -4,15 +4,15 @@ import Layout from "../layouts/Acceso.astro"
 ---
 
 <Layout title= "Gestion de torneos | Sportify">
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mt-8">
     <div class="mr-4 flex-auto">
       <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarBases()">Cambiar Bases</button>
       <button type="button" class= "px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarDatos()">Cambiar Datos</button>
+      <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="invitaEquipo()">Invitar Equipo</button>
+      <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="verCondiciones()">Condiciones</button>
     </div>
-    <div>
+    <div class="mt-1">
       <input type="text" placeholder="Buscar equipos del torneo" class="px-4 py-2 border rounded-lg">
-    </div>
-    <div>
     </div>
   </div>
 
@@ -20,7 +20,6 @@ import Layout from "../layouts/Acceso.astro"
     <img src="/brackets.jpg" alt="Brackets del torneo" class="w-1/2 h-auto mx-auto">
     <!-- Aquí irán los brackets de torneos -->
   </div>
-
 
   <script>
     function cambiarBases() {
@@ -31,6 +30,16 @@ import Layout from "../layouts/Acceso.astro"
     function cambiarDatos() {
       // Colocar lógica datos
       console.log("cambiar datos");
+    }
+
+    function invitaEquipo() {
+      // Colocar logica de invitación
+      console.log("Invitar equipo");
+    }
+
+    function verCondiciones() {
+      // Agregar condiciones
+      console.log("Ver condiciones");
     }
   </script>
 </Layout>

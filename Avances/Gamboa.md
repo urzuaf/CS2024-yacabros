@@ -6,8 +6,14 @@
 
 [23:25 - 00:40] 14/04/2024: Navbar sin estilos pero funcional ni modificaciones. Búsqueda de componentes en svelte del navbar.
 
+2da Semana
+
 [21:15 - 22:15] 15/04/2024: Navbar con estilos y con menú eaaaasy. Pre diseño de vista de gestion.
 
 [04:53 - 6:00] 17/04/2024: Creación del footer, botones de la vista torneo (boton para cambiar bases y cambiar datos) y barra de busqueda. También cree el espacio donde irá el bracket con una imagen por ahora.
 
 [11:20 - 11:45] 17/04/2024: Agregué layouts y modifiqué el footer
+
+[21:00 - 22:15] 17/04/2024: Agregué botones e investigué sobre como agregar la lupa de busqueda para la barra de búsqueda e implementé la fachada de las funciones que harán los botones.
+
++1 hora de estudio sobre nuevas implementaciones futuras.
