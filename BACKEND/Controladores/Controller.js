@@ -39,7 +39,13 @@ const enviarNotificacion = (req,res) =>{
     })
 }
 
-
+const postBases = (req, res) =>{
+    const {id, bases} = req.body
+    db.query({text: Queries.updateBases, values: [bases, id]}, (error, results)=>{
+        if (error) throw error
+        res.status(200).json(results.rows)
+    })
+}
 
 
 const decirWena = (req, res) =>{
@@ -50,5 +56,6 @@ export default {
     decirWena,
     decision,
     postNotificacion,
-    enviarNotificacion
+    enviarNotificacion,
+    postBases
 }
