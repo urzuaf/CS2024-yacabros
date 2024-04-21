@@ -134,3 +134,68 @@ server.post('/login', async (req, res) => {
     res.status(500).json({ success: false, message: "Error del servidor" });
   }
 });
+
+// Ruta para agregar los integrantes de un equipo
+server.post('/integrante', async (req, res) => {
+  try {
+    const { nombre, equipo } = req.body; // Acceder a las propiedades nombre y nombreEquipo del cuerpo de la solicitud
+    console.log(nombre, equipo); // Para verificar que estás recibiendo los datos correctamente
+
+    const query = {
+      text: 'insert into integrante(nombre, equipo) values($1, $2) RETURNING id',
+      values: [nombre, equipo], // Pasar el nombre y equipo como valores
+    };
+
+    const result = await db.query(query); // Ejecutar la consulta y guardar el resultado
+
+    // Verificar si se generó un ID y luego imprimirlo
+    if (result.rows.length > 0 && result.rows[0].id) {
+      console.log('ID generado:', result.rows[0].id);
+    } else {
+      console.log('No se generó ningún ID');
+    }
+    res.status(201).json({ message: 'Participantes registrados correctamente' });
+  } catch (error) {
+    console.error('Error al registrar los participantes:', error);
+    res.status(500).json({ error: 'Error al registrar los participantes' });
+  }
+});
+
+
+// Editar el nombre de un integrante por su ID
+server.put('/integrante', async (req, res) => {
+  try {
+    const { newNombre, idIntegrante } = req.body;
+    console.log(newNombre, idIntegrante); // Para verificar que estás recibiendo los datos correctamente
+
+    const query = {
+      text: 'UPDATE integrante SET nombre = $1 WHERE id = $2',// Consulta para cambiar el nombre de un integrante por su ID
+      values: [newNombre, idIntegrante],// Pasar el nuevo nombre y el ID del integrante
+    };
+
+    await db.query(query); // Ejecutar la consulta
+
+    res.status(201).json({ message: 'nombre cambiado' });
+  } catch (error) {
+    console.error('Error al cambiar nombre:', error);
+    res.status(500).json({ error: 'Error cambiar nombre' });
+  }
+});
+
+// Borrar un integrante por su ID
+server.delete('/integrante', async (req, res) => {  
+  try {
+      const { idIntegrante2 } = req.body; // Acceder al ID del integrante a eliminar
+      console.log(idIntegrante2); // Para verificar que estás recibiendo el ID correctamente
+      const query = {
+          text: 'DELETE FROM integrante WHERE id = $1', // Consulta para eliminar un integrante por su ID
+          values: [idIntegrante2],
+      };
+      await db.query(query);// Ejecutar la consulta
+
+      res.status(200).json({ message: 'Integrante eliminado correctamente' });
+  } catch (error) {
+      console.error('Error al eliminar el integrante:', error);
+      res.status(500).json({ error: 'Error al eliminar el integrante' });
+  }
+});
