@@ -13,3 +13,6 @@ ventana de usuario intermediaria la cual da paso a la ventana de edicion de dato
 Semana 3:
     Is66:
         [21/04] 11:30-12:00, se traslada y edita el botón "Editar Datos" hacia ventana de usuario "user"
+        [21/04] 17:15-19:15, se modifica lo anterior, se agrega parcialmente la opción de "Editar Datos" al dropdown 
+        del usuario con la sesión iniciada y las opciones de iniciar sesión/registrarse a los usuarios que no estan
+        logeados, por ultimo se agrega feedback al editar los datos de un usuario.

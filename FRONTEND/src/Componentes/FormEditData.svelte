@@ -3,6 +3,7 @@
     let nombre = '';
     let descripcion = '';
     let password = '';
+    let resultadoEdicion = '';
 
     async function handleSubmit(event) {
         let emisor = $Usuario;
@@ -19,6 +20,7 @@
             if (!response.ok)
                 throw new Error("Error al editar datos");
 
+            resultadoEdicion = 'Datos editados correctamente';
             const data = await response.json();
             console.log("Usuario editado:", data);
         } catch (error) {
@@ -62,4 +64,6 @@
     >
         Editar Datos
     </button>
+    <hr>
+    <p style="color: #e5e7eb; text-align:center; size:10px"><b>{resultadoEdicion}</b></p>
 </form>
