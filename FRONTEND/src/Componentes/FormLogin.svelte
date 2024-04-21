@@ -56,7 +56,7 @@
 */
   function redirect() {
     //movi la redirección aqui
-    window.location.href = "/";
+    window.location.href = "/user";
   }
 </script>
 
