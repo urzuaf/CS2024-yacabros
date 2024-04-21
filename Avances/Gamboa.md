@@ -19,3 +19,5 @@
 +1 hora de estudio sobre nuevas implementaciones futuras.
 
 [2 horas (motivo de no especificación porque tuve que borrar la rama y no recordaba que había editado este .md) ] 20/04/2004: Cambios en Navbar y footer.
+
+[14:40 - 15:20] 21/04/2024: Boton editar perfil (en el dropdown), posible lógica para conectar nombre de usuario iniciado y correo a la base de datos  
