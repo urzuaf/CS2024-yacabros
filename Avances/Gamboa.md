@@ -17,3 +17,5 @@
 [21:00 - 22:15] 17/04/2024: Agregué botones e investigué sobre como agregar la lupa de busqueda para la barra de búsqueda e implementé la fachada de las funciones que harán los botones.
 
 +1 hora de estudio sobre nuevas implementaciones futuras.
+
+[2 horas (motivo de no especificación porque tuve que borrar la rama y no recordaba que había editado este .md) ] 20/04/2004: Cambios en Navbar y footer.
