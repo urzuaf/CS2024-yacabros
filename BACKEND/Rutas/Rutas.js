@@ -8,4 +8,5 @@ router.get('/a', Controller.decirWena)
 router.post('/notificacion', Controller.postNotificacion)
 router.post('/decision', Controller.decision)
 router.post('/sendn', Controller.enviarNotificacion)
+router.post('/torneo', Controller.postBases)
 export default router

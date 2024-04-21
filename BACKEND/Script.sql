@@ -83,3 +83,25 @@ values ('Quiero invitarte al torneo 1', false, 'pendiente', 'creador1@mail.com',
 insert into solicitud (descripcion, visto, estado, emisor, destinatario)
 values ('Quiero invitarte al torneo 1', false, 'pendiente', 'creador1@mail.com', 'staff2@mail.com' );
 
+
+-- Semana 3
+
+
+create table foro(
+	id serial primary key,
+	titulo text,
+	fecha_creacion date,
+	creado_por text references usuario(email) on update cascade on delete cascade
+);
+
+insert into foro (titulo, fecha_creacion, creado_por) values ('Primer Foro Generico', '2024-04-20', 'admin@admin.com');
+
+create table comentario (
+	id serial primary key,
+	texto text,
+	autor text references usuario(email) on update cascade on delete cascade,
+	pertenece_a serial references foro(id) on update cascade on delete cascade
+);
+
+insert into comentario (texto, autor, pertenece_a) values ('El primer comentario siempre es el peor jaja', 'staff1@mail.com', 1);
+
