@@ -4,23 +4,23 @@ import FormBases from "../Componentes/FormBases.svelte"
 ---
 
 <Layout title= "Gestion de torneos | Sportify">
-  <div class="flex justify-between items-center mt-8">
-    <div class="mr-4 flex-auto">
-      <FormBases client:load />
-      <button type="button" class= "px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarDatos()">Cambiar Datos</button>
+  <div class="flex justify-evenly items-center mt-8 w-full text-nowrap">
+    <div class="flex flex-col md:flex-row gap-2">
+      <FormBases client:load/>
+      <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarDatos()">Cambiar Datos</button>
       <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="invitaEquipo()">Invitar Equipo</button>
       <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="verCondiciones()">Condiciones</button>
     </div>
-    <div class="mt-1">
-      <input type="text" placeholder="Buscar equipos del torneo" class="px-4 py-2 border rounded-lg">
+    <div class="flex">
+      <input type="text" placeholder="Invitar un equipo al torneo" class="px-4 py-2 border rounded-lg">
     </div>
   </div>
 
-  <div class="mt-8 border border-gray-300 p-4 rounded-lg flex-grow overflow-y-auto">
+  <div class="mt-8 p-4 rounded-lg border border-gray-300">
     <img src="/brackets.jpg" alt="Brackets del torneo" class="w-1/2 h-auto mx-auto">
     <!-- Aquí irán los brackets de torneos -->
   </div>
-
+  <!-- 
   <script>
     function cambiarBases() {
       // Colocar lógica bases
@@ -42,4 +42,5 @@ import FormBases from "../Componentes/FormBases.svelte"
       console.log("Ver condiciones");
     }
   </script>
+  -->
 </Layout>
