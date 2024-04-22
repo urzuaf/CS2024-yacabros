@@ -36,14 +36,20 @@
       });
 
       if (!response.ok)
-        throw new Error("Error al guardar los datos en el servidor");
+        throw new Error("Error al comunicarse con el servidor");
 
       const data = await response.json();
-      console.log("Datos guardados:", data);
+      console.log("Respuesta del servidor:", data);
 
-      // Puedes realizar alguna acción adicional después de guardar los datos, como redirigir a otra página
+      if (data.success) {
+        alert(data.message); // Muestra un mensaje de éxito
+      } else {
+        alert("Error: " + data.error); // Muestra un mensaje de error
+      }
+
     } catch (error) {
       console.error("Error:", error);
+      alert("Error: " + error.message); // Muestra un mensaje de error en caso de fallo en la comunicación con el servidor
     }
   }
 </script>
