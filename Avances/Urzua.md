@@ -21,3 +21,8 @@ Total semana 1: 5 horas 10 minutos
 1 hora a lo largo de la semana para revisar y aprobar pull requests, ademas de solucionar los merge conflict.
 
 total semana 2 : 5 horas 25 minutos 
+
+# Semana 3
+[20/04] 14:30 - 15:00 Creacion de las tablas necesarias de foro y comentarios
+[21/04] 20:00 - 21:00 Issue para mover notificaciones al navbar, y agregarle más funcionalidades al componente de notificaciones
+ 
