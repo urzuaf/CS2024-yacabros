@@ -37,8 +37,6 @@ server.get('/getTorneos', async(req,res)=>{
   })
 })
 
-
-
 server.post('/register', async (req, res) => {
     const { nombre, email, password } = req.body;
     const descripcion = 'descripcion';

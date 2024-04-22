@@ -8,6 +8,13 @@ const getUsers = (req, res) =>{
     })
 }
 
+const getTeams =(req,resp) =>{
+    db.query(Queries.getAllTeams,(error,result)=>{
+        if(error) throw error
+        resp.status(200).json(result.rows)
+    })
+}
+
 const postNotificacion = (req, res) =>{
     const {email} = req.body
     db.query({text: Queries.getNotificacion, values: [email]}, (error, results)=>{
@@ -57,5 +64,6 @@ export default {
     decision,
     postNotificacion,
     enviarNotificacion,
-    postBases
+    postBases,
+    getTeams
 }
