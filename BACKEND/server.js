@@ -110,6 +110,32 @@ server.post('/editData', async (req, res) => {
     }
   });
 
+  // Ruta para el inicio de sesión
+server.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  console.log(email);
+  const query = {
+    text: 'SELECT email,username,descripcion,fnacimiento,rol FROM usuario WHERE email = $1 AND password = $2',
+    values: [email, password],
+  };
+
+  try {
+    const result = await db.query(query);
+    console.log(result.rows);
+
+    // Verificar si se encontró un usuario con el email y contraseña proporcionados
+    const usuario = result.rows;
+    const rol = usuario.rol; // Guardar el rol del usuario en una variable
+    console.log(rol);
+    
+    res.status(200).json(usuario);
+  } catch (error) {
+    console.error('Error al buscar usuario en la base de datos:', error);
+    res.status(500).json({ success: false, message: "Error del servidor" });
+  }
+});
+
+
   server.post('/integrante', async (req, res) => {//registro de integrantes
     try {
       const { nombre, equipo } = req.body;//se obtiene el nombre y el equipo
