@@ -1,4 +1,8 @@
+
+
 <script>
+    
+    import { Formulario } from "../Componentes/Formulario.astro";
 
     let bases = '';
     let isOpen = false;
@@ -45,7 +49,7 @@
         <div class="flex justify-center items-center w-full h-full">
             <div class="w-1/2 bg-stone-800 rounded-lg">
                 <form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center gap-4 my-4">
-                   
+                    
                 </form>
             </div>
         </div>
@@ -57,3 +61,4 @@
         field-sizing: content;
     }
 </style>
+
