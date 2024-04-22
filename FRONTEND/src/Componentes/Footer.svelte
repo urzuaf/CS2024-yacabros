@@ -52,7 +52,7 @@
               <img src="/instagram.svg" alt="instagram" class="w-6 h-6 text-blue-400">
             </a>
           </li>
-          
+
         </ul>
       </div>
     </div>
