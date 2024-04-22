@@ -218,7 +218,7 @@ server.post('/login', async (req, res) => {
 server.post('/crearForo', async (req, res) => {
   const { titulo, comentario } = req.body;
   const fechaCreacion = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato 'YYYY-MM-DD'
-  const userEmail = "staff1@mail,com"
+  const userEmail = "admin@admin.com"
   /*// Verifica si se proporcionó el email del usuario logueado en req.user.email, debe estar funcionando el inicio de sesión
   const userEmail = req.user && req.user.email;
 
