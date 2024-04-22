@@ -102,7 +102,10 @@
         <div
             class="absolute top-10 right-0 trans bg-white border shadow-md p-2 w-64 overflow-y-scroll max-h-96"
         >
-            {#if data.length == 0}
+            {#if $Usuario == ''}
+                <p class="text-center">Inicia sesión para ver tus notificaciones</p>
+            {/if}
+            {#if data.length == 0 && $Usuario != ""}
                 <p class="text-center">No hay notificaciones</p>
             {/if}
             {#each data as noti}
