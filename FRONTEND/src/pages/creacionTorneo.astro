@@ -9,7 +9,7 @@ import Notificacion from "../Componentes/Notificacion.svelte";
 
 <Layout title="Sportify">
     <body>
-        <div class="flex-row justify-between w-full h-full mt-0 py-8 px-16 top-0 dark:text-white bg-dark-background">
+        <div class="flex-row justify-between w-full h-screen mt-0 py-8 px-16 top-0 dark:text-white bg-dark-background">
             <header class="my-6" >
                 <h1 class="font-semibold text-4xl">Creación de Torneo</h1>
             </header> 
@@ -21,17 +21,12 @@ import Notificacion from "../Componentes/Notificacion.svelte";
             </aside>
 
             
-            <div class="flex-1">
+            
                 <TableTorneo client:load/>
-                <Modal/>
-                <Formulario/>
-            </div>
+                <div class="mr-4 flex-auto">
+                    <Modal client:load/>
+                </div>
+            
         </div>
-
-    
-
-        
-        
-
     </body>
 </Layout>
