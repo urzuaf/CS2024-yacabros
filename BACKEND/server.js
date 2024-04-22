@@ -214,4 +214,39 @@ server.post('/login', async (req, res) => {
     }
   });
   
-  
+// Ruta para crear un nuevo foro
+server.post('/crearForo', async (req, res) => {
+  const { titulo, comentario } = req.body;
+  const fechaCreacion = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato 'YYYY-MM-DD'
+  const userEmail = "staff1@mail,com"
+  /*// Verifica si se proporcionó el email del usuario logueado en req.user.email, debe estar funcionando el inicio de sesión
+  const userEmail = req.user && req.user.email;
+
+  if (!userEmail) {
+    return res.status(401).json({ error: 'Usuario no autenticado' });
+  }*/
+
+  try {
+    // Inserta el nuevo foro
+    const foroQuery = {
+      text: 'INSERT INTO foro (titulo, fecha_creacion, creado_por) VALUES ($1, $2, $3) RETURNING id',
+      values: [titulo, fechaCreacion, userEmail]
+    };
+    const foroResult = await db.query(foroQuery);
+    const nuevoForoId = foroResult.rows[0].id;
+
+    // Si se proporcionó un comentario, inserta el comentario inicial en la tabla de comentarios del foro
+    if (comentario) {
+      const comentarioQuery = {
+        text: 'INSERT INTO comentario (texto, autor, pertenece_a) VALUES ($1, $2, $3)',
+        values: [comentario, userEmail, nuevoForoId]
+      };
+      await db.query(comentarioQuery);
+    }
+
+    res.status(201).json({ id: nuevoForoId });
+  } catch (error) {
+    console.error('Error al crear el foro:', error);
+    res.status(500).json({ error: 'Error al crear el foro' });
+  }
+});
