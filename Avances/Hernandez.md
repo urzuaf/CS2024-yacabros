@@ -19,5 +19,7 @@ dom    14/04
 
 
 dom 21/07
-
 20:30 inicio arreglo issue 21.24 fin issue página statica 
+
+lun 22/04
+inicio tarea filtrar torneo 18:24
