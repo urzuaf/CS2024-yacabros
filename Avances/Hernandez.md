@@ -13,3 +13,11 @@ sábado 13/04
 19.20 retomar    - pausa 20.35
 dom    14/04
 10.03 retomar    11.32- fin primera version
+
+
+----------------------------------
+
+
+dom 21/07
+
+20:30 inicio arreglo issue 21.24 fin issue página statica 
