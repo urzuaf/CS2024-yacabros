@@ -216,11 +216,14 @@ server.post('/login', async (req, res) => {
   
 // Ruta para crear un nuevo foro
 server.post('/crearForo', async (req, res) => {
-  const { titulo, comentario } = req.body;
+  const { titulo, comentario } = req.body; // Obtener el título y el comentario del foro
   const fechaCreacion = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato 'YYYY-MM-DD'
   const userEmail = "admin@admin.com"
-  /*// Verifica si se proporcionó el email del usuario logueado en req.user.email, debe estar funcionando el inicio de sesión
-  const userEmail = req.user && req.user.email;
+
+//valida el correo de la persona que esta llenando el formulario para crear el foro, para ello debe estar el inicio de seccion habilitado donde pueda reconocer el correo
+//ya que aun no esta el valor userEmail es un valor fijo que ya exite en la base de datos de la tabla foro
+
+  /*const userEmail = req.user && req.user.email;
 
   if (!userEmail) {
     return res.status(401).json({ error: 'Usuario no autenticado' });
@@ -228,23 +231,23 @@ server.post('/crearForo', async (req, res) => {
 
   try {
     // Inserta el nuevo foro
-    const foroQuery = {
+    const foroQuery = {//se inserta el titulo, la fecha de creacion y el correo del usuario que lo creo
       text: 'INSERT INTO foro (titulo, fecha_creacion, creado_por) VALUES ($1, $2, $3) RETURNING id',
       values: [titulo, fechaCreacion, userEmail]
     };
     const foroResult = await db.query(foroQuery);
-    const nuevoForoId = foroResult.rows[0].id;
+    const nuevoForoId = foroResult.rows[0].id;//se obtiene el id del foro
 
     // Si se proporcionó un comentario, inserta el comentario inicial en la tabla de comentarios del foro
     if (comentario) {
-      const comentarioQuery = {
+      const comentarioQuery = {//se inserta el comentario, el autor y el id del foro
         text: 'INSERT INTO comentario (texto, autor, pertenece_a) VALUES ($1, $2, $3)',
         values: [comentario, userEmail, nuevoForoId]
       };
       await db.query(comentarioQuery);
     }
 
-    res.status(201).json({ id: nuevoForoId });
+    res.status(201).json({ id: nuevoForoId });//se envia un mensaje de exito
   } catch (error) {
     console.error('Error al crear el foro:', error);
     res.status(500).json({ error: 'Error al crear el foro' });

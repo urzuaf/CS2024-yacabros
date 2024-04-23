@@ -14,3 +14,5 @@
 
 //semana 3
 [16:00-16:40] Issue Agregar jugador terminada...
+[21:30-23:30] Avance en la funcion que crea un formulario para agregar un foro con su titulo y el primer comentario
+[15:00-15:40] Correcion de problemas en el codigo para su funcionamiento y guardado de dato. Creacion de una vista provisoria de la venta de Formulario de foro
