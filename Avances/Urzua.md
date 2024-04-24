@@ -27,7 +27,8 @@ total semana 2 : 5 horas 25 minutos
 [21/04] 20:00 - 21:00 Issue para mover notificaciones al navbar, y agregarle más funcionalidades al componente de notificaciones
 [23/04] 19:30 - 19:40 Issue para redireccionar del registro al login
 [23/04] 19:40 - 20:20 Issue para mejorar el envio de notificaciones
+[24/04] 12:00 - 13:30 Boton para invitar equipo a torneo
 
-Tiempo actual: 2 horas 20 minutos
+Tiempo actual: 3 horas 50 minutos
 
  
