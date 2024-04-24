@@ -1,6 +1,7 @@
 ---
 import Profile from "../Componentes/Profile.svelte";
 import Notificacion from "./Notificacion.svelte";
+import CerrarSesion from "./CerrarSesion.svelte";
 ---
 <nav x-data="{ isOpen: false }" class="relative bg-white shadow dark:bg-gray-800">
   <div class="container px-6 py-4 mx-auto">
@@ -43,6 +44,7 @@ import Notificacion from "./Notificacion.svelte";
 
         <div class="flex items-center mt-4 lg:mt-0">
          <Notificacion client:only /> 
+         <CerrarSesion client:only /> 
         </div>
         <Profile client:load/>
       </div>
