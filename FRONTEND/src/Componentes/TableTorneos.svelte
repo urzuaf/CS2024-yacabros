@@ -48,7 +48,7 @@
 <div class="flex justify-center h-64">
     <div class="w-auto max-h-64 overflow-y-auto">
         <h1 class="font-semibold text-4xl align-center flex justify-center">Torneos Creados</h1>
-        <table class="table-auto bg-green-600 text-white font-bold mx-auto">
+        <table class="table-auto bg-sportify text-dark-text font-bold mx-auto">
             <thead>
                 <tr>
                     <th class="px-4 py-2">Id</th>

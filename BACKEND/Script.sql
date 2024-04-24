@@ -105,6 +105,16 @@ create table comentario (
 
 insert into comentario (texto, autor, pertenece_a) values ('El primer comentario siempre es el peor jaja', 'staff1@mail.com', 1);
 
+
+-- Semana 3 pt 2
+create table equipo_torneo(
+	id serial primary key,
+	equipo serial references equipo(id) on update cascade on delete cascade,
+	torneo serial references torneo(id) on update cascade on delete cascade
+);
+
+insert into equipo_torneo (equipo, torneo) values(1,1);
+
 -- NUEVOS STAFF Y EQUIPOS PARA TERCERA SEMANA
 insert into usuario values ('staff3@mail.com', 'staff3', 'staff', 'me gusta staffear', '1997-12-14', 'staff' );
 insert into usuario values ('staff4@mail.com', 'staff4', 'staff', 'me gusta staffear', '1996-12-14', 'staff' );
@@ -116,3 +126,5 @@ insert into equipo(nombre,descripcion,deporte,staff) values ('fruna', 'somos el 
 insert into equipo(nombre,descripcion,deporte,staff) values ('Equipo2', 'somos el equipo 4', 'ajedrez', 'staff4@mail.com');
 insert into equipo(nombre,descripcion,deporte,staff) values ('futbolito', 'somos el equipo 5', 'ajedrez', 'staff5@mail.com');
 insert into equipo(nombre,descripcion,deporte,staff) values ('Los winner', 'somos el equipo 6', 'ajedrez', 'staff6@mail.com');
+
+

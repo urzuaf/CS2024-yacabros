@@ -9,3 +9,10 @@ ubicado en el login (solo se encarga de cambiar de pagina, no verifica que el us
 ventana de usuario intermediaria la cual da paso a la ventana de edicion de datos.
 [13/04] 14:30 - 15:00, Creación de query y actualización semifuncional de los datos.
 [17/04] 18:00 - 20:30, Incorporación del email del usuario activo, se añaden casos al formulario. 
+
+Semana 3:
+    Is66:
+        [21/04] 11:30-12:00, se traslada y edita el botón "Editar Datos" hacia ventana de usuario "user"
+        [21/04] 17:15-19:15, se modifica lo anterior, se agrega parcialmente la opción de "Editar Datos" al dropdown 
+        del usuario con la sesión iniciada y las opciones de iniciar sesión/registrarse a los usuarios que no estan
+        logeados, por ultimo se agrega feedback al editar los datos de un usuario.
