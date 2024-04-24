@@ -2,19 +2,12 @@
 import Layout from "../layouts/Visualizacion.astro"
 import Notificacion from "../Componentes/Notificacion.svelte"
 import EnviarNotificacion from "../Componentes/EnviarNotificacion.svelte"
+import UserProfile from "../Componentes/UserProfile.svelte"
 ---
 
 <Layout title="Bienvenido | Sportify">
     <body>
-        <h1>Bienvenido usuario</h1>
-        <Notificacion client:only />
+        <UserProfile client:only/>
         <EnviarNotificacion client:only />
     </body>
 </Layout>
-
-<script>
-    const editdatos = document.getElementById('editdatos');
-    editdatos.addEventListener('click', () => {
-        window.location.href = '/editData';
-    });
-</script>
