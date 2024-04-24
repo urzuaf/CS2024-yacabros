@@ -1,7 +1,7 @@
 <script>
     let footerNavs = [
       { href: 'javascript:void(0)', name: '' },
-      { href: 'javascript:void(0)', name: 'Torneo' },
+      { href: "/torneo", name: 'Torneo' },
       { href: 'javascript:void(0)', name: 'Noticias' },
       { href: 'javascript:void(0)', name: 'Foros' },
       { href: 'javascript:void(0)', name: '' }
@@ -9,7 +9,9 @@
   </script>
   <footer class="text-gray-500 bg-white px-4 py-5 w-screen mx-auto md:px-8 border-2 border-gray  ">
     <div class="max-w-lg sm:mx-auto sm:text-center">
-      <img src="/sportify-favicon.svg" class="w-20 sm:mx-auto" alt="Logo"/>
+      <a href="http://localhost:4321/">
+        <img src="/sportify-favicon.svg" class="w-20 sm:mx-auto" alt="Logo"/>
+      </a>
       <p class="leading-relaxed mt-2 text-[15px]">
       </p>
     </div>
@@ -48,7 +50,7 @@
           </li>
           
           <li class="w-10 h-10 border rounded-full flex items-center justify-center">
-            <a href="https://instagram.com">
+            <a href="https://instagram.com/">
               <img src="/instagram.svg" alt="instagram" class="w-6 h-6 text-blue-400">
             </a>
           </li>
