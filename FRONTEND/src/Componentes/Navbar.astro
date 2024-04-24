@@ -1,5 +1,7 @@
 ---
 import Profile from "../Componentes/Profile.svelte";
+import Notificacion from "./Notificacion.svelte";
+import CerrarSesion from "./CerrarSesion.svelte";
 ---
   <nav class="border-2 flex justify-between w-full">
     <div class="flex px-6 py-4 w-full justify-start">
@@ -36,11 +38,13 @@ import Profile from "../Componentes/Profile.svelte";
             Foros
           </a>
         </div>
-     
-        
-        <div class="flex flex-nowrap text-nowrap">
-          <Profile client:load /> 
+
+        <div class="flex items-center mt-4 lg:mt-0">
+         <Notificacion client:only /> 
+         <CerrarSesion client:only /> 
         </div>
+        <Profile client:only/>
+
       </div>
       
     </div>

@@ -1,36 +1,31 @@
 ---
 import TableTorneo from "../Componentes/TableTorneos.svelte";
-import Layout from "../layouts/Acceso.astro"
+import Layout from "../layouts/Visualizacion.astro"
 import Modal from "../Componentes/Modal.svelte"
-import Formulario from "../Componentes/Formulario.astro"
+
 ---
 
+
 <Layout title="Sportify">
-    <body >
-        
-        <div class="fixed flex-row justify-between w-full h-full mt-0 py-8 px-16 top-0 bg-white-100 dark:text-white ">
-            <header class="my-6" >
-                <h1 class="font-semibold text-4xl">Creación de Torneo</h1>
-            </header> 
+    <div class="flex-row justify-between w-full h-screen mt-0 py-8 px-16 top-0">
+        <header class="my-6" >
+            <h1 class="font-semibold text-4xl">Creación de Torneo</h1>
+        </header> 
 
-            <aside class="flex flex-col gap-1 my-4 text-justify">
-                <span class="text-l font-medium dark: text-white-600">
-                    ¡Bienvenido a nuestra plataforma de torneos en línea! Aquí, puedes dar vida a tus ideas deportivas y explorar una variedad de torneos emocionantes creados por la comunidad. Desde competiciones de fútbol hasta desafíos de ajedrez, nuestra plataforma te ofrece la oportunidad de crear y descubrir eventos deportivos de todo tipo. Con una interfaz fácil de usar, puedes crear tus propios torneos en minutos y unirte a otros en la competencia. Únete a nosotros y sumérgete en el apasionante mundo de los torneos deportivos en línea.
+        <aside class="flex flex-col gap-1 my-4 text-justify">
+            <span class="text-l font-medium dark: text-white-600">
+                ¡Bienvenido a nuestra plataforma de torneos en línea! Aquí, puedes dar vida a tus ideas deportivas y explorar una variedad de torneos emocionantes creados por la comunidad. Desde competiciones de fútbol hasta desafíos de ajedrez, nuestra plataforma te ofrece la oportunidad de crear y descubrir eventos deportivos de todo tipo. Con una interfaz fácil de usar, puedes crear tus propios torneos en minutos y unirte a otros en la competencia. Únete a nosotros y sumérgete en el apasionante mundo de los torneos deportivos en línea.
+            </span>
+        </aside>
 
-                </span>
-            </aside>
-
-            
-            
                 
             <TableTorneo client:load/>
-            <Modal client:load/>
-            <Formulario />
+            <div class="mr-4 flex-auto">
+                <Modal client:only/>
 
+            </div>
+            
         </div>
-
         
-        
-
-    </body>
+    </div>
 </Layout>

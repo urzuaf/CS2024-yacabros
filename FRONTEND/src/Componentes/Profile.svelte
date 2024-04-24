@@ -1,8 +1,9 @@
 <script>
+    import { Usuario } from "../stores/login_store";
     let isOpen = false;
     let userProfile = {
         name: "Daniel Moreno",
-        email: "danmoreno@utalca.cl"
+        email: $Usuario
     };
 </script>
 
@@ -25,17 +26,34 @@
 </button>
 
 
-{#if isOpen}
+{#if $Usuario !="" && isOpen}
+
     <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
        
         <p class="text-ray-800 font-bold">{userProfile.name}</p>
         <p class="text-gray-300">{userProfile.email}</p>
-       
+
+        <!-- Botón para editar perfil -->
         <a href="/editData" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+
+
             Editar Perfil
         </a>
         
     </div>
+
+    {:else}
+        <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
+            <!-- Botón para editar perfil -->
+            <a href="/login" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Iniciar sesión
+            </a>
+            <a href="/register" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Registrarse
+            </a>
+            <!-- Otros botones aquí -->
+        </div>
+
 {/if}
  -->
 
@@ -70,3 +88,4 @@
 </script>
 
 -->
+
