@@ -41,31 +41,31 @@
   <dialog 
     bind:this={dialog}
     on:close={() => (showModal = false)}
-    class="w-auto h-70 rounded-lg bg-transparent">
+    class="w-full h-70 rounded-lg bg-transparent">
     <div class="flex justify-center items-center w-full h-full">
-        <form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-4 w-3/4 md:w-3/5 bg-light-background dark:bg-dark-background  rounded-lg p-4">
+        <form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-4 w-3/4 md:w-full bg-light-background dark:bg-dark-background rounded-lg py-4 p-1-4">
             <div class="mb-3">
-              <label for="nombre" class="block text-sm font-medium text-zinc-400">Nombre del Torneo:</label>
+              <label for="nombre" class="block text-sm font-medium text-light-text">Nombre del Torneo:</label>
               <input type="text" id="nombre" v-model="nombre" required
                   class="block w-full px-4 py-4 mt-1 text-lg text-light-text dark:text-dark-text bg-light-input dark:bg-dark-input border border-sportify rounded-lg focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
           </div>
           <div class="mb-3">
-              <label for="deporte" class="block text-sm font-medium text-gray-700">Deporte:</label>
+              <label for="deporte" class="block text-sm font-medium text-light-text">Deporte:</label>
               <input type="text" id="deporte" v-model="deporte" required
                   class="block w-full px-4 py-4 mt-1 text-lg text-light-text dark:text-dark-text bg-light-input dark:bg-dark-input border border-sportify rounded-lg focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
           </div>
           <div class="mb-3">
-              <label for="fechaInicio" class="block text-sm font-medium text-gray-700">Fecha de Inicio:</label>
+              <label for="fechaInicio" class="block text-sm font-medium text-light-text">Fecha de Inicio:</label>
               <input type="date" id="fechaInicio" v-model="fechaInicio" required
                   class="block w-full px-4 py-4 mt-1 text-lg text-light-text dark:text-dark-text bg-light-input dark:bg-dark-input border border-sportify rounded-lg focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
           </div>
           <div class="mb-3">
-              <label for="fechaFin" class="block text-sm font-medium text-gray-700">Fecha de Término:</label>
+              <label for="fechaFin" class="block text-sm font-medium text-light-text">Fecha de Término:</label>
               <input type="date" id="fechaFin" v-model="fechaFin" required
                   class="block w-full px-4 py-4 mt-1 text-lg text-light-text dark:text-dark-text bg-light-input dark:bg-dark-input border border-sportify rounded-lg focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
           </div>
           <div class="mb-3">
-              <label for="formato" class="block text-sm font-medium text-gray-700">Formato del Torneo:</label>
+              <label for="formato" class="block text-sm font-medium text-light-text">Formato del Torneo:</label>
               <select id="formato" v-model="formato"
                   class="block w-full px-4 py-4 mt-1 text-lg text-light-text dark:text-dark-text bg-light-input dark:bg-dark-input border border-sportify rounded-lg focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
                   <option value="bracket">Bracket</option>
@@ -73,17 +73,17 @@
               </select>
           </div>
           <div class="mb-3">
-              <label for="equipos" class="block text-sm font-medium text-gray-700">Cantidad de Equipos:</label>
+              <label for="equipos" class="block text-sm font-medium text-light-text">Cantidad de Equipos:</label>
               <input type="number" id="equipos" v-model="equipos" required
                   class="block w-full px-4 py-4 mt-1 text-lg text-light-text dark:text-dark-text bg-light-input dark:bg-dark-input border border-sportify rounded-lg focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
           </div>
           <div class="mb-3">
-              <label for="etiquetas" class="block text-sm font-medium text-gray-700">Etiquetas:</label>
+              <label for="etiquetas" class="block text-sm font-medium text-light-text">Etiquetas:</label>
               <input type="text" id="etiquetas" v-model="etiquetas"
                   class="block w-full px-4 py-4 mt-1 text-lg text-light-text dark:text-dark-text bg-light-input dark:bg-dark-input border border-sportify rounded-lg focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
           </div>
           <div class="mb-3">
-              <label for="pricePool" class="block text-sm font-medium text-gray-700">Price Pool:</label>
+              <label for="pricePool" class="block text-sm font-medium text-light-text">Price Pool:</label>
               <input type="text" id="pricePool" v-model="pricePool"
                   class="block w-full px-4 py-4 mt-1 text-lg text-light-text dark:text-dark-text bg-light-input dark:bg-dark-input border border-sportify rounded-lg focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
           </div>
@@ -95,3 +95,10 @@
         </form>
     </div>
   </dialog>
+
+  <style>
+    .p-1-4{
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+  </style>
