@@ -14,6 +14,7 @@
 
 //semana 3
 [16:00-16:40] Issue Agregar jugador terminada...
+
 [21:30-23:30] Avance en la funcion que crea un formulario para agregar un foro con su titulo y el primer comentario
 [15:00-15:40] Correcion de problemas en el codigo para su funcionamiento y guardado de dato. Creacion de una vista provisoria de la venta de Formulario de foro
 
@@ -21,4 +22,4 @@
 
 [1:20-2:00] Avance en la tarea T051, funcion que reconoce y agrega etiquetas creadas correctamente solo falta corregir la forma de almacenar esa variable para usarla mas adelante lo que permite que se pueda filtrar
 
-[20 min] Ver el tema respecto la base de datos de foro para guardar la variables de etiqueta y poder usarlas mas adelante
+[9:00-9:20] Ver el tema respecto la base de datos de foro para guardar la variables de etiqueta y poder usarlas mas adelante
