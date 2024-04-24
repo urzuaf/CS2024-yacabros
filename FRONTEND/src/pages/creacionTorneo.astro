@@ -2,8 +2,7 @@
 import TableTorneo from "../Componentes/TableTorneos.svelte";
 import Layout from "../layouts/Visualizacion.astro"
 import Modal from "../Componentes/Modal.svelte"
-import Formulario from "../Componentes/Formulario.astro"
-import Notificacion from "../Componentes/Notificacion.svelte";
+
 ---
 
 
@@ -22,11 +21,16 @@ import Notificacion from "../Componentes/Notificacion.svelte";
 
             
             
-                <TableTorneo client:load/>
-                <div class="mr-4 flex-auto">
-                    <Modal client:load/>
-                </div>
+                
+            <TableTorneo client:load/>
+            <div class="mr-4 flex-auto">
+                <Modal client:only/>
+
+            </div>
             
+            
+
+
         </div>
     </body>
 </Layout>
