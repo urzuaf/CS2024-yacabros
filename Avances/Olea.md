@@ -22,3 +22,14 @@ semana 2
 17/04/2024 15:00 - 15:40: Se intenta buscar la implementacion del formulario
 
 17/04/2024 10:00 - 10:30: Se implementa formulario en svelte y astro, faltaria agregarle los estilos correspondiente + conectar a la base de datos
+
+semana 3
+
+21/04/2024 11:00 - 12:00 Arreglar errores de estilos  del modal.  [1 hora]
+( 21/04/2024 13:00 - 13:30 )  (23/04/2024 21:30 - 23:00) : Terminar la tarea atrasada. [2 horas]
+23/04/2024 23:00 - 23:30 : Conectar la tabla equipos (De la base de datos) al componente svelte que maneja el perfil de los equipos. [30 min]
+
+
+
+
+

@@ -2,6 +2,8 @@
 import Layout from "../layouts/Visualizacion.astro"
 import Notificacion from "../Componentes/Notificacion.svelte"
 import EnviarNotificacion from "../Componentes/EnviarNotificacion.svelte"
+import PerfilEquipo from "../Componentes/PerfilEquipo.svelte"
+
 ---
 
 <Layout title="Sportify">
@@ -12,5 +14,6 @@ import EnviarNotificacion from "../Componentes/EnviarNotificacion.svelte"
         <a href="/editData">
             Edita tus datos
         </a>
+        <PerfilEquipo client:only />
     </body>
 </Layout>

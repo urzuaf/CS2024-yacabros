@@ -58,6 +58,14 @@ const postTorneo = (req, res) =>{
         res.status(200).json(results.rows)
     })
 }
+const getEquipo = (req, res) =>{
+    const {staff} = req.body
+    db.query({text: Queries.selectEquipo, values: [staff]}, (error, results)=>{
+        if (error) throw error
+        res.status(200).json(results.rows)
+    })
+
+}
 export default {
     getUsers,
     decirWena,
@@ -65,5 +73,6 @@ export default {
     postNotificacion,
     enviarNotificacion,
     postBases,
-    postTorneo
+    postTorneo,
+    getEquipo
 }

@@ -105,20 +105,10 @@
                 
             
         </div>
+        
+        
         <div class="mb-3">
-            <label for="equipos" class="block text-sm font-medium text-gray-700">Cantidad de Equipos:</label>
-            <input type="number" id="equipos" v-model="equipos" required
-                class="block w-full px-4 py-4 mt-1 text-sm text-gray-700 bg-white border border-green-500 rounded-lg focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
-        </div>
-        <div class="mb-3">
-            <label for="etiquetas" class="block text-sm font-medium text-gray-700">Etiquetas:</label>
-            <input type="text" id="etiquetas" v-model="etiquetas"
-                class="block w-full px-4 py-4 mt-1 text-sm text-gray-700 bg-white border border-green-500 rounded-lg focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                
-            />
-        </div>
-        <div class="mb-3">
-            <label for="pricePool" class="block text-sm font-medium text-gray-700">Price Pool:</label>
+            <label for="pricePool" class="block text-sm font-medium text-gray-700">Premio:</label>
             <input type="text" id="pricePool" v-model="pricePool"
                 class="block w-full px-4 py-4 mt-1 text-sm text-gray-700 bg-white border border-green-500 rounded-lg focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 bind:value={premio}
