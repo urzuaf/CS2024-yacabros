@@ -25,4 +25,9 @@ total semana 2 : 5 horas 25 minutos
 # Semana 3
 [20/04] 14:30 - 15:00 Creacion de las tablas necesarias de foro y comentarios
 [21/04] 20:00 - 21:00 Issue para mover notificaciones al navbar, y agregarle más funcionalidades al componente de notificaciones
+[23/04] 19:30 - 19:40 Issue para redireccionar del registro al login
+[23/04] 19:40 - 20:20 Issue para mejorar el envio de notificaciones
+
+Tiempo actual: 2 horas 20 minutos
+
  
