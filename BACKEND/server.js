@@ -216,7 +216,7 @@ server.post('/login', async (req, res) => {
   
 // Ruta para crear un nuevo foro
 server.post('/crearForo', async (req, res) => {
-  const { titulo, comentario } = req.body; // Obtener el título y el comentario del foro
+  const { titulo, comentario, etiqueta } = req.body; // Obtener el título y el comentario del foro
   const fechaCreacion = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato 'YYYY-MM-DD'
   const userEmail = "admin@admin.com"
 
@@ -228,7 +228,7 @@ server.post('/crearForo', async (req, res) => {
   if (!userEmail) {
     return res.status(401).json({ error: 'Usuario no autenticado' });
   }*/
-
+  console.log(etiqueta);
   try {
     // Inserta el nuevo foro
     const foroQuery = {//se inserta el titulo, la fecha de creacion y el correo del usuario que lo creo
