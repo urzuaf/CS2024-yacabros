@@ -19,5 +19,15 @@ dom    14/04
 
 
 dom 21/07
-
 20:30 inicio arreglo issue 21.24 fin issue página statica 
+
+lun 22/04
+inicio tarea filtrar torneo 18:24     19.41 avance //filtrar y arreglar que no se vean los buscados
+
+mar 23/04
+seguir tarea filtrar 19:32  21.00 avance //queda por ver que al hacer click en uno se obtenga la row
+
+mier 24/04
+seguir tarea filtrar 18.03 19.09 fin tarea
+
+nuevos datos 15 mins

@@ -2,6 +2,8 @@
 import Layout from "../layouts/Visualizacion.astro"
 import FormBases from "../Componentes/FormBases.svelte"
 import BotonInvitar from "../Componentes/BotonInvitar.svelte"
+import BuscadorEquipos from "../Componentes/buscadorEquipos.svelte"
+
 ---
 
 <Layout title= "Gestion de torneos | Sportify">
@@ -16,7 +18,7 @@ import BotonInvitar from "../Componentes/BotonInvitar.svelte"
 
     </div>
     <div class="flex">
-      <input type="text" placeholder="Invitar un equipo al torneo" class="px-4 py-2 border rounded-lg">
+      <BuscadorEquipos client:only/>
     </div>
   </div>
 
