@@ -1,10 +1,34 @@
 <script>
     import { Usuario } from "../stores/login_store";
+    import { onMount } from 'svelte';
     let isOpen = false;
     let userProfile = {
-        name: "Daniel Moreno",
+        name: "",
         email: $Usuario
     };
+
+    onMount(async () =>{
+        try{
+            const resp = await fetch("http://localhost:3000/getUsername", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: userProfile.email }), // Envía el correo electrónico en el cuerpo de la solicitud
+            });
+            if (!resp.ok)
+                throw new Error("Error al obtener los datos del servidor");
+
+            const result = await resp.json();
+            
+            if (result.length > 0) {
+                userProfile.name = result[0].username; 
+            }
+
+        }catch(error){
+            console.log("Error: ",error);
+        }
+    });
 </script>
 
 <button on:click={() => {isOpen = !isOpen}} type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
@@ -18,7 +42,7 @@
     {#if $Usuario != ''}
         <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
             <!-- Nombre de usuario y correo -->
-            <p class="text-ray-800 font-bold">{userProfile.name}</p>
+            <p class="text-gray-800 font-bold">{userProfile.name}</p>
             <p class="text-gray-300">{userProfile.email}</p>
 
             <!-- Botón para editar perfil -->
