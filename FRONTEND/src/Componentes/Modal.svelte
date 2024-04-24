@@ -1,5 +1,6 @@
 
 <script>
+
     import { Usuario } from "../stores/login_store";
     let creador=$Usuario;
   let nombre= '';
@@ -142,3 +143,4 @@
       transition: 0.3s ease;
   }
 </style>
+
