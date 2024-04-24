@@ -26,3 +26,6 @@ inicio tarea filtrar torneo 18:24     19.41 avance //filtrar y arreglar que no s
 
 mar 23/04
 seguir tarea filtrar 19:32  21.00 avance //queda por ver que al hacer click en uno se obtenga la row
+
+mier 24/04
+seguir tarea filtrar 18.03 
