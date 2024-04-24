@@ -1,6 +1,7 @@
 
 <script>
 
+
     import { Usuario } from "../stores/login_store";
     let creador=$Usuario;
   let nombre= '';

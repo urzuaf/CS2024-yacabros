@@ -42,11 +42,12 @@ import CerrarSesion from "./CerrarSesion.svelte";
           </a>
         </div>
 
+
         <div class="flex items-center mt-4 lg:mt-0">
          <Notificacion client:only /> 
          <CerrarSesion client:only /> 
         </div>
-        <Profile client:load/>
+        <Profile client:only/>
       </div>
     </div>
   </div>
