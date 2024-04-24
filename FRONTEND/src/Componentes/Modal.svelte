@@ -1,12 +1,12 @@
+
 <script>
-  let bases = '';
-  let id = 1;
+    import { Usuario } from "../stores/login_store";
+    let creador=$Usuario;
   let nombre= '';
   let deporte = '';
-  let fechaInicio = '';
-  let fechaFin = '';
-  let etiquetas ='';
-  let pricePool = '';
+  let finicio = '';
+  let ftermino = '';
+  let premio = '';
   let formato = '';
 
 
@@ -17,12 +17,12 @@
   async function handleSubmit(event) {
       event.preventDefault();
       try {
-          const response = await fetch("http://localhost:3000/Creartorneo", {
+          const response = await fetch("http://localhost:3000/crearTorneo", {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
               },
-              body: JSON.stringify({ id, nombre, deporte, fechaInicio, fechaFin, formato, etiquetas, pricePool })
+              body: JSON.stringify({ nombre, finicio, ftermino, formato, premio, deporte,creador })
           });
           if (!response.ok){
               throw new Error("Error al agregar torneo");
@@ -47,7 +47,7 @@
   type="button" aria-label="toggle bases modal"
   class="w-auto px-4 py-2 font-medium text-white trans bg-green-600 rounded-lg hover:scale-105"
 >
-  Modificar Bases
+  Crear Torneo
 </button>
 
 <!-- Modal -->
@@ -78,14 +78,14 @@
             <label for="fechaInicio" class="block text-sm font-medium text-gray-700">Fecha de Inicio:</label>
             <input type="date" id="fechaInicio" v-model="fechaInicio" required
                 class="block w-full px-4 py-4 mt-1 text-sm text-gray-700 bg-white border border-green-500 rounded-lg focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                bind:value={fechaInicio}
+                bind:value={finicio}
             />
         </div>
         <div class="mb-3">
             <label for="fechaFin" class="block text-sm font-medium text-gray-700">Fecha de Término:</label>
             <input type="date" id="fechaFin" v-model="fechaFin" required
                 class="block w-full px-4 py-4 mt-1 text-sm text-gray-700 bg-white border border-green-500 rounded-lg focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                bind:value={fechaFin}
+                bind:value={ftermino}
             />
         </div>
         <div class="mb-3">
@@ -114,14 +114,14 @@
             <label for="etiquetas" class="block text-sm font-medium text-gray-700">Etiquetas:</label>
             <input type="text" id="etiquetas" v-model="etiquetas"
                 class="block w-full px-4 py-4 mt-1 text-sm text-gray-700 bg-white border border-green-500 rounded-lg focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                bind:value={etiquetas}
+                
             />
         </div>
         <div class="mb-3">
             <label for="pricePool" class="block text-sm font-medium text-gray-700">Price Pool:</label>
             <input type="text" id="pricePool" v-model="pricePool"
                 class="block w-full px-4 py-4 mt-1 text-sm text-gray-700 bg-white border border-green-500 rounded-lg focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                bind:value={pricePool}
+                bind:value={premio}
             />
         </div>
         <div class="w-6/5 flex justify-center md:justify-evenly flex-wrap gap-3">

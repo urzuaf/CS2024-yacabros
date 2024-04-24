@@ -2,7 +2,7 @@
 import TableTorneo from "../Componentes/TableTorneos.svelte";
 import Layout from "../layouts/Acceso.astro"
 import Modal from "../Componentes/Modal.svelte"
-import Formulario from "../Componentes/Formulario.astro"
+
 ---
 
 <Layout title="Sportify">
@@ -25,7 +25,8 @@ import Formulario from "../Componentes/Formulario.astro"
                 
             <TableTorneo client:load/>
             <div class="mr-4 flex-auto">
-                <Modal client:load/>
+                <Modal client:only/>
+
             </div>
             
             

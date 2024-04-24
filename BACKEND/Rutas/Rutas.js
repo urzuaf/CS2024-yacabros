@@ -9,4 +9,5 @@ router.post('/notificacion', Controller.postNotificacion)
 router.post('/decision', Controller.decision)
 router.post('/sendn', Controller.enviarNotificacion)
 router.post('/torneo', Controller.postBases)
+router.post('/crearTorneo', Controller.postTorneo)
 export default router
