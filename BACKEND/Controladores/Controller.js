@@ -100,7 +100,7 @@ export default {
     enviarNotificacion,
     postBases,
 
-    insertarEquipoTorneo
+    insertarEquipoTorneo,
 
     postTorneo,
     getEquipo
