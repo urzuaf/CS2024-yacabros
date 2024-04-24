@@ -55,7 +55,7 @@
 </script>
 
 <div class="flex justify-center">
-  <div class="w-auto max-h-64 overflow-y-auto">
+  <div class="w-auto max-h-64">
     <form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-4">
       <!-- Nombre y equipo -->
       {#if opcion === "agregar"}
