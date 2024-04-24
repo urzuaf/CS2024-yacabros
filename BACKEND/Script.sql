@@ -86,15 +86,17 @@ values ('Quiero invitarte al torneo 1', false, 'pendiente', 'creador1@mail.com',
 
 -- Semana 3
 
+--se modifico la creacion de la tabla foro para integrar la columna de foro
 
-create table foro(
-	id serial primary key,
-	titulo text,
-	fecha_creacion date,
-	creado_por text references usuario(email) on update cascade on delete cascade
+CREATE TABLE foro (
+    id serial PRIMARY KEY,
+    titulo TEXT,
+    fecha_creacion DATE,
+    creado_por TEXT REFERENCES usuario(email) ON UPDATE CASCADE ON DELETE CASCADE,
+    etiqueta TEXT
 );
 
-insert into foro (titulo, fecha_creacion, creado_por) values ('Primer Foro Generico', '2024-04-20', 'admin@admin.com');
+insert into foro (titulo, fecha_creacion, creado_por, etiqueta) values ('Primer Foro Generico', '2024-04-20', 'admin@admin.com', 'sin etiqueta');
 
 create table comentario (
 	id serial primary key,

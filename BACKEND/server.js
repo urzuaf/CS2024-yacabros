@@ -216,10 +216,9 @@ server.post('/login', async (req, res) => {
   
 // Ruta para crear un nuevo foro
 server.post('/crearForo', async (req, res) => {
-  const { titulo, comentario, etiqueta } = req.body; // Obtener el título y el comentario del foro
-  const fechaCreacion = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato 'YYYY-MM-DD'
-  const userEmail = "admin@admin.com"
-
+  const { titulo, comentario, etiqueta } = req.body; // Añadir el campo etiqueta
+  const fechaCreacion = new Date().toISOString().split('T')[0];
+  const userEmail = "admin@admin.com"; // Este valor aún se mantiene fijo para simplificar
 //valida el correo de la persona que esta llenando el formulario para crear el foro, para ello debe estar el inicio de seccion habilitado donde pueda reconocer el correo
 //ya que aun no esta el valor userEmail es un valor fijo que ya exite en la base de datos de la tabla foro
 
@@ -228,26 +227,25 @@ server.post('/crearForo', async (req, res) => {
   if (!userEmail) {
     return res.status(401).json({ error: 'Usuario no autenticado' });
   }*/
-  console.log(etiqueta);
+  
   try {
-    // Inserta el nuevo foro
-    const foroQuery = {//se inserta el titulo, la fecha de creacion y el correo del usuario que lo creo
-      text: 'INSERT INTO foro (titulo, fecha_creacion, creado_por) VALUES ($1, $2, $3) RETURNING id',
-      values: [titulo, fechaCreacion, userEmail]
+    // Insertar el nuevo foro con sus etiqueta
+    const foroQuery = {
+      text: 'INSERT INTO foro (titulo, fecha_creacion, creado_por, etiqueta) VALUES ($1, $2, $3, $4) RETURNING id',
+      values: [titulo, fechaCreacion, userEmail, etiqueta]
     };
     const foroResult = await db.query(foroQuery);
-    const nuevoForoId = foroResult.rows[0].id;//se obtiene el id del foro
+    const nuevoForoId = foroResult.rows[0].id;
 
-    // Si se proporcionó un comentario, inserta el comentario inicial en la tabla de comentarios del foro
     if (comentario) {
-      const comentarioQuery = {//se inserta el comentario, el autor y el id del foro
+      const comentarioQuery = {
         text: 'INSERT INTO comentario (texto, autor, pertenece_a) VALUES ($1, $2, $3)',
         values: [comentario, userEmail, nuevoForoId]
       };
       await db.query(comentarioQuery);
     }
 
-    res.status(201).json({ id: nuevoForoId });//se envia un mensaje de exito
+    res.status(201).json({ id: nuevoForoId });
   } catch (error) {
     console.error('Error al crear el foro:', error);
     res.status(500).json({ error: 'Error al crear el foro' });
