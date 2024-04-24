@@ -5,17 +5,17 @@ import Layout from "../layouts/Acceso.astro"
 
 ---
 
-<Layout title="registro | Sportify">
-    <div class="flex flex-col justify-between items-center w-auto h-auto my-auto py-8 px-16 bg-gray-100 dark:bg-stone-950 border rounded-lg border-gray-300 dark:border-black">
+<Layout title="Registro | Sportify">
+    <div class="flex flex-col justify-between items-center w-auto h-auto my-auto py-8 px-16 bg-light-background dark:bg-dark-background border rounded-lg border-light-border dark:border-dark-border">
         <header class="my-6">
             <h1 class="font-semibold text-4xl">Registro</h1>
         </header>
         <Formregister client:load/>
         <aside class="flex flex-col items-center gap-1 mt-2">
-            <p class="text-green-600 text-xs font-medium">
+            <p class="text-sportify text-xs font-medium">
                 ¿Ya tienes una cuenta?
             </p>
-            <a href="/login" class="text-black dark:text-gray-200 text-xs font-medium hover:underline">
+            <a href="/login" class="text-light-text dark:text-dark-text text-xs font-medium hover:underline">
                 Iniciar Sesión
             </a>
         </aside>
