@@ -48,7 +48,7 @@
     </div>
     <h3 class="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">{userProfile.name}</h3>
 </button>
-
+-->
 
 {#if isOpen}
     {#if $Usuario != ''}
@@ -74,5 +74,6 @@
             <a href="/register" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 Registrarse
             </a>
-
+        </div>
+    {/if}
 {/if}
