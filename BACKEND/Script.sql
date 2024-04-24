@@ -105,3 +105,11 @@ create table comentario (
 
 insert into comentario (texto, autor, pertenece_a) values ('El primer comentario siempre es el peor jaja', 'staff1@mail.com', 1);
 
+-- Semana 3 pt 2
+create table equipo_torneo(
+	id serial primary key,
+	equipo serial references equipo(id) on update cascade on delete cascade,
+	torneo serial references torneo(id) on update cascade on delete cascade
+);
+
+insert into equipo_torneo (equipo, torneo) values(1,1);
