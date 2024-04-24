@@ -13,7 +13,7 @@ import BuscadorEquipos from "../Componentes/buscadorEquipos.svelte"
       <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="verCondiciones()">Condiciones</button>
     </div>
     <div class="flex">
-      <BuscadorEquipos client:load/>
+      <BuscadorEquipos client:only/>
     </div>
   </div>
 
