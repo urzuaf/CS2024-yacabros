@@ -7,20 +7,17 @@ import Modal from "../Componentes/Modal.svelte"
 
 
 <Layout title="Sportify">
-    <body>
-        <div class="flex-row justify-between w-full h-screen mt-0 py-8 px-16 top-0 dark:text-white bg-dark-background">
-            <header class="my-6" >
-                <h1 class="font-semibold text-4xl">Creación de Torneo</h1>
-            </header> 
+    <div class="flex-row justify-between w-full h-screen mt-0 py-8 px-16 top-0">
+        <header class="my-6" >
+            <h1 class="font-semibold text-4xl">Creación de Torneo</h1>
+        </header> 
 
-            <aside class="flex flex-col gap-1 my-4 text-justify">
-                <span class="text-l font-medium dark: text-white-600">
-                    ¡Bienvenido a nuestra plataforma de torneos en línea! Aquí, puedes dar vida a tus ideas deportivas y explorar una variedad de torneos emocionantes creados por la comunidad. Desde competiciones de fútbol hasta desafíos de ajedrez, nuestra plataforma te ofrece la oportunidad de crear y descubrir eventos deportivos de todo tipo. Con una interfaz fácil de usar, puedes crear tus propios torneos en minutos y unirte a otros en la competencia. Únete a nosotros y sumérgete en el apasionante mundo de los torneos deportivos en línea.
-                </span>
-            </aside>
+        <aside class="flex flex-col gap-1 my-4 text-justify">
+            <span class="text-l font-medium dark: text-white-600">
+                ¡Bienvenido a nuestra plataforma de torneos en línea! Aquí, puedes dar vida a tus ideas deportivas y explorar una variedad de torneos emocionantes creados por la comunidad. Desde competiciones de fútbol hasta desafíos de ajedrez, nuestra plataforma te ofrece la oportunidad de crear y descubrir eventos deportivos de todo tipo. Con una interfaz fácil de usar, puedes crear tus propios torneos en minutos y unirte a otros en la competencia. Únete a nosotros y sumérgete en el apasionante mundo de los torneos deportivos en línea.
+            </span>
+        </aside>
 
-            
-            
                 
             <TableTorneo client:load/>
             <div class="mr-4 flex-auto">
@@ -28,9 +25,7 @@ import Modal from "../Componentes/Modal.svelte"
 
             </div>
             
-            
-
-
         </div>
-    </body>
+        
+    </div>
 </Layout>
