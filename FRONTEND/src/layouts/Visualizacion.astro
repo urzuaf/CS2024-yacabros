@@ -1,7 +1,6 @@
 ---
 import Navbar from "../Componentes/Navbar.astro";
-
-// import Footer from "../Componentes/Footer.svelte";
+import Footer from "../Componentes/Footer.svelte";
 
 interface Props {
 	title: string;
@@ -19,11 +18,9 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="flex flex-col">
+	<body class="flex flex-col bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text">
 		<Navbar/>
         <slot />
-
-		<!-- <Footer/> -->
-
+		<Footer/>
 	</body>
 </html>
