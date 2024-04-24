@@ -28,4 +28,4 @@ mar 23/04
 seguir tarea filtrar 19:32  21.00 avance //queda por ver que al hacer click en uno se obtenga la row
 
 mier 24/04
-seguir tarea filtrar 18.03 
+seguir tarea filtrar 18.03 19.09 fin tarea

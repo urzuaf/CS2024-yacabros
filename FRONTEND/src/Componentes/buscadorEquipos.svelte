@@ -5,6 +5,7 @@
     let rows = [];
     let mostrar;
     let email = "";
+    let rowSelect=[];
 
     onMount(async () =>{
         try{
@@ -33,6 +34,13 @@
         //console.log(rows);
        //filtrar rows
         ordenarRows();
+        
+    }
+
+    function onEnter(event){
+        if (event.key === "Enter") {
+            filtrarIDorNombreExacto(campo);
+        }else return
     }
 
     function ordenarRows(){
@@ -50,12 +58,12 @@
         }
 
         //dejar los similes
-        console.log("---------------------");
+        //console.log("---------------------");
         for(var i=0;i<rows.length;i++){
             for(var j=i+1;j<rows.length;j++){
                 //console.log(rows[i].id+" "+rows[j].id)
                 
-                console.log(rows[i].nombre+" "+similitud(rows[i].nombre));
+               // console.log(rows[i].nombre+" "+similitud(rows[i].nombre));
                 if(similitud(rows[i].nombre)<similitud(rows[j].nombre)){
                     var aux=rows[i];
                     rows[i]=rows[j];
@@ -82,22 +90,47 @@
 
         return simil;
     }
+
+    function esSoloNumeros(texto) {
+        return /^\d+$/.test(texto);
+    }
+
+
+
+    function filtrarIDorNombreExacto(text){
+        campo=rows[0].nombre;
+        rowSelect=rows[0];
+        
+        if(!esSoloNumeros) return;
+        let numero = parseInt(text);
+
+        for(var i=0;i<rows.length;i++){
+            if(numero==rows[i].id){
+                campo=rows[i].nombre;
+                rowSelect=rows[i];
+            }  
+        } 
+
+        console.log("SE HA SELECCIONADO ROW: ",rowSelect)
+        mostrar=false;
+    }
+
     
    
     
 </script>
 
 
-<input id="searchbox" autocomplete="off" on:input={search} type="text" placeholder="Invitar un equipo al torneo" class="w-60 px-4 py-2 border-2 border rounded-lg text-black hover:border-green-500 p-4" bind:value={campo}>
+<input id="searchbox" autocomplete="off" on:input={search} on:keydown={onEnter} type="text" placeholder="Invitar un equipo al torneo" class="w-60 px-4 py-2 border-2 border rounded-lg text-black hover:border-green-500 p-4" bind:value={campo}>
 
-<div class="absolute bg-green-600 my-10 inline-block max-h-24 overflow-hidden">
+<div class="absolute bg-green-700 my-10 inline-block max-h-24 w-60 overflow-y-auto ">
 {#if mostrar && campo.length!=0}
-    <ul>
+    <ul class="w-full">
         {#each rows as row}
             <li class="w-full hover:bg-white hover:text-black border-2 h-6">
-                <label>
-                    <input class="form-checkbox h-0 w-0" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false}} >
-                    {row.nombre}
+                <label class="w-full">
+                    <input class="form-checkbox h-0 w-full flex" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}} >
+                    <span class="w-0">{"["+row.id+"] "+row.nombre}</span>
                 </label>
             </li>
         {/each}
