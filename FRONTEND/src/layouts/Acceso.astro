@@ -1,5 +1,6 @@
 ---
-// import Footer from "../Componentes/Footer.svelte"
+import Footer from "../Componentes/Footer.svelte"
+
 interface Props {
 	title: string;
 }
@@ -16,8 +17,8 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-black dark:text-white">
-        <div class="bg-white dark:bg-gradient-to-b from-black to-stone-800 w-screen h-screen absolute overflow-hidden -z-20">
+	<body class="text-light-text dark:text-dark-text">
+        <div class="bg-light-background dark:bg-gradient-to-b from-black to-dark-gradient w-screen h-screen absolute overflow-hidden -z-20">
             <img src="/voleibol-piso-deportista.png" alt="Imagen deportista" class="absolute opacity-60 -z-10 h-[163%]">
         </div>
         <main class="flex flex-col justify-evenly items-center w-screen h-screen">
@@ -26,6 +27,6 @@ const { title } = Astro.props;
             </div>
             <slot />
         </main>
-		<!-- <Footer/> -->
+		<Footer/>
 	</body>
 </html>

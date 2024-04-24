@@ -36,20 +36,26 @@
       });
 
       if (!response.ok)
-        throw new Error("Error al guardar los datos en el servidor");
+        throw new Error("Error al comunicarse con el servidor");
 
       const data = await response.json();
-      console.log("Datos guardados:", data);
+      console.log("Respuesta del servidor:", data);
 
-      // Puedes realizar alguna acción adicional después de guardar los datos, como redirigir a otra página
+      if (data.success) {
+        alert(data.message); // Muestra un mensaje de éxito
+      } else {
+        alert("Error: " + data.error); // Muestra un mensaje de error
+      }
+
     } catch (error) {
       console.error("Error:", error);
+      alert("Error: " + error.message); // Muestra un mensaje de error en caso de fallo en la comunicación con el servidor
     }
   }
 </script>
 
 <div class="flex justify-center">
-  <div class="w-auto max-h-64 overflow-y-auto">
+  <div class="w-auto max-h-64">
     <form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-4">
       <!-- Nombre y equipo -->
       {#if opcion === "agregar"}
@@ -58,7 +64,7 @@
           type="text"
           id="nombre"
           placeholder="Nombre"
-          class="w-full px-4 py-2 bg-white border rounded-lg border-gray-400 text-black focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={nombre}
         />
       </div>
@@ -68,14 +74,14 @@
           type="text"
           id="equipo"
           placeholder="Nombre del Equipo"
-          class="w-full px-4 py-2 bg-white border rounded-lg border-gray-400 text-black focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={equipo}
         />
       </div>
       {/if}
 
       <!-- Menú desplegable para seleccionar opción -->
-      <select bind:value={opcion} class="w-full px-4 py-2 bg-white border rounded-lg border-gray-400 text-black focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40">
+      <select bind:value={opcion} class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
         <option value="agregar">Agregar integrante</option>
         <option value="cambiar">Cambiar nombre de integrante</option>
         <option value="borrar">Borrar integrante</option>
@@ -88,7 +94,7 @@
           type="text"
           id="newNombre"
           placeholder="Nuevo Nombre"
-          class="w-full px-4 py-2 bg-white border rounded-lg border-gray-400 text-black focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={newNombre}
         />
       </div>
@@ -97,7 +103,7 @@
           type="text"
           id="idIntegrante"
           placeholder="ID del Integrante"
-          class="w-full px-4 py-2 bg-white border rounded-lg border-gray-400 text-black focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={idIntegrante}
         />
       </div>
@@ -110,7 +116,7 @@
           type="text"
           id="idIntegrante"
           placeholder="ID del Integrante a Borrar"
-          class="w-full px-4 py-2 bg-white border rounded-lg border-gray-400 text-black focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={idIntegrante2}
         />
       </div>
@@ -118,7 +124,7 @@
 
       <!-- Botón de acción -->
       <button
-        class="w-full px-6 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105"
+        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105"
         type="submit"
       >
         {opcion === "agregar" ? "Agregar integrante" : opcion === "cambiar" ? "Cambiar nombre" : "Borrar integrante"}

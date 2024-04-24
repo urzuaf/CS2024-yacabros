@@ -14,14 +14,15 @@
     <h3 class="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">{userProfile.name}</h3>
 </button>
 
-
 {#if $Usuario !="" && isOpen}
+
     <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
         <!-- Nombre de usuario y correo -->
         <p class="text-ray-800 font-bold">{userProfile.name}</p>
         <p class="text-gray-300">{userProfile.email}</p>
         <!-- Botón para editar perfil -->
         <a href="/editData" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+
             Editar Perfil
         </a>
         <!-- Otros botones aquí -->
@@ -38,6 +39,7 @@
             </a>
             <!-- Otros botones aquí -->
         </div>
+
 {/if}
 
 
@@ -63,3 +65,4 @@
 </script>
 
 -->
+
