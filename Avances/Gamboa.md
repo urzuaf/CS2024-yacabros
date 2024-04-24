@@ -21,3 +21,10 @@
 [2 horas (motivo de no especificación porque tuve que borrar la rama y no recordaba que había editado este .md) ] 20/04/2004: Cambios en Navbar y footer.
 
 [14:40 - 15:20] 21/04/2024: Boton editar perfil (en el dropdown), posible lógica para conectar nombre de usuario iniciado y correo a la base de datos  
+
+3ra Semana
+
+[2 horas y media (motivo de no especificación porque tuve que borrar la rama y no recordaba que había editado este .md) ] 20/04/2004: Cambios en Navbar y footer.
+
+[20:00 21:30] 23/04/2024: Integración de botones de iniciar sesión y registrarse en caso de que no estén logeados. Separación de los botones según doc diseño.
+
