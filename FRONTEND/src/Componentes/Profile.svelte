@@ -48,26 +48,17 @@
     </div>
     <h3 class="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">{userProfile.name}</h3>
 </button>
+-->
 
 
-<<<<<<< Updated upstream
+
 {#if isOpen}
     {#if $Usuario != ''}
         <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
             <!-- Nombre de usuario y correo -->
             <p class="text-gray-800 font-bold">{userProfile.name}</p>
             <p class="text-gray-300">{userProfile.email}</p>
-=======
-{#if $Usuario !="" && isOpen}
 
-    <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
-       
-        <p class="text-ray-800 font-bold">{userProfile.name}</p>
-        <p class="text-gray-300">{userProfile.email}</p>
-
-        <!-- Botón para editar perfil --><!--
-        <a href="/editData" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
->>>>>>> Stashed changes
 
             <!-- Botón para editar perfil -->
             <a href="/editData" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
@@ -78,57 +69,15 @@
         </div>
     {:else}
         <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
-<<<<<<< Updated upstream
-            
+
             <!-- Botón para editar perfil -->
-=======
-            <!-- Botón para editar perfil --><!--
->>>>>>> Stashed changes
+
             <a href="/login" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 Iniciar sesión
             </a>
             <a href="/register" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 Registrarse
             </a>
-<<<<<<< Updated upstream
-=======
-            <!-- Otros botones aquí --><!--
         </div>
-
-{/if}
- -->
-
-
-
-
-
-
-
-
-
- 
-<!--POSIBLE LÓGICA PARA TRAER DATOS AL INICIAR SESIÓN
-
-    <script>
-    let isOpen = false;
-    let userProfile = {
-        name: "", // Nombre por defecto
-        email: "" // Correo por defecto
-    };
-
-    // Función para iniciar sesión y establecer el perfil del usuario
-    function iniciarSesion() {
-        // Lógica para iniciar sesión
-        // Por ejemplo, podrías obtener el nombre y el correo del usuario de una base de datos o de un sistema de autenticación
-        userProfile.name = "Nombre de usuario"; // Asignar el nombre del usuario obtenido después del inicio de sesión
-        userProfile.email = "correo@example.com"; // Asignar el correo del usuario obtenido después del inicio de sesión
-    }
-
-    // Llamar a la función iniciarSesion al cargar la página (esto es solo un ejemplo, deberías llamar a esta función en respuesta a la acción del usuario)
-    window.onload = iniciarSesion;
-</script>
-
--->
->>>>>>> Stashed changes
-
+    {/if}
 {/if}
