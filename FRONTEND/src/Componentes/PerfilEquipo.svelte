@@ -26,9 +26,13 @@
     
 </script>
 
+
+
 <div>
     {#if equipos.length >0}
-        <h2>{equipos[0].nombre}</h2>
+        
         
     {/if}
 </div>
+
+
