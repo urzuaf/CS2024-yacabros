@@ -33,15 +33,16 @@
 <button
     type="button"
     disabled={equipo == ""}
-    class="px-2 py-1 font-medium text-white transition-all duration-300 transform bg-emerald-500 rounded-lg hover:bg-emerald-600"
-    on:click={handlePeticion}>Invitar</button
->
+    class="px-2 py-1 cursor-pointer font-medium text-white transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportify hover:scale-105"
+    on:click={handlePeticion}>
+    Invitar
+</button>
 
 {#if enviado}
-    <div class="bg-emerald-500 absolute bottom-8 p-2 px-4 z-50 a">
+    <div class="bg-sportify absolute bottom-8 p-2 px-4 z-50 a">
         <p>enviado con exito</p>
     </div>
-    {/if}
+{/if}
 
 <style>
     .a{
