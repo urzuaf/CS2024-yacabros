@@ -3,7 +3,7 @@
       { href: 'javascript:void(0)', name: '' },
       { href: "/torneo", name: 'Torneo' },
       { href: 'javascript:void(0)', name: 'Noticias' },
-      { href: 'javascript:void(0)', name: 'Foros' },
+      { href: '/FormularioForo', name: 'Foros' },
       { href: 'javascript:void(0)', name: '' }
     ];
   </script>
