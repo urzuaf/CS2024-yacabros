@@ -13,9 +13,8 @@ import BuscadorEquipos from "../Componentes/buscadorEquipos.svelte"
 
       <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarDatos()">Cambiar Datos</button>
       <!-- se debe enviar el nombre del equipo del torneo, el nombre del equipo deberia ser del equipo seleccionado, el del torneo deberia ser el seleccionado -->
-      <BotonInvitar  client:only equipo="Equipo1" torneo="Torneo1" />
       <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-300" onclick="verCondiciones()">Condiciones</button>
-
+      
     </div>
     <div class="flex">
       <BuscadorEquipos client:only/>

@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
   import { Usuario } from '../stores/login_store';
+  import BotonInvitar from './BotonInvitar.svelte';
 
     let rows = [];
     let mostrar;
@@ -138,3 +139,4 @@
 {/if}
 
 </div>
+<BotonInvitar torneo="Torneo1" equipo={campo} />
