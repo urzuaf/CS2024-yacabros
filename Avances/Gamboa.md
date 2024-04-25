@@ -28,3 +28,5 @@
 
 [20:00 21:30] 23/04/2024: Integración de botones de iniciar sesión y registrarse en caso de que no estén logeados. Separación de los botones según doc diseño.
 
+[14:40 15:20] 24/04/2024: trabajo en conjunto con el scrum master
+
