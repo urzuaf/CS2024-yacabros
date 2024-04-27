@@ -100,7 +100,7 @@
 
     {#if isOpen}
         <div
-            class="absolute top-10 right-0 trans bg-white border shadow-md p-2 w-64 overflow-y-scroll max-h-96"
+            class="absolute top-10 right-0 trans bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text border shadow-md p-2 w-64 overflow-y-scroll max-h-96 z-50"
         >
             {#if $Usuario == ''}
                 <p class="text-center">Inicia sesión para ver tus notificaciones</p>
@@ -110,7 +110,7 @@
             {/if}
             {#each data as noti}
                 <div
-                    class="border-t p-2 gap-4 flex flex-col justify-between items-center"
+                    class="border-b p-2 gap-4 flex flex-col justify-between items-center"
                 >
                     <div>
                         <p class="font-bold">{noti.descripcion}</p>
@@ -119,7 +119,7 @@
                     {#if noti.estado == "pendiente"}
                         <div>
                             <button
-                                class="bg-green-500 p-1 rounded"
+                                class="bg-sportify p-1 rounded"
                                 on:click={() => decision(noti.id, true)}
                                 >Aceptar</button
                             >
@@ -143,8 +143,5 @@
 <style>
     .trans {
         transition: 0.3s ease;
-    }
-    .cn{
-        content: " ";
     }
 </style>

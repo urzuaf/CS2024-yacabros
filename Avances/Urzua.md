@@ -28,7 +28,11 @@ total semana 2 : 5 horas 25 minutos
 [23/04] 19:30 - 19:40 Issue para redireccionar del registro al login
 [23/04] 19:40 - 20:20 Issue para mejorar el envio de notificaciones
 [24/04] 12:00 - 13:30 Boton para invitar equipo a torneo
+[24/04] 22:40 - 23:10 Cargar datos de torneo en interfaz 
 
-Tiempo actual: 3 horas 50 minutos
+
+1 hora a lo largo de la semana para revisar y aprobar pull requests, ademas de solucionar los merge conflict.
+
+Tiempo actual: 5 horas 20 minutos
 
  

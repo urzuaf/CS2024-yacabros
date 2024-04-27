@@ -1,4 +1,5 @@
 <script>
+    import Notificacion from "./Notificacion.svelte";
     import { Usuario } from "../stores/login_store";
     import { onMount } from 'svelte';
     let isOpen = false;
@@ -31,6 +32,20 @@
     });
 </script>
 
+{#if $Usuario == ''}
+    <div>
+        <a href="/login">
+            <button type="button" class="px-4 py-2 font-medium text-light-text dark:text-dark-text transition-all duration-300 transform rounded-md hover:bg-light-input dark:hover:bg-dark-input">Iniciar Sesión</button>
+        </a>
+
+        <a href="/register">
+            <button type="button" class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105">Registrar</button>
+        </a>
+    </div>
+{/if}
+
+{#if $Usuario != ''}
+<Notificacion /> 
 <button on:click={() => {isOpen = !isOpen}} type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
     <div class="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
         <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" class="object-cover w-full h-full" alt="avatar">
@@ -38,9 +53,10 @@
     <h3 class="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">{userProfile.name}</h3>
 </button>
 
+
 {#if isOpen}
-    {#if $Usuario != ''}
-        <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
+
+        <div class="absolute right-0 top-12 bg-white p-2 rounded shadow">
             <!-- Nombre de usuario y correo -->
             <p class="text-gray-800 font-bold">{userProfile.name}</p>
             <p class="text-gray-300">{userProfile.email}</p>
@@ -49,19 +65,33 @@
             <a href="/editData" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 Editar Perfil
             </a>
+            <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Crear Torneo
+            </a>
+            <a href="/perfilEquipo" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Ver Perfil de Equipo
+            </a>
+            <a href="/user" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Ver Perfil de Usuario
+            </a>
+            <a href="/integrante" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Agregar Jugador a Equipo
+            </a>
 
         </div>
-    {:else}
+        <!--
+        {:else}
         <div class="absolute right-0 top-10 bg-white p-2 rounded shadow">
             
-            <!-- Botón para editar perfil -->
+            
             <a href="/login" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 Iniciar sesión
             </a>
             <a href="/register" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 Registrarse
             </a>
-
+        
         </div>
+        -->
     {/if}
 {/if}
