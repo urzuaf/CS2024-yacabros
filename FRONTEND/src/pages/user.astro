@@ -1,14 +1,13 @@
 ---
 import Layout from "../layouts/Visualizacion.astro"
+import Notificacion from "../Componentes/Notificacion.svelte"
+import EnviarNotificacion from "../Componentes/EnviarNotificacion.svelte"
+import UserProfile from "../Componentes/UserProfile.svelte"
 ---
 
 <Layout title="Bienvenido | Sportify">
     <body>
-        <h1>Bienvenido usuario</h1>
-        <aside class="flex flex-col items-center gap-1 mt-2">
-            <a href="/editData">
-                Edita tus datos
-            </a>
-        </aside>
+        <UserProfile client:only/>
+        <EnviarNotificacion client:only />
     </body>
 </Layout>

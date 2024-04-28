@@ -1,23 +1,42 @@
 ---
-import Layout from "../layouts/Acceso.astro"
-import FormBases from "../Componentes/FormBases.svelte"
+import Layout from "../layouts/Visualizacion.astro";
+import FormBases from "../Componentes/FormBases.svelte";
+import BotonInvitar from "../Componentes/BotonInvitar.svelte";
+import BuscadorEquipos from "../Componentes/buscadorEquipos.svelte";
+import DatosTorneo from "../Componentes/DatosTorneo.svelte"
+
 ---
 
-<Layout title= "Gestion de torneos | Sportify">
+<Layout title="Gestion de torneos | Sportify">
   <div class="flex justify-evenly items-center mt-8 w-full text-nowrap">
     <div class="flex flex-col md:flex-row gap-2">
-      <FormBases client:load/>
-      <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="cambiarDatos()">Cambiar Datos</button>
-      <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="invitaEquipo()">Invitar Equipo</button>
-      <button type="button" class="px-4 py-2 font-medium text-white transition-all duration-300 transform bg-green-600 rounded-lg hover:scale-105" onclick="verCondiciones()">Condiciones</button>
+      <FormBases client:load />
+
+      <button
+        type="button"
+        class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105"
+        onclick="cambiarDatos()">Cambiar Datos</button
+      >
+      <!-- se debe enviar el nombre del equipo del torneo, el nombre del equipo deberia ser del equipo seleccionado, el del torneo deberia ser el seleccionado -->
+      <button
+        type="button"
+        class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105 disabled:cursor-not-allowed disabled:bg-gray-300"
+        onclick="verCondiciones()">Condiciones</button
+      >
     </div>
     <div class="flex">
-      <input type="text" placeholder="Invitar un equipo al torneo" class="px-4 py-2 border rounded-lg">
+      <BuscadorEquipos client:only />
     </div>
   </div>
-
-  <div class="mt-8 p-4 rounded-lg border border-gray-300">
-    <img src="/brackets.jpg" alt="Brackets del torneo" class="w-1/2 h-auto mx-auto">
+  <DatosTorneo nombreTorneo="Torneo1" client:only />
+  <div
+    class="mt-8 p-4 rounded-lg border border-light-border dark:border-dark-border"
+  >
+    <img
+      src="/brackets.jpg"
+      alt="Brackets del torneo"
+      class="w-1/2 h-auto mx-auto"
+    />
     <!-- Aquí irán los brackets de torneos -->
   </div>
   <!-- 

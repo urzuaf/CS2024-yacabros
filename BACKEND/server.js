@@ -37,7 +37,13 @@ server.get('/getTorneos', async(req,res)=>{
   })
 })
 
-
+server.post('/getUsername', async (req, res) => {
+  const {email} = req.body;
+  db.query("select username from usuario where email = $1",[email],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+  })
+});
 
 server.post('/register', async (req, res) => {
     const { nombre, email, password } = req.body;
