@@ -31,3 +31,9 @@ mier 24/04
 seguir tarea filtrar 18.03 19.09 fin tarea
 
 nuevos datos 15 mins
+
+
+
+-----------------------------------------------------------------------
+dom 28/04
+corrección error buscadorTorneo 16.05 16.50 fin bug 
