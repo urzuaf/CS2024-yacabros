@@ -30,9 +30,10 @@ total semana 2 : 5 horas 25 minutos
 [24/04] 12:00 - 13:30 Boton para invitar equipo a torneo
 [24/04] 22:40 - 23:10 Cargar datos de torneo en interfaz 
 
-
 1 hora a lo largo de la semana para revisar y aprobar pull requests, ademas de solucionar los merge conflict.
 
 Tiempo actual: 5 horas 20 minutos
 
+# Semana 4
+commit antes del receso
  
