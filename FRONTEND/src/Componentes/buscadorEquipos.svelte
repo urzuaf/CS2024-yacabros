@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
   import { Usuario } from '../stores/login_store';
+  import BotonInvitar from './BotonInvitar.svelte';
 
     let rows = [];
     let mostrar;
@@ -120,21 +121,22 @@
     
 </script>
 
+<div class="flex justify-center gap-2">
+    <input id="searchbox" autocomplete="off" on:input={search} on:keydown={onEnter} type="text" placeholder="Invitar un equipo al torneo" class="w-60 px-4 py-2 border-2 rounded-lg text-black hover:border-sportify p-4" bind:value={campo}>
 
-<input id="searchbox" autocomplete="off" on:input={search} on:keydown={onEnter} type="text" placeholder="Invitar un equipo al torneo" class="w-60 px-4 py-2 border-2 border rounded-lg text-black hover:border-green-500 p-4" bind:value={campo}>
-
-<div class="absolute bg-green-700 my-10 inline-block max-h-24 w-60 overflow-y-auto ">
-{#if mostrar && campo.length!=0}
-    <ul class="w-full">
-        {#each rows as row}
-            <li class="w-full hover:bg-white hover:text-black border-2 h-6">
-                <label class="w-full">
-                    <input class="form-checkbox h-0 w-full flex" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}} >
-                    <span class="w-0">{"["+row.id+"] "+row.nombre}</span>
-                </label>
-            </li>
-        {/each}
-    </ul>
-{/if}
-
+    <div class="absolute bg-green-700 my-10 inline-block max-h-24 w-60 overflow-y-auto ">
+        {#if mostrar && campo.length!=0}
+            <ul class="w-full">
+                {#each rows as row}
+                    <li class="w-full hover:bg-white hover:text-black border-2 h-6">
+                        <label class="w-full">
+                            <input class="form-checkbox h-0 w-full flex" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}} >
+                            <span class="w-0">{"["+row.id+"] "+row.nombre}</span>
+                        </label>
+                    </li>
+                {/each}
+            </ul>
+        {/if}
+    </div>
+    <BotonInvitar torneo="Torneo1" equipo={campo} />
 </div>

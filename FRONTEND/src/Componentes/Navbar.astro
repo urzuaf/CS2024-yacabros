@@ -3,7 +3,7 @@ import Profile from "../Componentes/Profile.svelte";
 import Notificacion from "./Notificacion.svelte";
 import CerrarSesion from "./CerrarSesion.svelte";
 ---
-  <nav class="border-2 flex justify-between w-full">
+  <nav class="flex justify-between w-full bg-light-gradient dark:bg-black">
     <div class="flex px-6 py-4 w-full justify-start">
       <div class="flex justify-start items-center">
         <div>
@@ -21,31 +21,36 @@ import CerrarSesion from "./CerrarSesion.svelte";
         <div class="ml-8 flex gap-2">
           <a
             href="/torneo"
-            class="px-2 py-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center">
+            class="px-2 py-2 font-semibold text-light-text dark:text-dark-text transition-colors duration-300 transform rounded-md hover:bg-light-input dark:hover:bg-dark-input flex items-center">
             <img src="1414791.svg" alt="Torneos" class="w-6 h-6 mr-1" />
             Torneos
           </a>
           <a
             href="/noticias"
-            class="px-2 py-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center">
+            class="px-2 py-2 font-semibold text-light-text dark:text-dark-text transition-colors duration-300 transform rounded-md hover:bg-light-input dark:hover:bg-dark-input flex items-center">
             <img src="/147716.svg" alt="Noticias" class="w-6 h-6 mr-1" />
             Noticias
           </a>
           <a
-            href="/foros"
-            class="px-2 py-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center">
-            <img src="/309417.svg" alt="Foros" class="w-6 h-6 mr-1" />
+            href="/FormularioForo"
+            class="px-2 py-2 font-semibold text-light-text dark:text-dark-text transition-colors duration-300 transform rounded-md hover:bg-light-input dark:hover:bg-dark-input flex items-center">
+            <img src="/309417.svg" alt="Foros" class="w-6 h-6 mr-1 text-white" />
             Foros
           </a>
         </div>
 
         <div class="flex items-center mt-4 lg:mt-0">
-         <Notificacion client:only /> 
          <CerrarSesion client:only /> 
+         <Profile client:only/>
         </div>
-        <Profile client:only/>
 
       </div>
       
     </div>
   </nav>
+
+  <style>
+    .color{
+      background-color: #1f1c1b;
+    }
+  </style>

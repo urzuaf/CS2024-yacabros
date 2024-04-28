@@ -14,5 +14,6 @@ router.post('/torneo', Controller.postBases)
 router.post('/insertTorneoEquipo', Controller.insertarEquipoTorneo)
 router.post('/crearTorneo', Controller.postTorneo)
 router.post('/equipos', Controller.getEquipo)
+router.post('/getTorneo', Controller.getTorneo)
 
 export default router

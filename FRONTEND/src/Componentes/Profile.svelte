@@ -65,7 +65,18 @@
             <a href="/editData" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 Editar Perfil
             </a>
-
+            <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Crear Torneo
+            </a>
+            <a href="/perfilEquipo" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Ver Perfil de Equipo
+            </a>
+            <a href="/user" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Ver Perfil de Usuario
+            </a>
+            <a href="/integrante" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Agregar Jugador a Equipo
+            </a>
 
         </div>
         <!--

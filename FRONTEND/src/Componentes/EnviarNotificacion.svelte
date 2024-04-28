@@ -36,18 +36,18 @@
 
 {#if $Usuario != ''}
 <div class=" flex flex-col justify-center items-center p-2 gap-2"> 
-<h2 class="font-bold text-lg">Enviar Notificacion</h2>
+<h2 class="font-bold text-lg">Enviar Notificación</h2>
     <form on:submit|preventDefault={handleSubmit} class="flex-col flex w-80 gap-2 ">
         <span class="font-semibold">Destinatario </span>
-        <input required type="email" bind:value={destinatario} placeholder="destinatario@mail.com" class="border p-2 rounded" />
+        <input required type="email" bind:value={destinatario} placeholder="destinatario@mail.com" class="border p-2 rounded bg-light-input dark:bg-dark-input" />
         <span class="font-semibold">Mensaje </span>
-        <textarea required bind:value={desc} placeholder="Ingresa el mensaje que quieres enviar" class="border p-2 rounded"></textarea>
-        <button disabled={enviado.exito} type="submit" class=" px-2 py-2 bg-emerald-600 rounded disabled:opacity-90 disabled:bg-gray-100 disabled:cursor-wait">
+        <textarea required bind:value={desc} placeholder="Ingresa el mensaje que quieres enviar" class="border p-2 rounded bg-light-input dark:bg-dark-input"></textarea>
+        <button disabled={enviado.exito} type="submit" class=" px-2 py-2 bg-sportify text-dark-text font-semibold rounded disabled:opacity-90 disabled:bg-gray-100 disabled:cursor-wait hover:scale-105">
             Enviar</button>
          
     </form>
     {#if enviado.exito}
-    <div class="bg-emerald-500 absolute bottom-8 p-2 px-4 z-50 a">
+    <div class="bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50 a">
         <p>Tu mensaje ha sido enviado con exito</p>
     </div>
     {/if}
