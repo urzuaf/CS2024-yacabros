@@ -29,6 +29,9 @@ semana 3
 ( 21/04/2024 13:00 - 13:30 )  (23/04/2024 21:30 - 23:00) : Terminar la tarea atrasada. [2 horas]
 23/04/2024 23:00 - 23:30 : Conectar la tabla equipos (De la base de datos) al componente svelte que maneja el perfil de los equipos. [30 min]
 
+24/04/2024:  se trabajo 1:30 horas durante el dia en el front del perfil del equipo, hablando de sus etiquetas y estilos.
+
+
 
 
 
