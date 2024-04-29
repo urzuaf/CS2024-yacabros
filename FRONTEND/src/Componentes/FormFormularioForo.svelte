@@ -87,9 +87,11 @@
     <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 3px; cursor: pointer; transition: background-color 0.3s;">Crear Foro</button>
   </form>
 
-  <div class="bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50 a" class:show={mensajeVisible}>
-    <p>{mensaje}</p>
-  </div>
+  {#if mensajeVisible}
+    <div class="bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50 a">
+      <p>{mensaje}</p>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -111,9 +113,5 @@
     100% {
       right: -500px;
     }
-  }
-
-  .show {
-    right: 10px;
   }
 </style>

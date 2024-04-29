@@ -158,17 +158,6 @@
     animation: appear 6s;
   }
 
-  .show {
-    right: 10px;
-    animation: appear 6s;
-    display: block !important;
-  }
-
-  .hidden {
-    right: -2000px;
-    display: none !important;
-  }
-
   @keyframes appear {
     0% {
       right: -500px;
