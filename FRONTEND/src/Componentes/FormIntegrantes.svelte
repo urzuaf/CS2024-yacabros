@@ -41,15 +41,29 @@
       const data = await response.json();
       console.log("Respuesta del servidor:", data);
 
-      if (data.success) {
-        alert(data.message); // Muestra un mensaje de éxito
-      } else {
-        alert("Error: " + data.error); // Muestra un mensaje de error
-      }
+      // Mostrar el mensaje de feedback
+      const feedbackElement = document.getElementById("feedbackMessage");
+      feedbackElement.textContent = data.message;
+      feedbackElement.classList.remove("hidden");
+      feedbackElement.classList.add("show");
+
+      // Ocultar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        feedbackElement.classList.remove("show");
+        feedbackElement.classList.add("hidden");
+      }, 3000);
 
     } catch (error) {
       console.error("Error:", error);
-      alert("Error: " + error.message); // Muestra un mensaje de error en caso de fallo en la comunicación con el servidor
+      const feedbackElement = document.getElementById("feedbackMessage");
+      feedbackElement.textContent = "Error: " + error.message;
+      feedbackElement.classList.remove("hidden");
+      feedbackElement.classList.add("show");
+      // Ocultar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        feedbackElement.classList.remove("show");
+        feedbackElement.classList.add("hidden");
+      }, 3000);
     }
   }
 </script>
@@ -130,5 +144,43 @@
         {opcion === "agregar" ? "Agregar integrante" : opcion === "cambiar" ? "Cambiar nombre" : "Borrar integrante"}
       </button>
     </form>
+
+    <!-- Mensaje de feedback -->
+    <div id="feedbackMessage" class="hidden bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50">
+      <!-- Aquí se mostrará el mensaje de feedback -->
+    </div>
   </div>
 </div>
+
+<style>
+  #feedbackMessage {
+    right: -2000px;
+    animation: appear 6s;
+  }
+
+  .show {
+    right: 10px;
+    animation: appear 6s;
+    display: block !important;
+  }
+
+  .hidden {
+    right: -2000px;
+    display: none !important;
+  }
+
+  @keyframes appear {
+    0% {
+      right: -500px;
+    }
+    10% {
+      right: 10px;
+    }
+    80% {
+      right: 10px;
+    }
+    100% {
+      right: -500px;
+    }
+  }
+</style>

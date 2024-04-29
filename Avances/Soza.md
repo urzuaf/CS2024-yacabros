@@ -25,4 +25,6 @@
 [9:00-9:20] Ver el tema respecto la base de datos de foro para guardar la variables de etiqueta y poder usarlas mas adelante
 
 //semana 4
+
+[20:40- 21:40] Cambio del feedback en FormularioForo y en agregar/editar/borrar integrante
 proximos avances...
