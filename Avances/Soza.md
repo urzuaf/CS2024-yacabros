@@ -26,5 +26,5 @@
 
 //semana 4
 
-[20:40- 21:40] Cambio del feedback en FormularioForo y en agregar/editar/borrar integrante
+[20:40-22:00] Cambio del feedback en FormularioForo y en agregar/editar/borrar integrante
 proximos avances...
