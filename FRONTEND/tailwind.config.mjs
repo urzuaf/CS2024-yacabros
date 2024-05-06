@@ -19,6 +19,7 @@ export default {
 					'gradient': '#292524', // Gradient from black to this color
 				},
 				'sportify': '#1DC458', // Sportify Green
+				'sportifyhover': '#19aa4c', // Sportify Green
 			},
 		},
 	},

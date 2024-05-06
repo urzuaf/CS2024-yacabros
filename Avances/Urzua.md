@@ -36,4 +36,4 @@ Tiempo actual: 5 horas 20 minutos
 
 # Semana 4
 commit antes del receso
- 
+[06/05] 06:30 - 09:40 Creación de la base de los brackets 
