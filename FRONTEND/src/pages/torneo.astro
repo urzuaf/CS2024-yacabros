@@ -4,6 +4,7 @@ import FormBases from "../Componentes/FormBases.svelte";
 import BotonInvitar from "../Componentes/BotonInvitar.svelte";
 import BuscadorEquipos from "../Componentes/buscadorEquipos.svelte";
 import DatosTorneo from "../Componentes/DatosTorneo.svelte"
+import Bracket from "../Componentes/Bracket.svelte";
 
 ---
 
@@ -32,11 +33,12 @@ import DatosTorneo from "../Componentes/DatosTorneo.svelte"
   <div
     class="mt-8 p-4 rounded-lg border border-light-border dark:border-dark-border"
   >
-    <img
+  <Bracket client:only />
+    <!-- <img
       src="/brackets.jpg"
       alt="Brackets del torneo"
       class="w-1/2 h-auto mx-auto"
-    />
+    /> -->
     <!-- Aquí irán los brackets de torneos -->
   </div>
   <!-- 
