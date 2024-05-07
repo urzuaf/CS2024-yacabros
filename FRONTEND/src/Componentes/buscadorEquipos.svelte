@@ -122,23 +122,26 @@
     
 </script>
 
-<div class="flex">
-    <input id="searchbox" autocomplete="off" on:input={search} on:keydown={onEnter} type="text" placeholder="Invitar un equipo al torneo" class="w-60 px-4 py-2 border-2 rounded-lg text-black hover:border-sportify p-4" bind:value={campo}>
-
-    <div class="absolute bg-white-700 my-11 inline-block max-h-24 w-60 overflow-y-auto ">
-        {#if mostrar && campo.length!=0}
-            <ul class="w-full">
-                {#each rows as row}
-                    <li class="w-full hover:bg-white hover:text-black hover:border-sportify border-2 h-6">
-                        <label class="w-full">
-                            <span class="">{""+row.nombre}</span>
-                            <input id="check" class="form-checkbox h-0 w-full flex" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}} >
-                        </label>
-                    </li>
-                {/each}
-            </ul>
-        {/if}
-    </div>
+<div class="flex justify-start items-center gap-2">
+    <input 
+        id="searchbox" autocomplete="off" on:input={search} on:keydown={onEnter} type="text" placeholder="Invitar un equipo al torneo" 
+        class="w-56 px-4 py-2 border rounded-lg border-light-border dark:border-dark-border bg-light-input dark:bg-dark-input text-light-text dark:text-dark-text hover:border-sportify" bind:value={campo}
+    >
     <BotonInvitar torneo="Torneo1" equipo={campo} />
 </div>
+
+{#if mostrar && campo.length!=0}
+<div class="absolute right-32 top-36 max-h-24 w-56 overflow-y-auto border rounded-md border-light-border dark:border-dark-border">
+    <ul class="w-full bg-light-background dark:bg-dark-background2">
+        {#each rows as row}
+            <li class="w-full hover:bg-white dark:hover:bg-dark-input h-6">
+                <label class="w-full">
+                    <input class="form-checkbox h-0 w-full flex" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}} >
+                    <span class="w-0">{"["+row.id+"] "+row.nombre}</span>
+                </label>
+            </li>
+        {/each}
+    </ul>
+</div>
+{/if}
 
