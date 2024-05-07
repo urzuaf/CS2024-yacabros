@@ -40,4 +40,4 @@ corrección error buscadorTorneo 16.05 16.50 fin bug
 
 
 lun 06/05
-inicio tarea 13 21.33
+inicio tarea 13 21.33 fin 23.32
