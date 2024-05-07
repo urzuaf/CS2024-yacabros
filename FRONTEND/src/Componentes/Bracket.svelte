@@ -43,18 +43,22 @@
     };
 </script>
 
-<h1 class="text-center font-semibold">Bracket de torneo</h1>
-<p class="text-center">Haz click sobre el equipo ganador</p>
-<div class="flex justify-end p-4">
-    <button
-        class="text-white w-fit text-center border bg-sportify p-2 rounded hover:bg-sportifyhover"
-        on:click={handleButon}
-    >
-        Guardar bracket
-    </button>
-</div>
+<header class="flex justify-center items-center my-6 py-4 border-y border-light-border dark:border-dark-border">
+    <div>
+        <h1 class="text-center font-semibold text-2xl">Bracket de Torneo</h1>
+        <p class="text-center">Haz click sobre el equipo ganador!</p>
+    </div>
+    <div class="absolute right-10">
+        <button
+            class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
+            on:click={handleButon}
+        >
+            Guardar Bracket
+        </button>
+    </div>
+</header>
 
-<div class="w-screen pb-8">
+<div class="w-full py-8">
     <div class="flex w-9/12 m-auto gap-20 justify-around">
         {#each bracketData as etapa, parentIndex}
             <div class="flex flex-col gap-4 justify-around">
@@ -70,7 +74,7 @@
                                 type="number"
                                 on:change={(e) =>
                                     handleResult(parentIndex, index, e)}
-                                class="font-bold text-xl w-12"
+                                class="bg-light-background dark:bg-dark-input font-bold text-xl w-12 text-center border border-gray-300 dark:border-dark-border rounded"
                             />
                         {/if}
                         <!-- Nombre del equipo -->
@@ -80,7 +84,7 @@
                                     bracketData.length - 1}
                                 title="seleccionar como ganador"
                                 on:click={() => handleClick(parentIndex, index)}
-                                class="border p-2 shadow-md rounded"
+                                class=" bg-light-background dark:bg-dark-input border border-gray-300 dark:border-dark-border p-2 shadow-md rounded"
                             >
                                 {equipo.name}
                             </button>
@@ -97,13 +101,19 @@
         margin: 0px 0px 24px 0px;
     }
     .winner {
-        color: white;
-        background-color: #0c0a09;
+        color: #1A1A1A;
+        background-color: #fafafa;
         font-weight: bold;
         --webkit-box-shadow: 0px 0px 51px -8px rgb(70, 222, 0);
         -moz-box-shadow: 0px 0px 51px -8px rgb(70, 222, 0);
         box-shadow: 0px 0px 51px -8px rgb(70, 222, 0);
         border: 3px solid #1dc458;
         position: relative;
+    }
+    @media (prefers-color-scheme: dark) {
+        .winner {
+            color: white;
+            background-color: #374151;
+        }
     }
 </style>

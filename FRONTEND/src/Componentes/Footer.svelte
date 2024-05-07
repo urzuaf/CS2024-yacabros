@@ -7,7 +7,7 @@
       { href: 'javascript:void(0)', name: '' }
     ];
   </script>
-  <footer class="flex flex-col text-light-text dark:text-dark-text bg-light-gradient dark:bg-black px-4 py-5 w-screen mx-auto md:px-8 mt-auto">
+  <footer class="flex flex-col text-light-text dark:text-dark-text bg-light-gradient dark:bg-black px-4 py-5 w-full mx-auto md:px-8 mt-auto border-t border-light-border dark:border-dark-border">
     <div class="max-w-lg sm:mx-auto sm:text-center">
       <a href="/">
         <img src="/sportify-favicon.svg" class="w-20 sm:mx-auto" alt="Logo"/>

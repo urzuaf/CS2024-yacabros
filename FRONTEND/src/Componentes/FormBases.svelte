@@ -37,7 +37,7 @@
 <button 
     on:click={()=>{showModal = true}} 
     type="button" aria-label="toggle bases modal"
-    class="w-auto px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:scale-105"
+    class="w-auto px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:bg-sportifyhover"
 >
     Modificar Bases
 </button>
@@ -49,7 +49,7 @@
     class="w-full h-full bg-transparent"
 >
     <div class="flex justify-center items-center w-full h-full">
-        <form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center gap-4 my-4 w-3/4 md:w-3/5 bg-light-background dark:bg-dark-background rounded-lg p-4">
+        <form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center gap-4 p-4 my-4 w-3/4 md:w-3/5 bg-light-background dark:bg-dark-background border rounded-lg border-light-border dark:border-dark-border">
             <div class="w-4/5 flex justify-center text-wrap">
                 <h2 class="text-2xl font-bold text-center text-light-text dark:text-dark-text">Bases y Condiciones</h2>
             </div>
@@ -64,14 +64,14 @@
                 <button
                     on:click={() => dialog.close()}
                     type="submit" aria-label="save bases modal"
-                    class="w-4/5 md:w-2/5 min-w-fit px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:scale-105"
+                    class="w-4/5 md:w-2/5 min-w-fit px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:bg-sportifyhover"
                 >
                     Guardar
                 </button>
                 <button 
                     on:click={() => dialog.close()}
                     type="button" aria-label="close bases modal"
-                    class="w-4/5 md:w-2/5 min-w-fit px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:scale-105"
+                    class="w-4/5 md:w-2/5 min-w-fit px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:bg-sportifyhover"
                 >
                     Cancelar
                 </button>

@@ -15,7 +15,8 @@ export default {
 					'text': '#FFFFFF', // Text, Icons
 					'border': '#4B5563', // Borders
 					'input': '#374151', // Input Fields Background
-					'background': '#0C0A09', // Container Background
+					'background': '#0d1016', // Container Backgrounds
+					'background2': '#010409', // Backgrounds for Navbar and Footer
 					'gradient': '#292524', // Gradient from black to this color
 				},
 				'sportify': '#1DC458', // Sportify Green

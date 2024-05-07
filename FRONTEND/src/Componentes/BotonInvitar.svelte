@@ -33,7 +33,7 @@
 <button
     type="button"
     disabled={equipo == ""}
-    class="px-2 py-1 cursor-pointer font-medium text-white transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportify hover:scale-105"
+    class="px-4 py-2 cursor-pointer font-medium text-white transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
     on:click={handlePeticion}>
     Invitar
 </button>
