@@ -10,8 +10,8 @@
     }
 </script>
 {#if $Usuario != ''}
-<button on:click={logout} class="p-1 text-emerald-700 dark:text-emerald-400 rounded mx-1 hover:underline hover:text-emerald-600 hover:dark:text-emerald-500 trans">
-    Cerrar sesión
+<button on:click={logout} class="px-4 py-2 font-medium text-light-text dark:text-dark-text transform rounded-md hover:bg-light-input dark:hover:bg-dark-input trans">
+    Cerrar Sesión
 </button>
 {/if}
 
