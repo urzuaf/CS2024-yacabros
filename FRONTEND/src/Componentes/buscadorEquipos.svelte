@@ -39,7 +39,8 @@
     }
 
     function onEnter(event){
-        if (event.key === "Enter") {
+        //console.log(event.key);
+        if (event.key === "Tab") {
             filtrarIDorNombreExacto(campo);
         }else return
     }
@@ -143,3 +144,4 @@
     </ul>
 </div>
 {/if}
+

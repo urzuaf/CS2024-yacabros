@@ -5,12 +5,15 @@ import BotonInvitar from "../Componentes/BotonInvitar.svelte";
 import BuscadorEquipos from "../Componentes/buscadorEquipos.svelte";
 import DatosTorneo from "../Componentes/DatosTorneo.svelte"
 import Bracket from "../Componentes/Bracket.svelte";
-
+import FormClasificatoria from "../Componentes/FormClasificatoria.svelte";
 ---
 
 <Layout title="Gestion de torneos | Sportify">
   <header class="flex justify-between items-center px-10 py-6 w-full text-nowrap border-b border-light-border dark:border-dark-border">
     <div class="flex flex-col md:flex-row gap-2">
+      
+      <FormClasificatoria client:load/>
+      
       <FormBases client:load />
       <button
         type="button"

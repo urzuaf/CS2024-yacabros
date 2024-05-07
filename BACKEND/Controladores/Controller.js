@@ -9,6 +9,15 @@ const getUsers = (req, res) => {
 }
 
 
+const getEquiposTorneos = (req, res) =>{
+    db.query(Queries.getEquipoTorneo, (error, result)=>{
+        if(error) throw error
+        res.status(200).json(result.rows)
+    })
+
+}
+
+
 const getTeams =(req,resp) =>{
     db.query(Queries.getAllTeams,(error,result)=>{
         if(error) throw error
@@ -121,7 +130,8 @@ export default {
     postTorneo,
     getEquipo,
     getTeams,
-    getTorneo
+    getTorneo,
+    getEquiposTorneos
 }
 
 
