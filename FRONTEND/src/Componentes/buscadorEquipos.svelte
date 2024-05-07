@@ -39,7 +39,8 @@
     }
 
     function onEnter(event){
-        if (event.key === "Enter") {
+        //console.log(event.key);
+        if (event.key === "Tab") {
             filtrarIDorNombreExacto(campo);
         }else return
     }
@@ -121,17 +122,17 @@
     
 </script>
 
-<div class="flex justify-center gap-2">
+<div class="flex">
     <input id="searchbox" autocomplete="off" on:input={search} on:keydown={onEnter} type="text" placeholder="Invitar un equipo al torneo" class="w-60 px-4 py-2 border-2 rounded-lg text-black hover:border-sportify p-4" bind:value={campo}>
 
-    <div class="absolute bg-green-700 my-10 inline-block max-h-24 w-60 overflow-y-auto ">
+    <div class="absolute bg-white-700 my-11 inline-block max-h-24 w-60 overflow-y-auto ">
         {#if mostrar && campo.length!=0}
             <ul class="w-full">
                 {#each rows as row}
-                    <li class="w-full hover:bg-white hover:text-black border-2 h-6">
+                    <li class="w-full hover:bg-white hover:text-black hover:border-sportify border-2 h-6">
                         <label class="w-full">
-                            <input class="form-checkbox h-0 w-full flex" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}} >
-                            <span class="w-0">{"["+row.id+"] "+row.nombre}</span>
+                            <span class="">{""+row.nombre}</span>
+                            <input id="check" class="form-checkbox h-0 w-full flex" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}} >
                         </label>
                     </li>
                 {/each}
@@ -140,3 +141,4 @@
     </div>
     <BotonInvitar torneo="Torneo1" equipo={campo} />
 </div>
+
