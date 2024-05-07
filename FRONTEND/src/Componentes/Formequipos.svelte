@@ -3,6 +3,7 @@
     let nombreEquipo = "";
     let descripcion = "";
     let deporte = "";
+    let enviado = false;
     let userProfile = {
         email: $Usuario
     };
@@ -21,7 +22,7 @@
                 throw new Error("Error al registrar usuario");
                 correct.tried= true;
             } 
-            else redirect()
+            enviado = true;
             const data = await response.json();
             console.log("Usuario registrado:", data);
         } catch (error) {
@@ -70,3 +71,41 @@
         Registrar Equipo
     </button>
 </form>
+
+{#if enviado}
+    <div class="bg-sportify absolute bottom-8 p-2 px-4 z-50 a">
+        <p><b>Equipo registrado con éxito</b></p>
+    </div>
+{/if}
+
+<style>
+    .a{
+        right: -2000px;
+        top: 100px;
+        bottom: 500px;
+        animation: appear 6s ;
+    }
+    @keyframes appear{
+        0%{
+            top: 100px;
+            bottom: 500px;
+            right: -500px;
+        }
+        10%{
+            top: 100px;
+            bottom: 500px;
+            right: 10px;
+        }
+        80%{
+            top: 100px;
+            bottom: 500px;
+            right: 10px;
+        }
+        100%{
+            top: 100px;
+            bottom: 500px;
+            right: -500px;
+        }
+    }
+    
+</style>
