@@ -39,7 +39,7 @@
 {#if showModal}
 <div class="absolute justify-center items-center w-3/4 h-3/4 mt-12 bg-red-400">
     <div class="flex justify-center items-center w-full h-full  bg-blue-400"> 
-        <form class="flex flex-col items-center gap-4 my-4 w-3/4 md:w-3/5 bg-light-background dark:bg-dark-background rounded-lg p-4">
+      <!--<form  form class="flex flex-col items-center gap-4 my-4 w-full md:w-full bg-light-background dark:bg-dark-background rounded-lg p-4">-->
             
             <table class="table-auto bg-sportify text-dark-text font-bold mx-auto">
                 <thead>
@@ -47,6 +47,7 @@
                         <th class="px-4 py-2">Id</th>
                         <th class="px-4 py-2">Nombre Equipo</th>
                         <th class="px-4 py-2">Staff</th>
+
                     </tr>
                 </thead>
 
@@ -64,7 +65,7 @@
             
             </table>
        
-        </form>
+        <!--</form>-->
     </div>
 </div>
 {/if}
