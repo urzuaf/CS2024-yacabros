@@ -39,45 +39,42 @@
         </a>
 
         <a href="/register">
-            <button type="button" class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105">Registrar</button>
+            <button type="button" class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover">Registrar</button>
         </a>
     </div>
 {/if}
 
 {#if $Usuario != ''}
-<Notificacion /> 
-<button on:click={() => {isOpen = !isOpen}} type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
-    <div class="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" class="object-cover w-full h-full" alt="avatar">
-    </div>
-    <h3 class="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">{userProfile.name}</h3>
-</button>
+    <Notificacion /> 
+    <button on:click={() => {isOpen = !isOpen}} type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
+        <div class="trans w-8 h-8 overflow-hidden border-2 border-light-border hover:border-light-text dark:border-dark-border hover:dark:border-dark-text rounded-full">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" class="object-cover w-full h-full" alt="avatar">
+        </div>
+        <h3 class="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">{userProfile.name}</h3>
+    </button>
 
-
-{#if isOpen}
-
-        <div class="absolute right-0 top-12 bg-white p-2 rounded shadow">
+    {#if isOpen}
+        <div class="absolute right-0 top-16 p-2 rounded shadow bg-light-gradient dark:bg-dark-background2 text-light-text border dark:text-dark-text border-light-border dark:border-dark-border">
             <!-- Nombre de usuario y correo -->
-            <p class="text-gray-800 font-bold">{userProfile.name}</p>
-            <p class="text-gray-300">{userProfile.email}</p>
+            <p class="px-4 font-bold">{userProfile.name}</p>
+            <p class=" text-light-border dark:text-dark-border px-4">{userProfile.email}</p>
 
             <!-- Botón para editar perfil -->
-            <a href="/editData" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+            <a href="/editData" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Editar Perfil
             </a>
-            <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+            <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Crear Torneo
             </a>
-            <a href="/perfilEquipo" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+            <a href="/perfilEquipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Ver Perfil de Equipo
             </a>
-            <a href="/user" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+            <a href="/user" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Ver Perfil de Usuario
             </a>
-            <a href="/integrante" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+            <a href="/integrante" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Agregar Jugador a Equipo
             </a>
-
         </div>
         <!--
         {:else}
@@ -95,3 +92,9 @@
         -->
     {/if}
 {/if}
+
+<style>
+    .trans {
+        transition: 0.3s ease;
+    }
+</style>
