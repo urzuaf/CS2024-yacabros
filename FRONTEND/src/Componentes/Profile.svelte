@@ -77,6 +77,9 @@
             <a href="/integrante" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 Agregar Jugador a Equipo
             </a>
+            <a href="/agregarequipo" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
+                Agrega un Equipo
+            </a>
 
         </div>
         <!--
