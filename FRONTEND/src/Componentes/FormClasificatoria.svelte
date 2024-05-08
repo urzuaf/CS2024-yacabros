@@ -1,101 +1,86 @@
-
 <script>
     import { onMount } from 'svelte';
 
-    var showModal=false;
+    var showModal = false;
     let rows = [];
 
-    onMount(async () =>{
-        try{
+    onMount(async () => {
+        try {
             const resp = await fetch("http://localhost:3000/equiposludopatasentorneo");
             if (!resp.ok)
                 throw new Error("Error al obtener los datos del servidor");
             rows = await resp.json();
             console.log("\n\nJOIN\n");
             console.log(rows);
-
-        }catch(error){
-            console.log("Error: ",error);
+        } catch (error) {
+            console.log("Error: ", error);
         }
-    });//esto entrega en row el join de equipo y torneos para los datos 
+    });
 
-    function agregarCol(){ //esto añade una columna a la tabla //que pasa con las columnas ya creadas
-        var row=document.getElementById("row");
-        var col=document.getElementById("cabecera")
-        //COL
-        const th=document.createElement("th")
-        th.style.border="1px solid"
-        th.style.textAlign="center"
-        th.style.background="sportify"
-        th.innerHTML="" // var que se debe pasar
-
-        //se crea el input
+    function agregarCol() {
+        // Agregar celda en el encabezado
+        var col = document.getElementById("cabecera");
+        const th = document.createElement("th");
+        th.style.border = "1px solid";
+        th.style.textAlign = "center";
+        th.style.background = "sportify";
+        th.innerHTML = ""; // var que se debe pasar
         const input = document.createElement("input");
         input.type = "text";
-        
         input.style.width = "100%";
         input.style.height = "35px";
         input.style.textAlign = "center";
-        input.style.color ="white";
+        input.style.color = "white";
         input.style.border = "none";
-        input.style.background = "none"; 
-        
+        input.style.background = "none";
         th.appendChild(input);
+        col.appendChild(th);
 
-        col.appendChild(th) 
-
-    
-        
-
-        //INFO
-        //se tendra que hacer append del td por cada fila ya creada
-        const td = document.createElement("td");
-        td.style.border = "1px solid white";
-        td.style.textAlign="center"
-
-        row.appendChild(td);
+        // Agregar celda en cada fila de la tabla
+        var rows = document.querySelectorAll("#data tr");
+        rows.forEach(row => {
+            const td = document.createElement("td");
+            td.style.border = "1px solid white";
+            td.style.textAlign = "center";
+            const input = document.createElement("input");
+            input.type = "text";
+            input.style.width = "100%";
+            input.style.height = "35px";
+            input.style.textAlign = "center";
+            input.style.color = "black";
+            input.style.border = "none";
+            input.style.background = "none";
+            td.appendChild(input);
+            row.appendChild(td);
+        });
     }
-
-
 </script>
 
-
-
-    <div class="justify-center items-center mb-32 mt-12 w-full h-128">
-
-            <h1 class="font-semibold text-4xl align-center flex justify-center">Clasificatoria</h1>
-            <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto mt-10 max-h-64 w-3/4 overflow-y-auto rounded-lg">
-                <thead class="bg-sportify">
-                    <tr id="cabecera">
-                        <th class="px-4 py-2  border-solid border-2">Id</th>
-                        <th class="px-4 py-2  border-solid border-2">Nombre Equipo</th>
-                        <th class="px-4 py-2  border-solid border-2">Staff</th>
-                        <th class="px-4 py-2  border-solid border-2">Torneo</th>
-                    </tr>
-                </thead>
-
-                <tbody id=data class="border px-4 py-2 "> 
-                    {#each rows as row} <!-- aqui va el contenido de la tabla habrá que añadir columnas para datos a agregar-->
-                    <tr id="row" class="text-center text-black border-solid border-2">
-                        <td class="border-solid border-2">{row.id}</td>
-                        <td class="border-solid border-2">{row.nombre}</td>
-                        <td class="border-solid border-2">{row.staff}</td>
-                        <td class="border-solid border-2">{row.torneo}</td>
-                    </tr>
-                    {/each}
-                </tbody>
-
-                <div class="flex">
-                    <button class="absolute ml-0 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
-                        Agregar Datos
-                    </button>
-                </div>
-
-            </table>
-
-
-    </div>
-
-
-
-
+<div class="justify-center items-center mb-32 mt-12 w-full h-128">
+    <h1 class="font-semibold text-4xl align-center flex justify-center">Clasificatoria</h1>
+    <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto mt-10 max-h-64 w-3/4 overflow-y-auto rounded-lg">
+        <thead class="bg-sportify">
+            <tr id="cabecera">
+                <th class="px-4 py-2 border-solid border-2">Id</th>
+                <th class="px-4 py-2 border-solid border-2">Nombre Equipo</th>
+                <th class="px-4 py-2 border-solid border-2">Staff</th>
+                <th class="px-4 py-2 border-solid border-2">Torneo</th>
+            </tr>
+        </thead>
+        <tbody id=data class="border px-4 py-2">
+            {#each rows as row}
+            <tr id="row" class="text-center text-black border-solid border-2">
+                <td class="border-solid border-2">{row.id}</td>
+                <td class="border-solid border-2">{row.nombre}</td>
+                <td class="border-solid border-2">{row.staff}</td>
+                <td class="border-solid border-2">{row.torneo}</td>
+            </tr>
+            {/each}
+        </tbody>
+        <div class="flex">
+            <button class="absolute ml-0 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
+                Agregar Datos
+            </button>
+        </div>
+    </table>
+</div>
