@@ -61,7 +61,7 @@
         <button class="absolute m-2 right-0 bg-sportify h-10 w-24 text-white rounded-lg hover:text-gray-200" on:click={()=>showModal=!showModal}>
             Cerrar
         </button>
-        <div class="w-full h-full bg-blue-400 border-sportify border-2 bg-light-background dark:bg-dark-background rounded-xl"> 
+        <div class="w-full h-full bg-blue-400 border-sportify border-2 bg-light-background dark:bg-dark-background rounded-xl  overflow-x-auto"> 
             <h1 class="font-semibold text-4xl align-center flex justify-center">Clasificatoria</h1>
             <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto mt-10 max-h-64 w-3/4 overflow-y-auto rounded-lg">
                 <thead class="bg-sportify">
@@ -73,7 +73,7 @@
                     </tr>
                 </thead>
 
-                <tbody id=data class="border px-4 py-2"> 
+                <tbody id=data class="border px-4 py-2 "> 
                     {#each rows as row} <!-- aqui va el contenido de la tabla habrá que añadir columnas para datos a agregar-->
                     <tr id="row" class="text-center text-black border-solid border-2">
                         <td class="border-solid border-2">{row.id}</td>
