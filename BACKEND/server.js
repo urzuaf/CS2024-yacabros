@@ -66,6 +66,24 @@ server.post('/register', async (req, res) => {
     }
 });
 
+server.post('/registerTeam', async (req, res) => {
+  const { nombreEquipo, descripcion, deporte,email} = req.body;
+  console.log(req.body)
+
+  try {
+      const query = {
+          text: 'INSERT INTO equipo(nombre, descripcion, deporte, staff) VALUES($1, $2, $3, $4)',
+          values: [nombreEquipo, descripcion, deporte, email],
+      };
+
+      const result = await db.query(query);
+      res.status(201).json(result.rows[0]);
+  } catch (error) {
+      console.error('Error al registrar el usuario:', error);
+      res.status(500).json({ error: 'Error al registrar el usuario' });
+  }
+});
+
 server.post('/editData', async (req, res) => {
   const { nombre, descripcion,emisor,password} = req.body;
   console.log(req.body)
