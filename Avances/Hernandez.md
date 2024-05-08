@@ -40,4 +40,10 @@ corrección error buscadorTorneo 16.05 16.50 fin bug
 
 
 lun 06/05
-inicio tarea 13 21.33 fin 23.32
+inicio tarea 13 21.33 fin 23.32 se crea el componente se crea la consulta con el join para los datos, se añade el boton para el modal, se crea un primer prototipo para mostrar los datos. Falta mejorar el diseño, añadir columnas con datos...
+
+
+mart 07.05
+continuacion 18.48     20.27 fin avance, añadido boton para agregar info, retoque diseño, falta ver donde guardar la info y los campos para introducir
+
+crear datos 5 minutos
