@@ -29,3 +29,5 @@ Semana 4:
 [07/05] 18:30-20:00, se añade casi totalmente la opción de registrar un equipo, junto con su respectivo feedback.
 [08/05] 12:30-14:00, Se agrega la opción de edición de equipo solo de parte del "Staff" y/o "Admin" junto con su 
 respectivo feedback, tambien se añade la opción de que "Agregar Equipo" sea accesible solo por el "Staff" y/o "Admin".
+[08/05] 17:15-18:45, Se agrega la opción de eliminación de equipo junto con su feedback, además se suma la característica
+que filtra las opciones de agregar, editar y eliminar según el caso en el que se encuentre creado un equipo por el staff o no.

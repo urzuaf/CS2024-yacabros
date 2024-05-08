@@ -6,7 +6,8 @@
     let userProfile = {
         name: "",
         email: $Usuario,
-        rol: ""
+        rol: "",
+        equipo: ""
     };
 
     onMount(async () =>{
@@ -25,6 +26,13 @@
                 },
                 body: JSON.stringify({ email: userProfile.email }), // Envía el correo electrónico en el cuerpo de la solicitud
             });
+            const resp3 = await fetch("http://localhost:3000/getTeam", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: userProfile.email }), // Envía el correo electrónico en el cuerpo de la solicitud
+            });
 
             if (!resp.ok)
                 throw new Error("Error al obtener los datos del servidor");
@@ -35,12 +43,20 @@
                 throw new Error("Error al obtener los datos del servidor");
 
             const result2 = await resp2.json();
+
+            if (!resp3.ok)
+                throw new Error("Error al obtener los datos del servidor");
+
+            const result3 = await resp3.json();
             
             if (result.length > 0) {
                 userProfile.name = result[0].username; 
             }
             if (result2.length > 0) {
                 userProfile.rol = result2[0].rol; 
+            }
+            if (result3.length > 0) {
+                userProfile.equipo = result[0].equipo; 
             }
 
         }catch(error){
@@ -100,19 +116,19 @@
                 Agregar Jugador a equipo
             </a>
 
-            {#if userProfile.rol == 'staff' || userProfile.rol == 'admin'}
+            {#if userProfile.equipo == "" && (userProfile.rol == 'staff' || userProfile.rol == 'admin')}
                 <a href="/agregarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                     Agregar Equipo
                 </a>
             {/if}
 
-            {#if userProfile.rol == 'staff' || userProfile.rol == 'admin'}
+            {#if userProfile.equipo != "" && (userProfile.rol == 'staff' || userProfile.rol == 'admin')}
                 <a href="/editarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                     Editar Equipo
                 </a>
             {/if}
 
-            {#if userProfile.rol == 'staff' || userProfile.rol == 'admin'}
+            {#if userProfile.equipo != "" && (userProfile.rol == 'staff' || userProfile.rol == 'admin')}
                 <a href="/eliminarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                     Eliminar Equipo
                 </a>

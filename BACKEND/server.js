@@ -17,14 +17,14 @@ server.listen(puerto, () => {
 });
 
 server.post('/username', async (req,res)=>{
-    db.query("select * from usuario",(error,result)=>{
-        if (error) {
-            console.error('Error al ejecutar la consulta SQL:', error);
-            res.status(500).json({ error: 'Error al obtener los datos de usuario' });
-            return;
-        }
-        res.status(200).json(result.rows);
-    })
+  db.query("select * from usuario",(error,result)=>{
+    if (error) {
+      console.error('Error al ejecutar la consulta SQL:', error);
+      res.status(500).json({ error: 'Error al obtener los datos de usuario' });
+      return;
+    }
+    res.status(200).json(result.rows);
+  })
 });
 
 //peticion para torneos
@@ -47,12 +47,18 @@ server.post('/getUsername', async (req, res) => {
 
 server.post('/getRol', async (req, res) => {
   const {email} = req.body;
-  console.log(req.body);
   db.query("select rol from usuario where email = $1",[email],(error,result)=>{
   if(error) throw error;
   res.status(200).json(result.rows);
 })
-  
+});
+
+server.post('/getTeam', async (req, res) => {
+  const {email} = req.body;
+  db.query("select id from equipo where staff = $1",[email],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+})
 });
 
 server.post('/register', async (req, res) => {
@@ -92,6 +98,15 @@ server.post('/registerTeam', async (req, res) => {
       console.error('Error al registrar el usuario:', error);
       res.status(500).json({ error: 'Error al registrar el usuario' });
   }
+});
+
+server.post('/deleteTeam', async (req, res) => {
+  const {emisor} = req.body;
+  console.log(req.body);
+  db.query("DELETE FROM equipo WHERE staff = $1",[emisor],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+})
 });
 
 server.post('/editData', async (req, res) => {
