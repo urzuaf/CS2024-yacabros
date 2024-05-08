@@ -44,4 +44,4 @@ inicio tarea 13 21.33 fin 23.32 se crea el componente se crea la consulta con el
 
 
 mart 07.05
-continuacion 18.48
+continuacion 18.48     20.27 fin avance, añadido boton para agregar info, retoque diseño, falta ver donde guardar la info y los campos para introducir
