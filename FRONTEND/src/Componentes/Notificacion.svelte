@@ -74,7 +74,7 @@
         on:click={() => {
             isOpen = !isOpen;
         }}
-        class="hidden mx-4 text-gray-600 transition-colors duration-300 transform lg:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none"
+        class="hidden mx-4 transition-colors duration-300 transform lg:block text-light-border dark:text-dark-border hover:text-light-text hover:dark:text-dark-text"
         aria-label="show notifications"
     >
         <svg

@@ -9,6 +9,15 @@ const getUsers = (req, res) => {
 }
 
 
+const getEquiposTorneos = (req, res) =>{
+    db.query(Queries.getEquipoTorneo, (error, result)=>{
+        if(error) throw error
+        res.status(200).json(result.rows)
+    })
+
+}
+
+
 const getTeams =(req,resp) =>{
     db.query(Queries.getAllTeams,(error,result)=>{
         if(error) throw error
@@ -101,6 +110,15 @@ const getEquipo = (req, res) =>{
     })
 
 }
+const getTorneo = (req, res) =>{
+    const {nombreTorneo} = req.body
+    db.query({text: Queries.getTorneoFromName, values: [nombreTorneo]}, (error, results)=>{
+        if (error) throw error
+        res.status(200).json(results.rows)
+    })
+
+}
+
 export default {
     getUsers,
     decirWena,
@@ -109,10 +127,11 @@ export default {
     enviarNotificacion,
     postBases,
     insertarEquipoTorneo,
-
     postTorneo,
     getEquipo,
-    getTeams
+    getTeams,
+    getTorneo,
+    getEquiposTorneos
 }
 
 
