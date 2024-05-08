@@ -44,17 +44,18 @@
 
 
 <div>
-<button 
-    on:click={()=>{showModal=!showModal}} 
-    type="button" aria-label="toggle bases modal"
-    class="w-auto px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:scale-105"
-    >
-    Añadir Clasificación
-</button>
+    <button 
+        on:click={()=>{showModal=!showModal}} 
+        type="button" aria-label="toggle bases modal"
+        class="w-auto px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:bg-sportifyhover"
+        >
+        Añadir Clasificación
+    </button>
 </div>
 
 
 {#if showModal}
+
 <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
     <div class="absolute w-full h-full bg-black opacity-15"></div>
     <div class="absolute justify-center items-center w-3/4 h-3/4 mt-12 bg-red-400 rounded-xl">
