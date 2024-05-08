@@ -12,7 +12,6 @@ import FormClasificatoria from "../Componentes/FormClasificatoria.svelte";
   <header class="flex justify-between items-center px-10 py-6 w-full text-nowrap border-b border-light-border dark:border-dark-border">
     <div class="flex flex-col md:flex-row gap-2">
       
-      <FormClasificatoria client:load/>
       
       <FormBases client:load />
       <button
@@ -29,6 +28,7 @@ import FormClasificatoria from "../Componentes/FormClasificatoria.svelte";
     </div>
     <BuscadorEquipos client:only />
   </header>
+  <FormClasificatoria client:load/>
   <DatosTorneo nombreTorneo="Torneo1" client:only />
   <Bracket client:only />
 </Layout>
