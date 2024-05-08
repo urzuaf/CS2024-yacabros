@@ -27,3 +27,5 @@ Total Hrs: 5.5
 Semana 4:
 [27/04] 18:00-18:30, se añade el feedback definitivo a la ventana de editar datos
 [07/05] 18:30-20:00, se añade casi totalmente la opción de registrar un equipo, junto con su respectivo feedback.
+[08/05] 12:30-14:00, Se agrega la opción de edición de equipo solo de parte del "Staff" y/o "Admin" junto con su 
+respectivo feedback, tambien se añade la opción de que "Agregar Equipo" sea accesible solo por el "Staff" y/o "Admin".

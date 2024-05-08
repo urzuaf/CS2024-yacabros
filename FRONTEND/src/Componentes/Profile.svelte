@@ -5,7 +5,8 @@
     let isOpen = false;
     let userProfile = {
         name: "",
-        email: $Usuario
+        email: $Usuario,
+        rol: ""
     };
 
     onMount(async () =>{
@@ -17,13 +18,29 @@
                 },
                 body: JSON.stringify({ email: userProfile.email }), // Envía el correo electrónico en el cuerpo de la solicitud
             });
+            const resp2 = await fetch("http://localhost:3000/getRol", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: userProfile.email }), // Envía el correo electrónico en el cuerpo de la solicitud
+            });
+
             if (!resp.ok)
                 throw new Error("Error al obtener los datos del servidor");
 
             const result = await resp.json();
+
+            if (!resp2.ok)
+                throw new Error("Error al obtener los datos del servidor");
+
+            const result2 = await resp2.json();
             
             if (result.length > 0) {
                 userProfile.name = result[0].username; 
+            }
+            if (result2.length > 0) {
+                userProfile.rol = result2[0].rol; 
             }
 
         }catch(error){
@@ -72,13 +89,34 @@
             <a href="/user" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Ver Perfil de Usuario
             </a>
+            
+            <!--{#if userProfile.rol == 'staff' || userProfile.rol == 'admin'}
+                <a href="/integrante" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+                    Agregar Jugador a equipo
+                </a>
+            {/if}-->
+
             <a href="/integrante" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
-                Agregar Jugador a Equipo
+                Agregar Jugador a equipo
             </a>
 
-            <a href="/agregarequipo" class="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 focus:outline-none">
-                Agrega un Equipo
-            </a>
+            {#if userProfile.rol == 'staff' || userProfile.rol == 'admin'}
+                <a href="/agregarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+                    Agregar Equipo
+                </a>
+            {/if}
+
+            {#if userProfile.rol == 'staff' || userProfile.rol == 'admin'}
+                <a href="/editarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+                    Editar Equipo
+                </a>
+            {/if}
+
+            {#if userProfile.rol == 'staff' || userProfile.rol == 'admin'}
+                <a href="/eliminarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+                    Eliminar Equipo
+                </a>
+            {/if}
 
         </div>
         <!--
