@@ -2,27 +2,26 @@
 import Layout from "../layouts/Visualizacion.astro"
 ---
 <Layout title="perfilEquipo">
-    <div class="bg-gray-100 dark:bg-stone-950 border rounded-lg border-gray-300 dark:border-black p-6 w-full mb-12">
-        <div class="flex items-center mb-12  justify-center ">
+    <div class="p-6 w-full mb-12">
+        <div class="flex items-center mb-12 justify-center ">
             <!-- Foto de perfil del equipo a la izquierda -->
-            <img src="../public/40770.svg"  class="w-20 h-20 rounded-full border-4 border-white shadow-md mr-12 justify-center">
+            <img src="../public/40770.svg" class="w-20 h-20 p-1 rounded-full border-4 border-light-border dark:border-white shadow-md mr-12 justify-center">
             <!-- Nombre del Equipo centrado con marco -->
-            <h2 class="text-3xl font-bold text-center border-b-2  text-black dark:text-white pb-2 mb-1 flex-grow">Utal-k.O</h2>
+            <h2 class="text-3xl font-bold text-center border-b-2 border-light-border dark:border-white text-light-text dark:text-white pb-2 mb-1 flex-grow">Utal-k.O</h2>
             <!-- Deporte a la derecha -->
-            <p class="text-lg text-rigth flex-shrink-0 ml-12 text-black dark:text-white">Taekwondo</p>
+            <p class="text-lg text-rigth flex-shrink-0 ml-12 text-light-text dark:text-white">Taekwondo</p>
         </div>
         <!-- Descripción del torneo -->
-        <p class="text-lg text-center mb-6  text-black dark:text-white">Esto es una descripción detallada del equipo en cuestion </p>
+        <p class="text-lg text-center mb-6 text-light-text dark:text-white">Esto es una descripción detallada del equipo en cuestion </p>
         <!-- Nombre del Staff en un rectángulo con foto pequeña a la izquierda -->
-        <div class="flex items-center justify-end mb-8  ">
+        <div class="flex items-center justify-end mb-8">
             <div class="flex-shrink-0 ml-4">
-                <img src="../public/2098873.svg" class="w-20 h-20 rounded-full border-4 mr-4 shadow-md">
+                <img src="../public/2098873.svg" class="w-20 h-20 p-1 rounded-full border-4 border-light-border dark:border-white mr-4 shadow-md">
             </div>
-            <div class=" text-black bg-white p-2 rounded-lg">
+            <div class="text-light-text bg-white p-2 rounded-lg">
                 <p class="text-lg font-semibold">Vejat Olea</p>
                 <p class="text-base">Staff</p>
             </div>
-            
         </div>
     </div>
 </Layout>

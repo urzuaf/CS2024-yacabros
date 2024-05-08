@@ -36,7 +36,7 @@
             type="text"
             id="nombre"
             placeholder="Nombre"
-            class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
+            class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
             bind:value={nombre}
         />
     </div>
@@ -45,7 +45,7 @@
         <input
             type="descripcion"
             placeholder="Descripción"
-            class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
+            class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
             bind:value={descripcion}
         />
     </div>
@@ -54,13 +54,13 @@
         <input
             type="password"
             placeholder="Contraseña"
-            class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
+            class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
             bind:value={password}
         />
     </div>
 
     <button
-        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105"
+        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
         type="submit"
     >
         Editar Datos
