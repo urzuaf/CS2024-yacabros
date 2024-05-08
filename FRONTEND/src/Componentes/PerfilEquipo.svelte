@@ -1,6 +1,7 @@
 <script>   
     import { onMount } from "svelte";
     import { Usuario } from "../stores/login_store";
+    import { z } from "astro:content";
     let staff=$Usuario;
     let equipos = []
     onMount(async () => {
@@ -25,6 +26,18 @@
     });
     
 </script>
+
+
+{#if equipos.length > 0}
+    {#each equipos as equipo}
+       
+        <div class="p-6 w-full mb-12">
+            <div class="flex items">
+                <p>{equipo.nombre}</p>
+            </div>
+        </div>
+    {/each}
+{/if}
 
 
 
@@ -53,5 +66,3 @@
         </div>
     </div>
 </div>
-
-

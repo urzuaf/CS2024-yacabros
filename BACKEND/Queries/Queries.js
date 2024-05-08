@@ -17,7 +17,7 @@ const insertarTorneoEquipo = "insert into equipo_torneo (equipo, torneo) values 
 
 
 const insertTorneo = "insert into torneo (nombre, bases, finicio, ftermino, formato, premio, deporte,creador ) values ($1,'sin base', $2, $3, $4, $5, $6, $7)"
-const selectEquipo = "select * from equipo where staff = $1"
+const selectEquipo = "select * from equipo where staff = $0"
 
 const getEquipoTorneo = "select * from equipo_torneo join equipo on equipo_torneo.equipo=equipo.id"
 
