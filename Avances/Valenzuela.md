@@ -26,3 +26,4 @@ Total Hrs: 5.5
 
 Semana 4:
 [27/04] 18:00-18:30, se añade el feedback definitivo a la ventana de editar datos
+[07/05] 18:30-20:00, se añade casi totalmente la opción de registrar un equipo, junto con su respectivo feedback.
