@@ -60,7 +60,9 @@
 </script>
 
 
+
     <div class="justify-center items-center mb-32 mt-12 w-full h-128">
+
             <h1 class="font-semibold text-4xl align-center flex justify-center">Clasificatoria</h1>
             <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto mt-10 max-h-64 w-3/4 overflow-y-auto rounded-lg">
                 <thead class="bg-sportify">

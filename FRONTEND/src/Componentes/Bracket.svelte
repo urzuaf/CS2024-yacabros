@@ -74,7 +74,7 @@
                                 type="number"
                                 on:change={(e) =>
                                     handleResult(parentIndex, index, e)}
-                                class="bg-light-background dark:bg-dark-input font-bold text-xl w-12 text-center border border-gray-300 dark:border-dark-border rounded"
+                                class="bg-light-background dark:bg-dark-input font-bold text-xl w-12 text-center border border-light-border dark:border-dark-border rounded"
                             />
                         {/if}
                         <!-- Nombre del equipo -->
@@ -84,7 +84,7 @@
                                     bracketData.length - 1}
                                 title="seleccionar como ganador"
                                 on:click={() => handleClick(parentIndex, index)}
-                                class=" bg-light-background dark:bg-dark-input border border-gray-300 dark:border-dark-border p-2 shadow-md rounded"
+                                class=" bg-light-background dark:bg-dark-input border border-light-border dark:border-dark-border p-2 shadow-md rounded"
                             >
                                 {equipo.name}
                             </button>

@@ -3,20 +3,20 @@ import cors from "cors";
 import db from "./DB/dbconnect.js";
 import router from "./Rutas/Rutas.js";
 
-const server = express()
-const puerto = 3000
+const server = express();
+const puerto = 3000;
 
-server.use(express.json())
+server.use(express.json());
 server.use(cors());
 
 //Separamos las rutas a otro archivo para evitar que el archivo server.js crezca mucho
-server.use(router)
+server.use(router);
 
-server.listen(puerto, ()=>{
-    console.log("Servidor activo en puerto: ", puerto)
-})
+server.listen(puerto, () => {
+  console.log("Servidor activo en puerto: ", puerto);
+});
 
-server.get('/username', async (req,res)=>{
+server.post('/username', async (req,res)=>{
     db.query("select * from usuario",(error,result)=>{
         if (error) {
             console.error('Error al ejecutar la consulta SQL:', error);
@@ -25,7 +25,7 @@ server.get('/username', async (req,res)=>{
         }
         res.status(200).json(result.rows);
     })
-})
+});
 
 //peticion para torneos
 server.get('/getTorneos', async(req,res)=>{
@@ -35,7 +35,7 @@ server.get('/getTorneos', async(req,res)=>{
     res.status(200).json(result.rows);
     
   })
-})
+});
 
 server.post('/getUsername', async (req, res) => {
   const {email} = req.body;
