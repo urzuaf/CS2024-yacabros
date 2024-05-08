@@ -1,9 +1,9 @@
 <script>   
     import { onMount } from "svelte";
     import { Usuario } from "../stores/login_store";
-    import { z } from "astro:content";
+    
     let staff=$Usuario;
-    let equipos = []
+    let equipos=[];
     onMount(async () => {
         try {
             const response = await fetch("http://localhost:3000/equipos", {
