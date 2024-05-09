@@ -26,5 +26,10 @@
 
 //semana 4
 
-[20:40-22:00] Cambio del feedback en FormularioForo y en agregar/editar/borrar integrante
+[20:30-22:00] Cambio del feedback en FormularioForo y en agregar/editar/borrar integrante
 proximos avances...
+
+[10:00-10:30] Avance en la modicacion de la tabla de clasificatoria y creacion de los botones
+
+[19:00-20:30] agregar la opcion de editar datos y guardar(ese aun no funciona pero si impide que se sigan editando)
+tambien a su vez se agrego la forma de editar los datos escribiendo sobre la nueva columna generada
