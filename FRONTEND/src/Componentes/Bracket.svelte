@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from "svelte";
     import {
         bracketData8,
         bracketData4,
@@ -6,7 +7,34 @@
         bracketData16,
     } from "../stores/bracketsmockdata.js";
 
-    let bracketData = bracketData8;
+    let bracketData = [];
+    let guardado = false
+    // Comprobamos si el torneo ya tiene un bracket, si lo tiene lo cargamos, si no lo tiene cargamos uno vacio
+    //bracketData = bracketData8;
+
+    onMount(()=>{
+        comprobarBracket()
+
+    })
+
+    const comprobarBracket = async() =>{
+        let nombreTorneo = 'Torneo1'
+        const response = await fetch("http://localhost:3000/getTorneo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({nombreTorneo }),
+        });
+        const res = await response.json()
+        console.log(res)
+        if(res[0].bracketplaceholder == ''){
+            bracketData = [...bracketData8]
+        }else{
+            let aux = JSON.parse(res[0].bracketplaceholder)
+            bracketData = [...aux]
+        }
+    }
 
     const handleClick = (indexParent, index) => {
         if (indexParent == bracketData.length) {
@@ -37,13 +65,44 @@
     };
     //De momento guardar solo lo imprime por pantalla, pero ese json habria que guardarlo en bd
     // Para poder cargarlo desde ahí despues
-    const handleButon = () => {
-        let data = JSON.stringify(bracketData);
-        console.log(data);
+    const handleButon = async () => {
+        let bracket= JSON.stringify(bracketData);
+        //hardcodeado deberia ser dependiendo del torneo activo
+        let torneo = 'Torneo1'
+        const response = await fetch("http://localhost:3000/updateBracket", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({bracket, torneo }),
+        });
+        if (response.ok) {
+            console.log('ok')
+            guardado = true
+            setTimeout(()=>{
+                guardado = false
+            }, 4000)
+        }
+    };
+
+    const handleReset = async () => {
+        //hardcodeado deberia ser dependiendo del torneo activo
+        let torneo = 'Torneo1'
+        let bracket = ''
+        const response = await fetch("http://localhost:3000/updateBracket", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({bracket, torneo }),
+        });
+        comprobarBracket()
     };
 </script>
 
-<header class="flex justify-center items-center my-6 py-4 border-y border-light-border dark:border-dark-border">
+<header
+    class="flex justify-center items-center my-6 py-4 border-y border-light-border dark:border-dark-border"
+>
     <div>
         <h1 class="text-center font-semibold text-2xl">Bracket de Torneo</h1>
         <p class="text-center">Haz click sobre el equipo ganador!</p>
@@ -55,6 +114,15 @@
         >
             Guardar Bracket
         </button>
+        <button
+            class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform rounded-lg bg-sportify hover:bg-sportifyhover"
+            on:click={handleReset}
+        >
+           Reset Bracket 
+        </button>
+        {#if guardado}
+           <p>Bracket guardado</p> 
+        {/if}
     </div>
 </header>
 
@@ -101,7 +169,7 @@
         margin: 0px 0px 24px 0px;
     }
     .winner {
-        color: #1A1A1A;
+        color: #1a1a1a;
         background-color: #fafafa;
         font-weight: bold;
         --webkit-box-shadow: 0px 0px 51px -8px rgb(70, 222, 0);

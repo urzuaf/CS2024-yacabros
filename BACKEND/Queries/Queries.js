@@ -21,7 +21,7 @@ const selectEquipo = "select * from equipo where staff = $1"
 
 const getEquipoTorneo = "select * from equipo_torneo join equipo on equipo_torneo.equipo=equipo.id"
 
-
+const insetBracket = "update torneo set bracketplaceholder = $1 where nombre = $2"
 
 export default ({
 
@@ -43,7 +43,8 @@ export default ({
     insertTorneo,
     selectEquipo,
     getAllTeams,
-    getEquipoTorneo
+    getEquipoTorneo,
+    insetBracket
 
 
 })
