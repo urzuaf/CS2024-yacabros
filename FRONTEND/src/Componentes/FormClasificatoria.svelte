@@ -58,29 +58,37 @@
 
 <div class="justify-center items-center mb-32 mt-12 w-full h-128">
     <h1 class="font-semibold text-4xl align-center flex justify-center">Clasificatoria</h1>
-    <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto mt-10 max-h-64 w-3/4 overflow-y-auto rounded-lg">
-        <thead class="bg-sportify">
-            <tr id="cabecera">
-                <th class="px-4 py-2 border-solid border-2">Id</th>
-                <th class="px-4 py-2 border-solid border-2">Nombre Equipo</th>
-                <th class="px-4 py-2 border-solid border-2">Staff</th>
-                <th class="px-4 py-2 border-solid border-2">Torneo</th>
-            </tr>
-        </thead>
-        <tbody id=data class="border px-4 py-2">
-            {#each rows as row}
-            <tr id="row" class="text-center text-black border-solid border-2">
-                <td class="border-solid border-2">{row.id}</td>
-                <td class="border-solid border-2">{row.nombre}</td>
-                <td class="border-solid border-2">{row.staff}</td>
-                <td class="border-solid border-2">{row.torneo}</td>
-            </tr>
-            {/each}
-        </tbody>
-        <div class="flex">
-            <button class="absolute ml-0 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
-                Agregar Datos
-            </button>
-        </div>
-    </table>
+    <div class="flex justify-center">
+        <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto mt-10 max-h-64 w-3/4 overflow-y-auto rounded-lg">
+            <thead class="bg-sportify">
+                <tr id="cabecera">
+                    <th class="px-4 py-2 border-solid border-2">Id</th>
+                    <th class="px-4 py-2 border-solid border-2">Nombre Equipo</th>
+                    <th class="px-4 py-2 border-solid border-2">Staff</th>
+                    <th class="px-4 py-2 border-solid border-2">Torneo</th>
+                </tr>
+            </thead>
+            <tbody id=data class="border px-4 py-2">
+                {#each rows as row}
+                <tr id="row" class="text-center text-black border-solid border-2">
+                    <td class="border-solid border-2">{row.id}</td>
+                    <td class="border-solid border-2">{row.nombre}</td>
+                    <td class="border-solid border-2">{row.staff}</td>
+                    <td class="border-solid border-2">{row.torneo}</td>
+                </tr>
+                {/each}
+            </tbody>
+        </table>
+    </div>
+    <div class="flex justify-center">
+        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
+            Agregar Datos
+        </button>
+        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200">
+            Editar Datos
+        </button>
+        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200">
+            Guardar Datos
+        </button>
+    </div>
 </div>
