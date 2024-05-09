@@ -88,7 +88,7 @@
     </button>
 
     {#if isOpen}
-        <div class="absolute right-0 top-16 p-2 rounded shadow bg-light-gradient dark:bg-dark-background2 text-light-text border dark:text-dark-text border-light-border dark:border-dark-border">
+        <div class="absolute right-0 top-16 p-2 rounded shadow bg-light-gradient dark:bg-dark-background2 text-light-text border dark:text-dark-text border-light-border dark:border-dark-border z-50">
             <!-- Nombre de usuario y correo -->
             <p class="px-4 font-bold">{userProfile.name}</p>
             <p class=" text-light-border dark:text-dark-border px-4">{userProfile.email}</p>

@@ -138,7 +138,8 @@
                         <!-- Resultado del equipo -->
                         {#if equipo.name != "--------" && parentIndex != bracketData.length - 1}
                             <input
-                                placeholder="0"
+                                placeholder= "0"
+                                value={equipo.result}
                                 type="number"
                                 on:change={(e) =>
                                     handleResult(parentIndex, index, e)}
