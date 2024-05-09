@@ -6,37 +6,47 @@ import UserProfile from "../Componentes/UserProfile.svelte"
 ---
 
 <Layout title="Bienvenido | Sportify">
-    <body>
-        
-        
-
-
-
-        <div class="flex h-screen">
-            <!-- Primer fondo blanco -->
-            <a href="http://localhost:4321/perfilequipo" class="w-1/3 bg-white flex flex-col items-center justify-start border-1.5 border-r border-black rounded-lg relative overflow-hidden group">
-                <img src="equipo.jpg" class="w-full h-full object-cover transition duration-300 transform hover:scale-105" alt="Imagen 1">
-                <div class="absolute top-0 left-0 w-full py-2 bg-black bg-opacity-50 text-white  opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">Perfil Equipo</div>
-            </a>
-            <!-- Segundo fondo blanco -->
-            <a href="http://localhost:4321/creacionTorneo" class="w-1/3 bg-white flex flex-col items-center justify-start border-1.5 border-r border-black rounded-lg relative overflow-hidden group">
-                <img src="torneo.jpg" class="w-full h-full object-cover transition duration-300 transform hover:scale-105" alt="Imagen 2">
-                <div class="absolute top-0 left-0 w-full py-2 bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">Crear Torneo</div>
-            </a>
-            <!-- Tercer fondo blanco -->
-            <a href="URL_3" class="w-1/3 bg-white flex flex-col items-center justify-start border-1.5 border-r border-black rounded-lg relative overflow-hidden group">
-                <img src="deportes.jpg" class="w-full h-full object-cover transition duration-300 transform hover:scale-105" alt="Imagen 3">
-                <div class="absolute top-0 left-0 w-full py-2 bg-black bg-opacity-50 text-white  opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">Noticias</div>
-            </a>
+    <div class="bg-gray-100 dark:bg-stone-950 border rounded-lg border-gray-300 dark:border-black p-6 w-full">
+        <div class="flex items-center mb-6 w-5/4 justify-center ">
+            <!-- Foto de perfil del equipo a la izquierda -->
+            <img src="ruta/a/foto_de_perfil"  class="w-20 h-20 rounded-full border-4 border-white shadow-md mr-4">
+            <!-- Nombre del Equipo centrado con marco -->
+            <h2 class="text-3xl font-bold text-center border-b-2  text-black dark:text-white pb-2 mb-4 flex-grow"><UserProfile client:only/></h2>
+            <!-- Deporte a la derecha -->
+            <button id="off" class="bg-green-500  text-white font-bold py-2 px-4 rounded">
+                <p>mensaje</p>
+            </button>
+            
         </div>
-
-
+        <!-- Descripción del torneo -->
+       
         
-    </body>
+            
+        <p class="text-lg text-center mb-4  text-black dark:text-white">Descripción del jugador</p>
+        <!-- Nombre del Staff en un rectángulo con foto pequeña a la izquierda -->
+        <div class="flex items-center justify-end mb-4  ">
+        
+            <div class=" text-black bg-white p-2 rounded-lg">
+                <p class="text-lg font-semibold">Rol</p>
+                <p class="text-base">jugador</p>
+            </div>
+            
+        </div>
+    </div>
+    <EnviarNotificacion client:only/>
 </Layout>
 <style>
-    /* Estilo adicional para el efecto de hover */
-    .hover\:scale-105:hover {
-        transform: scale(1.05);
+    /* Agregar estilos personalizados aquí */
+    .profile-image {
+        border-radius: 50%;
+        margin-right: 10px;
+        width: 100px;
+        height: 100px;
+    }
+    .role {
+        text-decoration: underline;
+    }
+    .full-height {
+        min-height: 100vh;
     }
 </style>

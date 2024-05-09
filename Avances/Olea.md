@@ -32,6 +32,12 @@ semana 3
 24/04/2024:  se trabajo 1:30 horas durante el dia en el front del perfil del equipo, hablando de sus etiquetas y estilos.
 
 
+semana 4 
+
+4/8 terminar tarea atrasada de perfil equipo [1.5 hrs]
+5/8 agregar informacion y decorar el index [2 hrs]
+5/8 comenzar con el perfil de usuario [1.5 hrs]
+
 
 
 
