@@ -3,7 +3,7 @@
 
     let showModal = false;
     let rows = [];
-    let editingEnabled = false;
+    let editingEnabled = false;//Variable para habilitar o deshabilitar la edición de los campos dentro de la columna
 
     onMount(async () => {
         try {
@@ -56,21 +56,21 @@
         });
     }
 
-    function enableEditing() {
+    function habilitarEdicion() {//Función para habilitar la edición de los campos dentro de la columna
         editingEnabled = true;
         document.querySelectorAll(".editable-cell input").forEach(input => {
             input.disabled = false;
         });
     }
 
-    function disableEditing() {
+    function deshabilitarEdicion() {//Función para deshabilitar la edición de los campos dentro de la columna
         editingEnabled = false;
         document.querySelectorAll(".editable-cell input").forEach(input => {
             input.disabled = true;
         });
     }
 
-    function deleteLastColumn() {
+    function borraColumna() {//Función para eliminar la última columna de la tabla
         const lastColumnIndex = document.querySelectorAll("#cabecera th").length - 1;
 
         document.querySelectorAll("#cabecera th")[lastColumnIndex].remove();
@@ -80,14 +80,14 @@
         });
     }
 
-    function toggleEditing() {
+    function opcionesEdicion() {//Función para habilitar o deshabilitar la edición de los campos dentro de la columna
         editingEnabled = !editingEnabled;
         if (editingEnabled) {
             document.getElementById('editButton').innerText = "Guardar Datos";
         } else {
             document.getElementById('editButton').innerText = "Editar Datos";
         }
-        editingEnabled ? enableEditing() : disableEditing();
+        editingEnabled ? habilitarEdicion() : deshabilitarEdicion();
     }
 </script>
 
@@ -126,13 +126,13 @@
     <div class="flex justify-center">
         <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
             Agregar Datos
-        </button>
+        </button> 
 
-        <button id="editButton" class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={toggleEditing}>
+        <button id="editButton" class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={opcionesEdicion}>
             Editar Datos
         </button>
         
-        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={deleteLastColumn}>
+        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={borraColumna}>
             Borrar ultima columna
         </button>
     </div>
