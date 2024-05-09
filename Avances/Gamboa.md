@@ -28,3 +28,8 @@
 
 [20:00 21:30] 23/04/2024: Integración de botones de iniciar sesión y registrarse en caso de que no estén logeados. Separación de los botones según doc diseño.
 
+4ta Semana
+
+[19:30 - 20:30] 07/05/2024: Creamos la lógica para generar brackets por encima con urzua sin implementar
+[19:45 - 21:45] 08/05/2024: Implementación en una carpeta utils el archivo de logicaBrackets.js por ahora :D
+
