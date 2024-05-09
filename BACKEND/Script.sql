@@ -139,3 +139,10 @@ insert into equipo_torneo (equipo, torneo) values(8,2);
 insert into equipo_torneo (equipo, torneo) values(4,2);
 insert into equipo_torneo (equipo, torneo) values(3,2);
 insert into equipo_torneo (equipo, torneo) values(5,2);
+
+-- Semana 4
+
+alter table torneo
+add bracketplaceholder text;
+
+update torneo set bracketplaceholder = ''

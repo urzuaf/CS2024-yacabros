@@ -102,6 +102,13 @@ const postTorneo = (req, res) =>{
         res.status(200).json(results.rows)
     })
 }
+const updateBracket = (req, res) =>{
+    const {bracket, torneo} = req.body
+    db.query({text: Queries.insetBracket, values: [bracket, torneo]}, (error, results)=>{
+        if (error) throw error
+        res.status(200).json(results.rows)
+    })
+}
 const getEquipo = (req, res) =>{
     const {staff} = req.body
     db.query({text: Queries.selectEquipo, values: [staff]}, (error, results)=>{
@@ -131,7 +138,8 @@ export default {
     getEquipo,
     getTeams,
     getTorneo,
-    getEquiposTorneos
+    getEquiposTorneos,
+    updateBracket
 }
 
 
