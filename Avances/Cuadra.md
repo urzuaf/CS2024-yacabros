@@ -71,3 +71,25 @@ https://github.com/urzuaf/CS2024_1_Ya_cabros/pull/88
 [0.5hr] Ayudas en tareas a otros miembros del equipo.
 
 [0.5hr] Creación de reporte de Administrador.
+
+SEMANA 4
+
+06/05/24
+
+[1.5hr] Cambio de estilos en página torneo y brackets.
+[0.5hr] Configuración de iconos para que los colores funcionen en modo claro y oscuro.
+https://github.com/urzuaf/CS2024_1_Ya_cabros/pull/109
+
+07/05/24
+
+[1hr] Estilado de varias de páginas.
+[1hr] Revisión y modificación de estilos de todas las páginas y componentes (a excepción de Foros).
+https://github.com/urzuaf/CS2024_1_Ya_cabros/pull/114
+
+08/05/24
+
+[1hr] Solución de errores de estilo en componente Profile, mejora en brackets para mostrar números guardados, cambios en estilos de página foros.
+https://github.com/urzuaf/CS2024_1_Ya_cabros/pull/122
+https://github.com/urzuaf/CS2024_1_Ya_cabros/pull/124
+
+[0.5hr] Creación de reporte de Administrador.
