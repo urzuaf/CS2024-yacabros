@@ -4,6 +4,8 @@
   let comentario = '';
   let etiquetaSeleccionada = '';
   let etiquetaPersonalizada = '';
+  let mensaje = '';
+  let mensajeVisible = false;
   const etiquetasPredefinidas = ['Futbol', 'Basquetbol', 'Voleibol', 'Rugby']; // Lista de etiquetas predefinidas de 4 valores
 
   async function onCreateForo(event) {
@@ -28,14 +30,21 @@
 
       if (response.ok) {
         const data = await response.json();
-        alert(`Foro creado exitosamente. ID del nuevo foro: ${data.id}`);
+        mensaje = `Foro creado exitosamente. ID del nuevo foro: ${data.id}`;
+        mensajeVisible = true;
       } else {
         const errorData = await response.json();
-        alert('Error al crear el foro: ' + errorData.error);
+        mensaje = 'Error al crear el foro: ' + errorData.error;
+        mensajeVisible = true;
       }
+
+      setTimeout(() => {
+        mensajeVisible = false;
+      }, 8000); // Ocultar el mensaje después de 8 segundos
     } catch (error) {
       console.error('Error al crear el foro:', error);
-      alert('Error al crear el foro. Por favor, inténtalo de nuevo más tarde.');
+      mensaje = 'Error al crear el foro. Por favor, inténtalo de nuevo más tarde.';
+      mensajeVisible = true;
     }
   }
 
@@ -77,4 +86,32 @@
 
     <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 3px; cursor: pointer; transition: background-color 0.3s;">Crear Foro</button>
   </form>
+
+  {#if mensajeVisible}
+    <div class="bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50 a">
+      <p>{mensaje}</p>
+    </div>
+  {/if}
 </div>
+
+<style>
+  .a {
+    right: -2000px;
+    animation: appear 6s;
+  }
+
+  @keyframes appear {
+    0% {
+      right: -500px;
+    }
+    10% {
+      right: 10px;
+    }
+    80% {
+      right: 10px;
+    }
+    100% {
+      right: -500px;
+    }
+  }
+</style>

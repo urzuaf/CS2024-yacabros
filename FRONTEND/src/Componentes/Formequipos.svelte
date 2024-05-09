@@ -1,34 +1,33 @@
 <script>
-    let nombre = "";
-    let email = "";
-    let password = "";
-    let correct = {tried: false, success: false}
+    import { Usuario } from "../stores/login_store";
+    let nombreEquipo = "";
+    let descripcion = "";
+    let deporte = "";
+    let enviado = false;
+    let userProfile = {
+        email: $Usuario
+    };
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/register", {
+            const response = await fetch("http://localhost:3000/registerTeam", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ nombre, email, password }),
+                body: JSON.stringify({ nombreEquipo, descripcion, deporte, email: userProfile.email}),
             });
 
             if (!response.ok){
                 throw new Error("Error al registrar usuario");
                 correct.tried= true;
             } 
-            else redirect()
+            enviado = true;
             const data = await response.json();
             console.log("Usuario registrado:", data);
         } catch (error) {
             //console.error("Error:", error);
         }
-    }
-
-    function redirect() {
-        //movi la redirección aqui
-        window.location.href = "/login";
     }
 </script>
 
@@ -37,42 +36,76 @@
         <input
             required
             type="text"
-            id="nombre"
+            id="nombreEquipo"
             placeholder="Nombre"
             class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
-            bind:value={nombre}
+            bind:value={nombreEquipo}
         />
     </div>
 
     <div class="min-w-72">
         <input
             required
-            type="email"
-            id="email"
-            placeholder="Correo electrónico"
+            type="text"
+            id="descripcion"
+            placeholder="Descripción"
             class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
-            bind:value={email}
+            bind:value={descripcion}
         />
     </div>
 
     <div class="min-w-72">
         <input
             required
-            type="password"
-            placeholder="Contraseña"
+            type="text"
+            placeholder="Deporte"
             class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
-            bind:value={password}
+            bind:value={deporte}
         />
     </div>
 
     <button
-        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
+        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105"
         type="submit"
     >
-        Registrarse
+        Registrar Equipo
     </button>
-    {#if correct.tried && !correct.success}
-    <div >El registro ha fallado intenta otra vez</div>
-
-    {/if}
 </form>
+
+{#if enviado}
+    <div class="bg-sportify absolute bottom-8 p-2 px-4 z-50 a">
+        <p><b>Equipo registrado con éxito</b></p>
+    </div>
+{/if}
+
+<style>
+    .a{
+        right: -2000px;
+        top: 100px;
+        bottom: 500px;
+        animation: appear 6s ;
+    }
+    @keyframes appear{
+        0%{
+            top: 100px;
+            bottom: 500px;
+            right: -500px;
+        }
+        10%{
+            top: 100px;
+            bottom: 500px;
+            right: 10px;
+        }
+        80%{
+            top: 100px;
+            bottom: 500px;
+            right: 10px;
+        }
+        100%{
+            top: 100px;
+            bottom: 500px;
+            right: -500px;
+        }
+    }
+    
+</style>

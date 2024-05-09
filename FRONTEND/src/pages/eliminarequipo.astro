@@ -1,0 +1,30 @@
+---
+
+import FormEliminarequipo from "../Componentes/FormEliminarequipo.svelte";
+import Layout from "../layouts/Visualizacion.astro"
+
+---
+<Layout title="Elimina tu equipo | Sportify">
+    <header class="my-6" style="display: flex; justify-content: center; margin-bottom: 10vh; margin-top: 10vh;">
+        <h1 class="font-semibold text-4xl">¿Estas seguro de eliminar tu equipo?</h1>
+    </header>
+    <FormEliminarequipo client:only/>
+</Layout>
+
+<script>
+    export default {
+        data() {
+            return {
+                nombre: '',
+                email: '',
+                password: ''
+            };
+        },
+        methods: {
+            submitForm() {
+                // Aquí puedes enviar los datos del formulario al servidor o realizar otras acciones según tus necesidades
+                console.log('Datos enviados:', this.nombre, this.email, this.password);
+            }
+        }
+    };
+</script>

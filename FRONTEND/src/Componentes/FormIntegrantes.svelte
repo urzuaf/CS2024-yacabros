@@ -41,15 +41,29 @@
       const data = await response.json();
       console.log("Respuesta del servidor:", data);
 
-      if (data.success) {
-        alert(data.message); // Muestra un mensaje de éxito
-      } else {
-        alert("Error: " + data.error); // Muestra un mensaje de error
-      }
+      // Mostrar el mensaje de feedback
+      const feedbackElement = document.getElementById("feedbackMessage");
+      feedbackElement.textContent = data.message;
+      feedbackElement.classList.remove("hidden");
+      feedbackElement.classList.add("show");
+
+      // Ocultar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        feedbackElement.classList.remove("show");
+        feedbackElement.classList.add("hidden");
+      }, 3000);
 
     } catch (error) {
       console.error("Error:", error);
-      alert("Error: " + error.message); // Muestra un mensaje de error en caso de fallo en la comunicación con el servidor
+      const feedbackElement = document.getElementById("feedbackMessage");
+      feedbackElement.textContent = "Error: " + error.message;
+      feedbackElement.classList.remove("hidden");
+      feedbackElement.classList.add("show");
+      // Ocultar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        feedbackElement.classList.remove("show");
+        feedbackElement.classList.add("hidden");
+      }, 3000);
     }
   }
 </script>
@@ -64,7 +78,7 @@
           type="text"
           id="nombre"
           placeholder="Nombre"
-          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={nombre}
         />
       </div>
@@ -74,14 +88,14 @@
           type="text"
           id="equipo"
           placeholder="Nombre del Equipo"
-          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={equipo}
         />
       </div>
       {/if}
 
       <!-- Menú desplegable para seleccionar opción -->
-      <select bind:value={opcion} class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
+      <select bind:value={opcion} class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40">
         <option value="agregar">Agregar integrante</option>
         <option value="cambiar">Cambiar nombre de integrante</option>
         <option value="borrar">Borrar integrante</option>
@@ -94,7 +108,7 @@
           type="text"
           id="newNombre"
           placeholder="Nuevo Nombre"
-          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={newNombre}
         />
       </div>
@@ -103,7 +117,7 @@
           type="text"
           id="idIntegrante"
           placeholder="ID del Integrante"
-          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={idIntegrante}
         />
       </div>
@@ -116,7 +130,7 @@
           type="text"
           id="idIntegrante"
           placeholder="ID del Integrante a Borrar"
-          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
+          class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
           bind:value={idIntegrante2}
         />
       </div>
@@ -124,11 +138,38 @@
 
       <!-- Botón de acción -->
       <button
-        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105"
+        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
         type="submit"
       >
         {opcion === "agregar" ? "Agregar integrante" : opcion === "cambiar" ? "Cambiar nombre" : "Borrar integrante"}
       </button>
     </form>
+
+    <!-- Mensaje de feedback -->
+    <div id="feedbackMessage" class="hidden bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50">
+      <!-- Aquí se mostrará el mensaje de feedback -->
+    </div>
   </div>
 </div>
+
+<style>
+  #feedbackMessage {
+    right: -2000px;
+    animation: appear 6s;
+  }
+
+  @keyframes appear {
+    0% {
+      right: -500px;
+    }
+    10% {
+      right: 10px;
+    }
+    80% {
+      right: 10px;
+    }
+    100% {
+      right: -500px;
+    }
+  }
+</style>

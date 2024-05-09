@@ -130,3 +130,19 @@ insert into equipo(nombre,descripcion,deporte,staff) values ('futbolito', 'somos
 insert into equipo(nombre,descripcion,deporte,staff) values ('Los winner', 'somos el equipo 6', 'ajedrez', 'staff6@mail.com');
 
 
+------NUEVOS DATOS EQUIPO_TORNEOS 4TA SEMANA
+insert into equipo_torneo (equipo, torneo) values(5,1);
+insert into equipo_torneo (equipo, torneo) values(3,1);
+insert into equipo_torneo (equipo, torneo) values(4,1);
+
+insert into equipo_torneo (equipo, torneo) values(8,2);
+insert into equipo_torneo (equipo, torneo) values(4,2);
+insert into equipo_torneo (equipo, torneo) values(3,2);
+insert into equipo_torneo (equipo, torneo) values(5,2);
+
+-- Semana 4
+
+alter table torneo
+add bracketplaceholder text;
+
+update torneo set bracketplaceholder = ''

@@ -1,50 +1,52 @@
 <script>
     import { Usuario } from "../stores/login_store";
-    let nombre = '';
-    let descripcion = '';
-    let password = '';
+    let nombreEquipo = "";
+    let descripcion = "";
+    let deporte = "";
     let enviado = false;
-
+    let userProfile = {
+        emisor: $Usuario
+    };
     async function handleSubmit(event) {
-        let emisor = $Usuario;
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/editData", {
-                method: 'POST',
+            const response = await fetch("http://localhost:3000/editDataTeam", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ nombre,descripcion,emisor,password})
+                body: JSON.stringify({ nombreEquipo, descripcion, deporte, emisor: userProfile.emisor}),
             });
 
-            if (!response.ok)
-                throw new Error("Error al editar datos");
-
+            if (!response.ok){
+                throw new Error("Error al editar equipo");
+                correct.tried= true;
+            } 
             enviado = true;
-            resultadoEdicion = 'Datos editados correctamente';
             const data = await response.json();
-            console.log("Usuario editado:", data);
+            console.log("Equipo editado:", data);
         } catch (error) {
             //console.error("Error:", error);
         }
     }
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-5">
+<form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-4">
     <div class="min-w-72">
         <input
             type="text"
-            id="nombre"
-            placeholder="Nombre"
+            id="nombreEquipo"
+            placeholder="Nuevo Nombre"
             class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
-            bind:value={nombre}
+            bind:value={nombreEquipo}
         />
     </div>
 
     <div class="min-w-72">
         <input
-            type="descripcion"
-            placeholder="Descripción"
+            type="text"
+            id="descripcion"
+            placeholder="Nueva Descripción"
             class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
             bind:value={descripcion}
         />
@@ -52,24 +54,24 @@
 
     <div class="min-w-72">
         <input
-            type="password"
-            placeholder="Contraseña"
+            type="text"
+            placeholder="Nuevo Deporte"
             class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
-            bind:value={password}
+            bind:value={deporte}
         />
     </div>
 
     <button
-        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
+        class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:scale-105"
         type="submit"
     >
-        Editar Datos
+        Editar Equipo
     </button>
 </form>
 
 {#if enviado}
     <div class="bg-sportify absolute bottom-8 p-2 px-4 z-50 a">
-        <p><b>Datos editados con éxito</b></p>
+        <p><b>Equipo editado con éxito</b></p>
     </div>
 {/if}
 
