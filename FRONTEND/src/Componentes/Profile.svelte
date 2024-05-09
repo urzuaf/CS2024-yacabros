@@ -1,3 +1,4 @@
+
 <script>
     import Notificacion from "./Notificacion.svelte";
     import { Usuario } from "../stores/login_store";
@@ -152,8 +153,10 @@
     {/if}
 {/if}
 
+
 <style>
     .trans {
         transition: 0.3s ease;
     }
 </style>
+
