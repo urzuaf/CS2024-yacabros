@@ -1,4 +1,17 @@
 <script>
+    function deleteLastColumn() {
+        // Obtener el índice de la última columna
+        const lastColumnIndex = document.querySelectorAll("#cabecera th").length - 1;
+
+        // Eliminar la columna del encabezado
+        document.querySelectorAll("#cabecera th")[lastColumnIndex].remove();
+
+        // Eliminar la columna de cada fila de la tabla
+        document.querySelectorAll("#data tr").forEach(row => {
+            row.children[lastColumnIndex].remove();
+        });
+    }
+
     import { onMount } from 'svelte';
 
     var showModal = false;
@@ -116,6 +129,9 @@
         </button>
         <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={disableEditing}>
             Guardar Datos
+        </button>
+        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={deleteLastColumn}>
+            Borrar ultima columna
         </button>
     </div>
 </div>
