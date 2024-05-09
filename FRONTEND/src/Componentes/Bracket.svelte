@@ -6,7 +6,9 @@
         bracketData2,
         bracketData16,
     } from "../stores/bracketsmockdata.js";
+    import{generarBracket} from "../utils/logicaBrackets.js";
 
+    let cualquierName = ['DarkWolf', 'Probasgod','FisikCrack','Tulachis','Gordekes','huachipato','realmadridcampeon','nanditeams'];
     let bracketData = [];
     let guardado = false
     // Comprobamos si el torneo ya tiene un bracket, si lo tiene lo cargamos, si no lo tiene cargamos uno vacio
@@ -29,7 +31,8 @@
         const res = await response.json()
         console.log(res)
         if(res[0].bracketplaceholder == ''){
-            bracketData = [...bracketData8]
+            bracketData = [...generarBracket(cualquierName)]
+           /*  bracketData = [...bracketData8] */
         }else{
             let aux = JSON.parse(res[0].bracketplaceholder)
             bracketData = [...aux]
