@@ -55,7 +55,7 @@ descripcion text,
 deporte text,
 staff text references usuario(email) on update cascade on delete cascade
 );
-insert into equipo(nombre,descripcion,deporte,staff) values ('Equipo1', 'somos el equipo 1', 'ajedrez', 'staff1@mail.com')
+insert into equipo(nombre,descripcion,deporte,staff) values ('Equipo1', 'somos el equipo 1', 'ajedrez', 'staff1@mail.com');
 
 create table integrante(
 	id serial primary key,
