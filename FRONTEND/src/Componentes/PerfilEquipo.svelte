@@ -41,7 +41,7 @@
             <p class="text-lg text-rigth flex-shrink-0 ml-12 text-light-text dark:text-white">{equipo.deporte}</p>
         </div>
         <!-- Descripción del torneo -->
-        <p class="text-lg text-center mb-6 text-light-text dark:text-white">{equipo.descripcio}</p>
+        <p class="text-lg text-center mb-6 text-light-text dark:text-white">{equipo.descripcion}</p>
         <!-- Nombre del Staff en un rectángulo con foto pequeña a la izquierda -->
         <div class="flex items-center justify-end mb-8">
             <div class="flex-shrink-0 ml-4">

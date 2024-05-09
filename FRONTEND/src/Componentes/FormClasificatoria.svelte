@@ -132,8 +132,8 @@
             Editar Datos
         </button>
         
-        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={borraColumna}>
-            Borrar ultima columna
+        <button class="px-3 ml-4 mt-4 bg-sportify h-10 w-auto text-white rounded-lg hover:text-gray-200" on:click={borraColumna}>
+            Borrar Última Columna
         </button>
     </div>
 </div>

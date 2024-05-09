@@ -100,7 +100,7 @@
             <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Crear Torneo
             </a>
-            <a href="/perfilEquipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+            <a href="/perfilequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Ver Perfil de Equipo
             </a>
             <a href="/user" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
