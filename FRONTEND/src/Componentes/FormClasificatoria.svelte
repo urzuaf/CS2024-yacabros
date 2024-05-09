@@ -1,22 +1,9 @@
 <script>
-    function deleteLastColumn() {
-        // Obtener el índice de la última columna
-        const lastColumnIndex = document.querySelectorAll("#cabecera th").length - 1;
-
-        // Eliminar la columna del encabezado
-        document.querySelectorAll("#cabecera th")[lastColumnIndex].remove();
-
-        // Eliminar la columna de cada fila de la tabla
-        document.querySelectorAll("#data tr").forEach(row => {
-            row.children[lastColumnIndex].remove();
-        });
-    }
-
     import { onMount } from 'svelte';
 
-    var showModal = false;
+    let showModal = false;
     let rows = [];
-    let editingEnabled = false; // Variable para rastrear si la edición está habilitada
+    let editingEnabled = false;
 
     onMount(async () => {
         try {
@@ -32,13 +19,12 @@
     });
 
     function agregarCol() {
-        // Agregar celda en el encabezado
         var col = document.getElementById("cabecera");
         const th = document.createElement("th");
         th.style.border = "1px solid";
         th.style.textAlign = "center";
         th.style.background = "sportify";
-        th.innerHTML = ""; // var que se debe pasar
+        th.innerHTML = ""; 
         const input = document.createElement("input");
         input.type = "text";
         input.style.width = "100%";
@@ -50,11 +36,10 @@
         th.appendChild(input);
         col.appendChild(th);
 
-        // Agregar celda en cada fila de la tabla
         var rows = document.querySelectorAll("#data tr");
         rows.forEach(row => {
             const td = document.createElement("td");
-            td.classList.add("editable-cell"); // Agregar clase para identificar celdas editables
+            td.classList.add("editable-cell");
             td.style.border = "1px solid white";
             td.style.textAlign = "center";
             const input = document.createElement("input");
@@ -65,26 +50,44 @@
             input.style.color = "black";
             input.style.border = "none";
             input.style.background = "none";
-            input.disabled = !editingEnabled; // Deshabilitar los campos de entrada si la edición no está habilitada
+            input.disabled = !editingEnabled; 
             td.appendChild(input);
             row.appendChild(td);
         });
     }
 
     function enableEditing() {
-        editingEnabled = true; // Habilitar la edición
-        // Habilitar la edición para todas las celdas editables
+        editingEnabled = true;
         document.querySelectorAll(".editable-cell input").forEach(input => {
             input.disabled = false;
         });
     }
 
     function disableEditing() {
-        editingEnabled = false; // Deshabilitar la edición
-        // Deshabilitar la edición para todas las celdas editables
+        editingEnabled = false;
         document.querySelectorAll(".editable-cell input").forEach(input => {
             input.disabled = true;
         });
+    }
+
+    function deleteLastColumn() {
+        const lastColumnIndex = document.querySelectorAll("#cabecera th").length - 1;
+
+        document.querySelectorAll("#cabecera th")[lastColumnIndex].remove();
+
+        document.querySelectorAll("#data tr").forEach(row => {
+            row.children[lastColumnIndex].remove();
+        });
+    }
+
+    function toggleEditing() {
+        editingEnabled = !editingEnabled;
+        if (editingEnabled) {
+            document.getElementById('editButton').innerText = "Guardar Datos";
+        } else {
+            document.getElementById('editButton').innerText = "Editar Datos";
+        }
+        editingEnabled ? enableEditing() : disableEditing();
     }
 </script>
 
@@ -124,12 +127,11 @@
         <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
             Agregar Datos
         </button>
-        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={enableEditing}>
+
+        <button id="editButton" class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={toggleEditing}>
             Editar Datos
         </button>
-        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={disableEditing}>
-            Guardar Datos
-        </button>
+        
         <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={deleteLastColumn}>
             Borrar ultima columna
         </button>
