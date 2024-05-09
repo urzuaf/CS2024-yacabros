@@ -30,6 +30,6 @@
 
 4ta Semana
 
-[19:30 - 20:30] 07/05/2024: Creamos la lógica para generar brackets por encima con urzua sin implementar
-[19:45 - 21:45] 08/05/2024: Implementación en una carpeta utils el archivo de logicaBrackets.js por ahora :D
+[19:30 - 20:30] 07/05/2024: [1h] Creamos la lógica para generar brackets por encima con urzua sin implementar
+[19:15 - 21:45] 08/05/2024: [2.5h] Base de datos. Implementación en una carpeta utils el archivo de logicaBrackets.js por ahora :D
 
