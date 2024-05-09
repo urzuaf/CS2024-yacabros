@@ -3,6 +3,7 @@
 
     var showModal = false;
     let rows = [];
+    let editingEnabled = false; // Variable para rastrear si la edición está habilitada
 
     onMount(async () => {
         try {
@@ -40,6 +41,7 @@
         var rows = document.querySelectorAll("#data tr");
         rows.forEach(row => {
             const td = document.createElement("td");
+            td.classList.add("editable-cell"); // Agregar clase para identificar celdas editables
             td.style.border = "1px solid white";
             td.style.textAlign = "center";
             const input = document.createElement("input");
@@ -50,8 +52,25 @@
             input.style.color = "black";
             input.style.border = "none";
             input.style.background = "none";
+            input.disabled = !editingEnabled; // Deshabilitar los campos de entrada si la edición no está habilitada
             td.appendChild(input);
             row.appendChild(td);
+        });
+    }
+
+    function enableEditing() {
+        editingEnabled = true; // Habilitar la edición
+        // Habilitar la edición para todas las celdas editables
+        document.querySelectorAll(".editable-cell input").forEach(input => {
+            input.disabled = false;
+        });
+    }
+
+    function disableEditing() {
+        editingEnabled = false; // Deshabilitar la edición
+        // Deshabilitar la edición para todas las celdas editables
+        document.querySelectorAll(".editable-cell input").forEach(input => {
+            input.disabled = true;
         });
     }
 </script>
@@ -71,10 +90,18 @@
             <tbody id=data class="border px-4 py-2">
                 {#each rows as row}
                 <tr id="row" class="text-center text-black border-solid border-2">
-                    <td class="border-solid border-2">{row.id}</td>
-                    <td class="border-solid border-2">{row.nombre}</td>
-                    <td class="border-solid border-2">{row.staff}</td>
-                    <td class="border-solid border-2">{row.torneo}</td>
+                    <td class="border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: black; border: none; background: none;" bind:value={row.id} disabled={!editingEnabled}>
+                    </td>
+                    <td class="border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: black; border: none; background: none;" bind:value={row.nombre} disabled={!editingEnabled}>
+                    </td>
+                    <td class="border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: black; border: none; background: none;" bind:value={row.staff} disabled={!editingEnabled}>
+                    </td>
+                    <td class="border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: black; border: none; background: none;" bind:value={row.torneo} disabled={!editingEnabled}>
+                    </td>
                 </tr>
                 {/each}
             </tbody>
@@ -84,10 +111,10 @@
         <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
             Agregar Datos
         </button>
-        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200">
+        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={enableEditing}>
             Editar Datos
         </button>
-        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200">
+        <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={disableEditing}>
             Guardar Datos
         </button>
     </div>
