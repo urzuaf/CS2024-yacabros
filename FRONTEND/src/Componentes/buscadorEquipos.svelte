@@ -10,7 +10,7 @@
 
     onMount(async () =>{
         try{
-            const resp = await fetch("http://localhost:3000/equipos");
+            const resp = await fetch("http://localhost:3000/equiposs");
             if (!resp.ok)
                 throw new Error("Error al obtener los datos del servidor");
 

@@ -19,12 +19,6 @@ import FormClasificatoria from "../Componentes/FormClasificatoria.svelte";
         class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
         onclick="cambiarDatos()">Cambiar Datos</button
       >
-      <!-- se debe enviar el nombre del equipo del torneo, el nombre del equipo deberia ser del equipo seleccionado, el del torneo deberia ser el seleccionado -->
-      <button
-        type="button"
-        class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover disabled:cursor-not-allowed disabled:bg-gray-300"
-        onclick="verCondiciones()">Condiciones</button
-      >
     </div>
     <BuscadorEquipos client:only />
   </header>
