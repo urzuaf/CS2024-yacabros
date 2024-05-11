@@ -56,4 +56,4 @@ crear datos 5 minutos
 
 
 11/05
-17.22 corrección error componente fin 18.13
+17.22 corrección error componente fin 18.21

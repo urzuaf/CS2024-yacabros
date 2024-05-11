@@ -100,10 +100,18 @@
         <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto max-h-64 overflow-y-auto rounded-lg">
             <thead class="bg-sportify">
                 <tr id="cabecera">
-                    <th class="px-4 py-2 border-solid border-2">Id</th>
-                    <th class="px-4 py-2 border-solid border-2">Nombre Equipo</th>
-                    <th class="px-4 py-2 border-solid border-2">Staff</th>
-                    <th class="px-4 py-2 border-solid border-2">Torneo</th>
+                    <th class="px-4 py-2 border-solid border-2 ">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;" value={"Id"} disabled={!editingEnabled}>
+                    </th>
+                    <th class="px-4 py-2 border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;" value={"Nombre Equipo"} disabled={!editingEnabled}>
+                    </th>
+                    <th class="px-4 py-2 border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;" value={"Staff"} disabled={!editingEnabled}>
+                    </th>
+                    <th class="px-4 py-2 border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;" value={"Torneo"} disabled={!editingEnabled}>
+                    </th>
                 </tr>
             </thead>
             <tbody id=data class="border px-4 py-2">
