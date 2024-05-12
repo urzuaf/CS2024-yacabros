@@ -21,6 +21,7 @@
     function agregarCol() {
         var col = document.getElementById("cabecera");
         const th = document.createElement("th");
+        th.classList.add("editable-cell");
         th.style.border = "1px solid";
         th.style.textAlign = "center";
         th.style.background = "sportify";
@@ -33,6 +34,7 @@
         input.style.color = "white";
         input.style.border = "none";
         input.style.background = "none";
+        input.disabled = !editingEnabled; 
         th.appendChild(input);
         col.appendChild(th);
 
@@ -94,13 +96,22 @@
 <div class="justify-center items-center mb-32 mt-12 w-full h-128">
     <h1 class="font-semibold text-4xl align-center flex justify-center">Clasificatoria</h1>
     <div class="flex justify-center">
-        <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto mt-10 max-h-64 w-3/4 overflow-y-auto rounded-lg">
+        <div class="overflow-y-auto max-h-80 mt-10 custom-scrollbar">
+        <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto max-h-64 overflow-y-auto rounded-lg">
             <thead class="bg-sportify">
                 <tr id="cabecera">
-                    <th class="px-4 py-2 border-solid border-2">Id</th>
-                    <th class="px-4 py-2 border-solid border-2">Nombre Equipo</th>
-                    <th class="px-4 py-2 border-solid border-2">Staff</th>
-                    <th class="px-4 py-2 border-solid border-2">Torneo</th>
+                    <th class="px-4 py-2 border-solid border-2 ">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;" value={"Id"} disabled={!editingEnabled}>
+                    </th>
+                    <th class="px-4 py-2 border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;" value={"Nombre Equipo"} disabled={!editingEnabled}>
+                    </th>
+                    <th class="px-4 py-2 border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;" value={"Staff"} disabled={!editingEnabled}>
+                    </th>
+                    <th class="px-4 py-2 border-solid border-2">
+                        <input type="text" style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;" value={"Torneo"} disabled={!editingEnabled}>
+                    </th>
                 </tr>
             </thead>
             <tbody id=data class="border px-4 py-2">
@@ -122,6 +133,7 @@
                 {/each}
             </tbody>
         </table>
+        </div>
     </div>
     <div class="flex justify-center">
         <button class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
@@ -137,3 +149,28 @@
         </button>
     </div>
 </div>
+
+
+<style>
+    /* Estilo del scrollbar */
+    /* Ancho del scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 10px;
+    }
+  
+    /* Fondo del scrollbar */
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+  
+    /* Thumb o barra de desplazamiento */
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 5px;
+    }
+  
+    /* Thumb en estado hover */
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>

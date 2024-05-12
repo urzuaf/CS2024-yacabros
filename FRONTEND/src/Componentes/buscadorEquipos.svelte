@@ -10,7 +10,7 @@
 
     onMount(async () =>{
         try{
-            const resp = await fetch("http://localhost:3000/equiposs");
+            const resp = await fetch("http://localhost:3000/equipos");
             if (!resp.ok)
                 throw new Error("Error al obtener los datos del servidor");
 
@@ -131,17 +131,41 @@
 </div>
 
 {#if mostrar && campo.length!=0}
-<div class="absolute right-32 top-36 max-h-48 w-56 overflow-y-auto border rounded-md border-light-border dark:border-dark-border">
+<div class="absolute right-32 top-36 max-h-32 w-56 overflow-y-auto border rounded-md border-light-border dark:border-dark-border custom-scrollbar">
     <ul class="w-full bg-light-background dark:bg-dark-background2">
         {#each rows as row}
-            <li class="w-full hover:bg-white dark:hover:bg-dark-input py-1">
-                <label class="w-full">
-                    <input class="form-checkbox h-0 w-full flex" type="checkbox" bind:checked={row.selected} on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}} >
-                    <span class="w-0">{"["+row.id+"] "+row.nombre}</span>
-                </label>
+            <li class="w-full hover:bg-sportify dark:hover:bg-dark-input">
+                <button  class="form-checkbox w-full flex" on:click={() => {campo=row.nombre;mostrar=false;rowSelect=row;console.log("SE HA SELECCIONADO ROW: ",row)}}>
+                    <span class="w-0 ml-2">{row.nombre}</span>
+                </button>    
             </li>
         {/each}
+        
     </ul>
 </div>
 {/if}
+
+<style>
+    /* Estilo del scrollbar */
+    /* Ancho del scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 10px;
+    }
+  
+    /* Fondo del scrollbar */
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+  
+    /* Thumb o barra de desplazamiento */
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 5px;
+    }
+  
+    /* Thumb en estado hover */
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
 
