@@ -23,3 +23,15 @@
 [1:20-2:00] Avance en la tarea T051, funcion que reconoce y agrega etiquetas creadas correctamente solo falta corregir la forma de almacenar esa variable para usarla mas adelante lo que permite que se pueda filtrar
 
 [9:00-9:20] Ver el tema respecto la base de datos de foro para guardar la variables de etiqueta y poder usarlas mas adelante
+
+//semana 4
+
+[20:30-22:00] Cambio del feedback en FormularioForo y en agregar/editar/borrar integrante
+proximos avances...
+
+[10:00-10:30] Avance en la modicacion de la tabla de clasificatoria y creacion de los botones
+
+[19:00-20:30] agregar la opcion de editar datos y guardar(ese aun no funciona, pero si impide que se sigan editando)
+tambien a su vez se agrego la forma de editar los datos escribiendo sobre la nueva columna generada
+
+[21:00-22:10] Se agrego otra opcion para borrar la ultima columna ingresada(la idea es despues cambiarla para poder hacerla mas dinamica) y se arreglaron problemas que se presentaron

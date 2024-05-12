@@ -32,5 +32,5 @@
 </script>
 
 {#if userProfile.email != ''}
-    <h1 class="mt-2 ml-3 text-2xl font-bold">Bienvenido {userProfile.name}</h1>
+    <h1 class="mt-2 ml-3 text-2xl font-bold" style="margin-left: 5vw; text-size:15px; margin-top:3vh"><b>Bienvenido {userProfile.name}</b></h1>
 {/if}

@@ -3,29 +3,29 @@ import cors from "cors";
 import db from "./DB/dbconnect.js";
 import router from "./Rutas/Rutas.js";
 
-const server = express()
-const puerto = 3000
+const server = express();
+const puerto = 3000;
 
-server.use(express.json())
+server.use(express.json());
 server.use(cors());
 
 //Separamos las rutas a otro archivo para evitar que el archivo server.js crezca mucho
-server.use(router)
+server.use(router);
 
-server.listen(puerto, ()=>{
-    console.log("Servidor activo en puerto: ", puerto)
-})
+server.listen(puerto, () => {
+  console.log("Servidor activo en puerto: ", puerto);
+});
 
-server.get('/username', async (req,res)=>{
-    db.query("select * from usuario",(error,result)=>{
-        if (error) {
-            console.error('Error al ejecutar la consulta SQL:', error);
-            res.status(500).json({ error: 'Error al obtener los datos de usuario' });
-            return;
-        }
-        res.status(200).json(result.rows);
-    })
-})
+server.post('/username', async (req,res)=>{
+  db.query("select * from usuario",(error,result)=>{
+    if (error) {
+      console.error('Error al ejecutar la consulta SQL:', error);
+      res.status(500).json({ error: 'Error al obtener los datos de usuario' });
+      return;
+    }
+    res.status(200).json(result.rows);
+  })
+});
 
 //peticion para torneos
 server.get('/getTorneos', async(req,res)=>{
@@ -35,7 +35,7 @@ server.get('/getTorneos', async(req,res)=>{
     res.status(200).json(result.rows);
     
   })
-})
+});
 
 server.post('/getUsername', async (req, res) => {
   const {email} = req.body;
@@ -43,6 +43,22 @@ server.post('/getUsername', async (req, res) => {
   if(error) throw error;
   res.status(200).json(result.rows);
   })
+});
+
+server.post('/getRol', async (req, res) => {
+  const {email} = req.body;
+  db.query("select rol from usuario where email = $1",[email],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+})
+});
+
+server.post('/getTeam', async (req, res) => {
+  const {email} = req.body;
+  db.query("select id from equipo where staff = $1",[email],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+})
 });
 
 server.post('/register', async (req, res) => {
@@ -82,6 +98,15 @@ server.post('/registerTeam', async (req, res) => {
       console.error('Error al registrar el usuario:', error);
       res.status(500).json({ error: 'Error al registrar el usuario' });
   }
+});
+
+server.post('/deleteTeam', async (req, res) => {
+  const {emisor} = req.body;
+  console.log(req.body);
+  db.query("DELETE FROM equipo WHERE staff = $1",[emisor],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+})
 });
 
 server.post('/editData', async (req, res) => {
@@ -132,7 +157,57 @@ server.post('/editData', async (req, res) => {
         console.error('Error al registrar el usuario:', error);
         res.status(500).json({ error: 'Error al registrar el usuario' });
     }
-  });
+});
+
+server.post('/editDataTeam', async (req, res) => {
+  const { nombreEquipo, descripcion,deporte,emisor} = req.body;
+  console.log(req.body)
+  
+  //se inicia la query
+  let queryText = 'UPDATE equipo SET ';
+  let values = [];
+  let contador = 0;
+
+  // se construye la query
+  if (nombreEquipo !== '') {
+    queryText += 'nombre = $'+(contador+1)+', ';
+    values.push(nombreEquipo);
+    contador++;
+  }
+  if (descripcion !== '') {
+    queryText += 'descripcion = $'+(contador+1)+', ';
+    values.push(descripcion);
+    contador++;
+  }
+  if (deporte !== '') {
+    queryText += 'deporte = $'+(contador+1)+', ';
+    values.push(deporte);
+    contador++;
+  }
+
+  // se añade where
+  queryText += 'WHERE staff = $'+(contador+1);
+  values.push(emisor);
+
+  // se encarga de eliminar la coma anterior al where para evitar errores de sintaxis
+  let ultimacoma = queryText.lastIndexOf(',');
+  let newqueryText = queryText.substring(0, ultimacoma) + queryText.substring(ultimacoma + 1);
+  console.log(newqueryText);
+
+  // prepara la query
+  const query = {
+  text: newqueryText,
+  values: values,
+  };
+
+  try {
+  const result = await db.query(query);
+  res.status(201).json(result.rows[0]);
+  }catch (error) {
+        console.error('Error al registrar el usuario:', error);
+        res.status(500).json({ error: 'Error al registrar el usuario' });
+    }
+});
 
   // Ruta para el inicio de sesión
 server.post('/login', async (req, res) => {

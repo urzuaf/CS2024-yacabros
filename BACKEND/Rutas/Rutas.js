@@ -17,6 +17,7 @@ router.post('/insertTorneoEquipo', Controller.insertarEquipoTorneo)
 router.post('/crearTorneo', Controller.postTorneo)
 router.post('/equipos', Controller.getEquipo)
 router.post('/getTorneo', Controller.getTorneo)
+router.post('/updateBracket', Controller.updateBracket)
 
 
 export default router

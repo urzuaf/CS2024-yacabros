@@ -4,6 +4,8 @@
   let comentario = '';
   let etiquetaSeleccionada = '';
   let etiquetaPersonalizada = '';
+  let mensaje = '';
+  let mensajeVisible = false;
   const etiquetasPredefinidas = ['Futbol', 'Basquetbol', 'Voleibol', 'Rugby']; // Lista de etiquetas predefinidas de 4 valores
 
   async function onCreateForo(event) {
@@ -28,14 +30,21 @@
 
       if (response.ok) {
         const data = await response.json();
-        alert(`Foro creado exitosamente. ID del nuevo foro: ${data.id}`);
+        mensaje = `Foro creado exitosamente. ID del nuevo foro: ${data.id}`;
+        mensajeVisible = true;
       } else {
         const errorData = await response.json();
-        alert('Error al crear el foro: ' + errorData.error);
+        mensaje = 'Error al crear el foro: ' + errorData.error;
+        mensajeVisible = true;
       }
+
+      setTimeout(() => {
+        mensajeVisible = false;
+      }, 8000); // Ocultar el mensaje después de 8 segundos
     } catch (error) {
       console.error('Error al crear el foro:', error);
-      alert('Error al crear el foro. Por favor, inténtalo de nuevo más tarde.');
+      mensaje = 'Error al crear el foro. Por favor, inténtalo de nuevo más tarde.';
+      mensajeVisible = true;
     }
   }
 
@@ -47,24 +56,22 @@
   });
 </script>
 
-<div class="crear-foro" style="
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-">
-  <h2 style="text-align: center; margin-bottom: 20px; color: #007bff;">Crear Nuevo Foro</h2>
+<div class=" p-5 my-0 mx-auto max-w-96">
   <form on:submit={onCreateForo}>
-    <label for="titulo" style="display: block; margin-bottom: 5px; color: #000;">Título:</label>
-    <input type="text" id="titulo" name="titulo" bind:value={titulo} style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box; color: #000;">
+    <label for="titulo" class="block mb-1">
+      Título:
+    </label>
+    <input type="text" id="titulo" name="titulo" bind:value={titulo} class="w-full p-2 mb-2 bg-light-input dark:bg-dark-input border border-light-border dark:border-dark-border rounded outline-none hover:border-sportify focus:border-sportify">
 
-    <label for="comentario" style="display: block; margin-bottom: 5px; color: #000;">Comentario Inicial:</label>
-    <textarea id="comentario" name="comentario" bind:value={comentario} style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box; color: #000;"></textarea>
+    <label for="comentario" class="block mb-1">
+      Comentario Inicial:
+    </label>
+    <textarea id="comentario" name="comentario" bind:value={comentario} class="w-full p-2 mb-2 bg-light-input dark:bg-dark-input border border-light-border dark:border-dark-border rounded outline-none hover:border-sportify focus:border-sportify"></textarea>
 
-    <label for="etiquetas" style="display: block; margin-bottom: 5px; color: #000;">Etiquetas:</label>
-    <select id="etiquetas" name="etiquetas" bind:value={etiquetaSeleccionada} style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box; color: #000;">
+    <label for="etiquetas" class="block mb-1">
+      Etiquetas:
+    </label>
+    <select id="etiquetas" name="etiquetas" bind:value={etiquetaSeleccionada} class="w-full p-2 mb-2 bg-light-input dark:bg-dark-input border border-light-border dark:border-dark-border rounded outline-none hover:border-sportify focus:border-sportify">
       <option value="">Seleccione una etiqueta</option>
       {#each etiquetasPredefinidas as etiqueta}
         <option value={etiqueta}>{etiqueta}</option>
@@ -72,9 +79,39 @@
       <option value="otro">Otro</option>
     </select>
     {#if etiquetaSeleccionada === 'otro'}
-      <input type="text" id="otraEtiqueta" name="otraEtiqueta" placeholder="Ingrese otra etiqueta" bind:value={etiquetaPersonalizada} style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box; color: #000;">
+      <input type="text" id="otraEtiqueta" name="otraEtiqueta" placeholder="Ingrese otra etiqueta" bind:value={etiquetaPersonalizada} class="w-full p-2 mb-2 bg-light-input dark:bg-dark-input border border-light-border dark:border-dark-border rounded outline-none hover:border-sportify focus:border-sportify">
     {/if}
 
-    <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 3px; cursor: pointer; transition: background-color 0.3s;">Crear Foro</button>
+    <button type="submit" class="w-full px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover">
+      Crear Foro
+    </button>
   </form>
+
+  {#if mensajeVisible}
+    <div class="bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50 a">
+      <p>{mensaje}</p>
+    </div>
+  {/if}
 </div>
+
+<style>
+  .a {
+    right: -2000px;
+    animation: appear 6s;
+  }
+
+  @keyframes appear {
+    0% {
+      right: -500px;
+    }
+    10% {
+      right: 10px;
+    }
+    80% {
+      right: 10px;
+    }
+    100% {
+      right: -500px;
+    }
+  }
+</style>
