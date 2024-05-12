@@ -10,7 +10,9 @@ const getUsers = (req, res) => {
 
 
 const getEquiposTorneos = (req, res) =>{
-    db.query(Queries.getEquipoTorneo, (error, result)=>{
+    const {id} = req.body
+    //queremos solo traer los equipos de un torneo determinado, no todos.
+    db.query({text:Queries.getEquipoTorneo, values : [id]}, (error, result)=>{
         if(error) throw error
         res.status(200).json(result.rows)
     })
@@ -59,6 +61,7 @@ const enviarNotificacion = (req, res) => {
 
 const postBases = (req, res) => {
     const { id, bases } = req.body
+    
     db.query({ text: Queries.updateBases, values: [bases, id] }, (error, results) => {
         if (error) throw error
         res.status(200).json(results.rows)
@@ -69,26 +72,45 @@ const insertarEquipoTorneo = async (req, res) => {
     const { equipo, torneo } = req.body
     console.log({ equipo, torneo })
     let eq, tor;
-    //primero obtener id de torneo y equipo mediante
-    db.query({ text: Queries.getEquipoFromName, values: [equipo] }, (error, results) => {
-        if (error) throw error
-        console.log('resultados: ', results.rows)
-        eq = results.rows[0]
-        console.log({ eq })
+    //primero verificar que el equipo exista
+    db.query({text:Queries.existeEquipo, values:[equipo]}, (error, results)=>{
+        if(error) throw error
+        if(results.rows.length <= 0) {
+            return res.sendStatus(400)
+            
+        }
+        // obtener id de torneo y equipo mediante nombre
 
-        db.query({ text: Queries.getTorneoFromName, values: [torneo] }, (error, results) => {
+        db.query({ text: Queries.getEquipoFromName, values: [equipo] }, (error, results) => {
             if (error) throw error
-            console.log('resultadow 2', results.rows)
-            tor = results.rows[0]
-            console.log({ tor, eq })
-
-
-            db.query({ text: Queries.insertarTorneoEquipo, values: [eq.id, tor.id] }, (error, results) => {
+            console.log('resultados: ', results.rows)
+            eq = results.rows[0]
+            console.log({ eq })
+            
+            db.query({ text: Queries.getTorneoFromName, values: [torneo] }, (error, results) => {
                 if (error) throw error
-                res.status(200).json(results.rows)
+                console.log('resultadow 2', results.rows)
+                tor = results.rows[0]
+                console.log({ tor, eq })
+                
+                // comprobar que la relacion no exista de antemano
+                db.query({ text: Queries.existeEquipoenTorneo, values: [eq.id, tor.id] }, (error, results) => {
+                    if (error) throw error
+                    if(results.rows.length > 0){
+                        return res.sendStatus(400)
+                        
+                    }
+                     
+                    // insertar relacion entre equipo y torneo
+                    db.query({ text: Queries.insertarTorneoEquipo, values: [eq.id, tor.id] }, (error, results) => {
+                        if (error) throw error
+                        res.status(200).json(results.rows)
+                    })
+                })
             })
         })
     })
+
 }
 
 
@@ -118,8 +140,8 @@ const getEquipo = (req, res) =>{
 
 }
 const getTorneo = (req, res) =>{
-    const {nombreTorneo} = req.body
-    db.query({text: Queries.getTorneoFromName, values: [nombreTorneo]}, (error, results)=>{
+    const {ntorneo} = req.body
+    db.query({text: Queries.getTorneoFromName, values: [ntorneo]}, (error, results)=>{
         if (error) throw error
         res.status(200).json(results.rows)
     })
