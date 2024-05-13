@@ -55,7 +55,7 @@ descripcion text,
 deporte text,
 staff text references usuario(email) on update cascade on delete cascade
 );
-insert into equipo(nombre,descripcion,deporte,staff) values ('Equipo1', 'somos el equipo 1', 'ajedrez', 'staff1@mail.com')
+insert into equipo(nombre,descripcion,deporte,staff) values ('Equipo1', 'somos el equipo 1', 'ajedrez', 'staff1@mail.com');
 
 create table integrante(
 	id serial primary key,
@@ -139,3 +139,10 @@ insert into equipo_torneo (equipo, torneo) values(8,2);
 insert into equipo_torneo (equipo, torneo) values(4,2);
 insert into equipo_torneo (equipo, torneo) values(3,2);
 insert into equipo_torneo (equipo, torneo) values(5,2);
+
+-- Semana 4
+
+alter table torneo
+add bracketplaceholder text;
+
+update torneo set bracketplaceholder = ''

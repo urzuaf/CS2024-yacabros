@@ -51,3 +51,9 @@ crear datos 5 minutos
 
 
 21.58 corregir error modal 22.59 e input cabecera 23.18
+
+
+
+
+11/05
+17.22 corrección error componente fin 18.21

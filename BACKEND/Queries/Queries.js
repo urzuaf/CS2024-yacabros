@@ -15,13 +15,14 @@ const getEquipoFromEmail= "select email, nombre, descripcion, deporte from usuar
 const getEquipoFromName = "select * from equipo where nombre = $1"
 const insertarTorneoEquipo = "insert into equipo_torneo (equipo, torneo) values ($1,$2)"
 
-
+const existeEquipoenTorneo = "select * from equipo_torneo where equipo = $1 and torneo = $2"
+const existeEquipo = "select * from equipo where nombre = $1"
 const insertTorneo = "insert into torneo (nombre, bases, finicio, ftermino, formato, premio, deporte,creador ) values ($1,'sin base', $2, $3, $4, $5, $6, $7)"
 const selectEquipo = "select * from equipo where staff = $1"
 
-const getEquipoTorneo = "select * from equipo_torneo join equipo on equipo_torneo.equipo=equipo.id"
+const getEquipoTorneo = "select * from equipo_torneo join equipo on equipo_torneo.equipo=equipo.id where equipo_torneo.torneo = $1"
 
-
+const insetBracket = "update torneo set bracketplaceholder = $1 where nombre = $2"
 
 export default ({
 
@@ -43,7 +44,10 @@ export default ({
     insertTorneo,
     selectEquipo,
     getAllTeams,
-    getEquipoTorneo
+    getEquipoTorneo,
+    insetBracket,
+    existeEquipo,
+    existeEquipoenTorneo
 
 
 })

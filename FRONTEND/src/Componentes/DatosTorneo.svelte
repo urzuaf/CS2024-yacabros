@@ -1,21 +1,24 @@
 <script>
 import { onMount } from "svelte";
+import { Torneo } from "../stores/torneo_store";
 export let nombreTorneo = ''
+
 let info = null
+let ntorneo = ''
 
 onMount(()=>{
+  console.log("on mount dtorneo mandando + " + nombreTorneo)
+  ntorneo = $Torneo
   getTorneo()
-  console.log("on mount dtorneo")
 })
 
 async function getTorneo() {
-    console.log("here")
     const res = await fetch("http://localhost:3000/getTorneo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ nombreTorneo }),
+      body: JSON.stringify({ ntorneo}),
     });
 
     if (!res.ok) {
@@ -23,7 +26,7 @@ async function getTorneo() {
       return;
     }
     let data = await res.json()
-    console.log(data)
+    console.log('info del torneo ', data)
     info = data[0]
     console.log("torneo cargado correctamente");
 

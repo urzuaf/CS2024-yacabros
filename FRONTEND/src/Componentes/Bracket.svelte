@@ -1,12 +1,81 @@
 <script>
+    import { onMount } from "svelte";
     import {
         bracketData8,
         bracketData4,
         bracketData2,
         bracketData16,
     } from "../stores/bracketsmockdata.js";
+    import { generarBracket } from "../utils/logicaBrackets.js";
+    import { Torneo } from "../stores/torneo_store.js";
 
-    let bracketData = bracketData8;
+    let cualquierName = ['prueba', 'prueba'];
+    let bracketData = [];
+    let guardado = false;
+    // Comprobamos si el torneo ya tiene un bracket, si lo tiene lo cargamos, si no lo tiene cargamos uno vacio
+    //bracketData = bracketData8;
+
+    onMount(async() => {
+        await equiposEnTorneo();
+        await comprobarBracket();
+    });
+
+    const equiposEnTorneo = async () => {
+        let id = 1;
+        let ntorneo = $Torneo
+        const resp1 = await fetch("http://localhost:3000/getTorneo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ntorneo }),
+        });
+        const resp2 = await resp1.json();
+
+        id = resp2[0].id;
+        const resp = await fetch(
+            "http://localhost:3000/equiposludopatasentorneo",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id }),
+            },
+        );
+        if (!resp.ok)
+            throw new Error("Error al obtener los datos del servidor");
+        let rows = await resp.json();
+        let arr = rows.map((equipo)=>{
+           return equipo.nombre 
+        })
+        cualquierName = [...arr]
+        console.log('aqui', cualquierName)
+    };
+
+    const comprobarBracket = async () => {
+        let ntorneo = $Torneo;
+        const response = await fetch("http://localhost:3000/getTorneo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ntorneo }),
+        });
+        const res = await response.json();
+        if (
+            res[0].bracketplaceholder == "" ||
+            res[0].bracketplaceholder == null
+        ) {
+            console.log('creando nuevo brack' , cualquierName)
+            bracketData = [...generarBracket(cualquierName)];
+            /*  bracketData = [...bracketData8] */
+        } else {
+            console.log('usando un bracket antiguo')
+            let aux = JSON.parse(res[0].bracketplaceholder);
+            bracketData = [...aux];
+        }
+    };
 
     const handleClick = (indexParent, index) => {
         if (indexParent == bracketData.length) {
@@ -37,13 +106,44 @@
     };
     //De momento guardar solo lo imprime por pantalla, pero ese json habria que guardarlo en bd
     // Para poder cargarlo desde ahí despues
-    const handleButon = () => {
-        let data = JSON.stringify(bracketData);
-        console.log(data);
+    const handleButon = async () => {
+        let bracket = JSON.stringify(bracketData);
+        //hardcodeado deberia ser dependiendo del torneo activo
+        let torneo = $Torneo;
+        const response = await fetch("http://localhost:3000/updateBracket", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ bracket, torneo }),
+        });
+        if (response.ok) {
+            console.log("ok");
+            guardado = true;
+            setTimeout(() => {
+                guardado = false;
+            }, 4000);
+        }
+    };
+
+    const handleReset = async () => {
+        //hardcodeado deberia ser dependiendo del torneo activo
+        let torneo = $Torneo;
+        let bracket = "";
+        const response = await fetch("http://localhost:3000/updateBracket", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ bracket, torneo }),
+        });
+        comprobarBracket();
     };
 </script>
 
-<header class="flex justify-center items-center my-6 py-4 border-y border-light-border dark:border-dark-border">
+<header
+class="flex justify-center items-center my-6 py-4 border-y border-light-border dark:border-dark-border"
+>
     <div>
         <h1 class="text-center font-semibold text-2xl">Bracket de Torneo</h1>
         <p class="text-center">Haz click sobre el equipo ganador!</p>
@@ -52,9 +152,18 @@
         <button
             class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
             on:click={handleButon}
-        >
+            >
             Guardar Bracket
         </button>
+        <button
+            class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform rounded-lg bg-sportify hover:bg-sportifyhover"
+            on:click={handleReset}
+        >
+            Reset Bracket
+        </button>
+        {#if guardado}
+        <p>Bracket guardado</p>
+        {/if}
     </div>
 </header>
 
@@ -71,6 +180,7 @@
                         {#if equipo.name != "--------" && parentIndex != bracketData.length - 1}
                             <input
                                 placeholder="0"
+                                value={equipo.result}
                                 type="number"
                                 on:change={(e) =>
                                     handleResult(parentIndex, index, e)}
@@ -101,7 +211,7 @@
         margin: 0px 0px 24px 0px;
     }
     .winner {
-        color: #1A1A1A;
+        color: #1a1a1a;
         background-color: #fafafa;
         font-weight: bold;
         --webkit-box-shadow: 0px 0px 51px -8px rgb(70, 222, 0);
