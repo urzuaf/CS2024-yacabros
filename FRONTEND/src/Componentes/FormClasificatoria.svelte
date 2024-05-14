@@ -82,6 +82,7 @@
             td.appendChild(input);
             row.appendChild(td);
         });
+
     }
 
     function habilitarEdicion() {
@@ -92,12 +93,40 @@
         });
     }
 
-    function deshabilitarEdicion() {
+   async function deshabilitarEdicion() {
         //Función para deshabilitar la edición de los campos dentro de la columna
         editingEnabled = false;
         document.querySelectorAll(".editable-cell input").forEach((input) => {
             input.disabled = true;
         });
+
+
+
+        const cabecera= document.getElementById("cabecera");
+        const ths = cabecera.getElementsByTagName("th");
+        const inputs = cabecera.getElementsByTagName("input");
+    
+       // Verificar si hay elementos en inputs y si el último elemento tiene un valor definido
+    if (inputs.length > 0 && inputs[inputs.length - 1].value !== undefined) {
+        let añadir = inputs[inputs.length - 1].value;
+        console.log(añadir);
+
+        try {
+            const resp = await fetch("http://localhost:3000/addColClasificatoria", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({añadir}), // Ajusta la clave del objeto JSON según la expectativa del servidor
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        console.log("No se encontró un valor válido en el último input");
+    }
+
+
     }
 
     function borraColumna() {

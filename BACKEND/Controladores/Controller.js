@@ -148,6 +148,17 @@ const getTorneo = (req, res) =>{
 
 }
 
+
+const addColEquipoTorneo = (req,res) =>{
+    const {nombre} = req.body
+    console.log(nombre)
+    db.query({text: Queries.addColEquipoTorneo, values: [nombre]}, (error, results)=>{
+        if(error) throw error
+        res.status(200).send('Columna agregada correctamente');
+    });
+}
+
+
 export default {
     getUsers,
     decirWena,
@@ -161,7 +172,8 @@ export default {
     getTeams,
     getTorneo,
     getEquiposTorneos,
-    updateBracket
+    updateBracket,
+    addColEquipoTorneo
 }
 
 

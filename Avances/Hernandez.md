@@ -57,3 +57,7 @@ crear datos 5 minutos
 
 11/05
 17.22 corrección error componente fin 18.21
+
+
+14/05
+11.34 inicio tar 13  12.34 parar
