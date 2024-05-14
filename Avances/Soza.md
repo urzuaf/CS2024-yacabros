@@ -35,3 +35,10 @@ proximos avances...
 tambien a su vez se agrego la forma de editar los datos escribiendo sobre la nueva columna generada
 
 [21:00-22:10] Se agrego otra opcion para borrar la ultima columna ingresada(la idea es despues cambiarla para poder hacerla mas dinamica) y se arreglaron problemas que se presentaron
+
+//semana 5
+
+[14:20-15:00] Buscar la solucion al bug de la notificacion del feedback de crear/meditar/eliminar equipo
+
+[15:00-15:20] Cambios con la solucion encontrada y finalizacion de la IS137
+

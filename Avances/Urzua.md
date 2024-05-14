@@ -41,3 +41,7 @@ commit antes del receso
 1 hora a lo largo de la semana para manejar github y resolver consultas
 
 Tiempo actual: 5 horas 20 minutos
+
+# Semana 5 
+[12/05] 2:40 - 5:40 Modificar diversos componentes para poder tener multiples torneos activos.
+
