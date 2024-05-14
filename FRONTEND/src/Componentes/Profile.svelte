@@ -1,3 +1,4 @@
+
 <script>
     import Notificacion from "./Notificacion.svelte";
     import { Usuario } from "../stores/login_store";
@@ -87,7 +88,7 @@
     </button>
 
     {#if isOpen}
-        <div class="absolute right-0 top-16 p-2 rounded shadow bg-light-gradient dark:bg-dark-background2 text-light-text border dark:text-dark-text border-light-border dark:border-dark-border">
+        <div class="absolute right-0 top-16 p-2 rounded shadow bg-light-gradient dark:bg-dark-background2 text-light-text border dark:text-dark-text border-light-border dark:border-dark-border z-50">
             <!-- Nombre de usuario y correo -->
             <p class="px-4 font-bold">{userProfile.name}</p>
             <p class=" text-light-border dark:text-dark-border px-4">{userProfile.email}</p>
@@ -99,7 +100,7 @@
             <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Crear Torneo
             </a>
-            <a href="/perfilEquipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+            <a href="/perfilequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Ver Perfil de Equipo
             </a>
             <a href="/user" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
@@ -152,8 +153,10 @@
     {/if}
 {/if}
 
+
 <style>
     .trans {
         transition: 0.3s ease;
     }
 </style>
+

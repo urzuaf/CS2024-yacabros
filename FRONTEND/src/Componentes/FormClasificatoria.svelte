@@ -1,101 +1,263 @@
-
 <script>
-    import { onMount } from 'svelte';
+    import { onMount } from "svelte";
+    import { Torneo } from "../stores/torneo_store";
 
-    var showModal=false;
+    let showModal = false;
     let rows = [];
+    let editingEnabled = false; //Variable para habilitar o deshabilitar la edición de los campos dentro de la columna
 
-    onMount(async () =>{
-        try{
-            const resp = await fetch("http://localhost:3000/equiposludopatasentorneo");
+    onMount(async () => {
+        let id = 1
+        let ntorneo = $Torneo
+        try {
+            //obtenemos el torneo
+            const resp1 = await fetch(
+                "http://localhost:3000/getTorneo",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ ntorneo }),
+                },
+            );
+            const resp2 = await resp1.json()
+            
+            id = resp2[0].id
+            const resp = await fetch(
+                "http://localhost:3000/equiposludopatasentorneo",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id }),
+                },
+            );
             if (!resp.ok)
                 throw new Error("Error al obtener los datos del servidor");
             rows = await resp.json();
             console.log("\n\nJOIN\n");
             console.log(rows);
-
-        }catch(error){
-            console.log("Error: ",error);
+        } catch (error) {
+            console.log("Error: ", error);
         }
-    });//esto entrega en row el join de equipo y torneos para los datos 
+    });
 
-    function agregarCol(){ //esto añade una columna a la tabla //que pasa con las columnas ya creadas
-        var row=document.getElementById("row");
-        var col=document.getElementById("cabecera")
-        //COL
-        const th=document.createElement("th")
-        th.style.border="1px solid"
-        th.style.textAlign="center"
-        th.style.background="sportify"
-        th.innerHTML="" // var que se debe pasar
-
-        //se crea el input
+    function agregarCol() {
+        var col = document.getElementById("cabecera");
+        const th = document.createElement("th");
+        th.classList.add("editable-cell");
+        th.style.border = "1px solid";
+        th.style.textAlign = "center";
+        th.style.background = "sportify";
+        th.innerHTML = "";
         const input = document.createElement("input");
         input.type = "text";
-        
         input.style.width = "100%";
         input.style.height = "35px";
         input.style.textAlign = "center";
-        input.style.color ="white";
+        input.style.color = "white";
         input.style.border = "none";
-        input.style.background = "none"; 
-        
+        input.style.background = "none";
+        input.disabled = !editingEnabled;
         th.appendChild(input);
+        col.appendChild(th);
 
-        col.appendChild(th) 
-
-    
-        
-
-        //INFO
-        //se tendra que hacer append del td por cada fila ya creada
-        const td = document.createElement("td");
-        td.style.border = "1px solid white";
-        td.style.textAlign="center"
-
-        row.appendChild(td);
+        var rows = document.querySelectorAll("#data tr");
+        rows.forEach((row) => {
+            const td = document.createElement("td");
+            td.classList.add("editable-cell");
+            td.style.border = "1px solid white";
+            td.style.textAlign = "center";
+            const input = document.createElement("input");
+            input.type = "text";
+            input.style.width = "100%";
+            input.style.height = "35px";
+            input.style.textAlign = "center";
+            input.style.color = "black";
+            input.style.border = "none";
+            input.style.background = "none";
+            input.disabled = !editingEnabled;
+            td.appendChild(input);
+            row.appendChild(td);
+        });
     }
 
+    function habilitarEdicion() {
+        //Función para habilitar la edición de los campos dentro de la columna
+        editingEnabled = true;
+        document.querySelectorAll(".editable-cell input").forEach((input) => {
+            input.disabled = false;
+        });
+    }
 
+    function deshabilitarEdicion() {
+        //Función para deshabilitar la edición de los campos dentro de la columna
+        editingEnabled = false;
+        document.querySelectorAll(".editable-cell input").forEach((input) => {
+            input.disabled = true;
+        });
+    }
+
+    function borraColumna() {
+        //Función para eliminar la última columna de la tabla
+        const lastColumnIndex =
+            document.querySelectorAll("#cabecera th").length - 1;
+
+        document.querySelectorAll("#cabecera th")[lastColumnIndex].remove();
+
+        document.querySelectorAll("#data tr").forEach((row) => {
+            row.children[lastColumnIndex].remove();
+        });
+    }
+
+    function opcionesEdicion() {
+        //Función para habilitar o deshabilitar la edición de los campos dentro de la columna
+        editingEnabled = !editingEnabled;
+        if (editingEnabled) {
+            document.getElementById("editButton").innerText = "Guardar Datos";
+        } else {
+            document.getElementById("editButton").innerText = "Editar Datos";
+        }
+        editingEnabled ? habilitarEdicion() : deshabilitarEdicion();
+    }
 </script>
 
-
-
-    <div class="justify-center items-center mb-32 mt-12 w-full h-128">
-
-            <h1 class="font-semibold text-4xl align-center flex justify-center">Clasificatoria</h1>
-            <table class="table-auto bg-gray-300 text-dark-text font-bold mx-auto mt-10 max-h-64 w-3/4 overflow-y-auto rounded-lg">
+<div class="justify-center items-center mb-32 mt-12 w-full h-128">
+    <h1 class="font-semibold text-4xl align-center flex justify-center">
+        Clasificatoria
+    </h1>
+    <div class="flex justify-center">
+        <div class="overflow-y-auto max-h-80 mt-10 custom-scrollbar">
+            <table
+                class="table-auto bg-gray-300 text-dark-text font-bold mx-auto max-h-64 overflow-y-auto rounded-lg"
+            >
                 <thead class="bg-sportify">
                     <tr id="cabecera">
-                        <th class="px-4 py-2  border-solid border-2">Id</th>
-                        <th class="px-4 py-2  border-solid border-2">Nombre Equipo</th>
-                        <th class="px-4 py-2  border-solid border-2">Staff</th>
-                        <th class="px-4 py-2  border-solid border-2">Torneo</th>
+                        <th class="px-4 py-2 border-solid border-2">
+                            <input
+                                type="text"
+                                style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;"
+                                value={"Id"}
+                                disabled={!editingEnabled}
+                            />
+                        </th>
+                        <th class="px-4 py-2 border-solid border-2">
+                            <input
+                                type="text"
+                                style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;"
+                                value={"Nombre Equipo"}
+                                disabled={!editingEnabled}
+                            />
+                        </th>
+                        <th class="px-4 py-2 border-solid border-2">
+                            <input
+                                type="text"
+                                style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;"
+                                value={"Staff"}
+                                disabled={!editingEnabled}
+                            />
+                        </th>
+                        <th class="px-4 py-2 border-solid border-2">
+                            <input
+                                type="text"
+                                style="width: 100%; height: 35px; text-align: center; color: white; border: none; background: none;"
+                                value={"Torneo"}
+                                disabled={!editingEnabled}
+                            />
+                        </th>
                     </tr>
                 </thead>
-
-                <tbody id=data class="border px-4 py-2 "> 
-                    {#each rows as row} <!-- aqui va el contenido de la tabla habrá que añadir columnas para datos a agregar-->
-                    <tr id="row" class="text-center text-black border-solid border-2">
-                        <td class="border-solid border-2">{row.id}</td>
-                        <td class="border-solid border-2">{row.nombre}</td>
-                        <td class="border-solid border-2">{row.staff}</td>
-                        <td class="border-solid border-2">{row.torneo}</td>
-                    </tr>
+                <tbody id="data" class="border px-4 py-2">
+                    {#each rows as row}
+                        <tr
+                            id="row"
+                            class="text-center text-black border-solid border-2"
+                        >
+                            <td class="border-solid border-2">
+                                <input
+                                    type="text"
+                                    style="width: 100%; height: 35px; text-align: center; color: black; border: none; background: none;"
+                                    bind:value={row.id}
+                                    disabled={!editingEnabled}
+                                />
+                            </td>
+                            <td class="border-solid border-2">
+                                <input
+                                    type="text"
+                                    style="width: 100%; height: 35px; text-align: center; color: black; border: none; background: none;"
+                                    bind:value={row.nombre}
+                                    disabled={!editingEnabled}
+                                />
+                            </td>
+                            <td class="border-solid border-2">
+                                <input
+                                    type="text"
+                                    style="width: 100%; height: 35px; text-align: center; color: black; border: none; background: none;"
+                                    bind:value={row.staff}
+                                    disabled={!editingEnabled}
+                                />
+                            </td>
+                            <td class="border-solid border-2">
+                                <input
+                                    type="text"
+                                    style="width: 100%; height: 35px; text-align: center; color: black; border: none; background: none;"
+                                    bind:value={row.torneo}
+                                    disabled={!editingEnabled}
+                                />
+                            </td>
+                        </tr>
                     {/each}
                 </tbody>
-
-                <div class="flex">
-                    <button class="absolute ml-0 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200" on:click={agregarCol}>
-                        Agregar Datos
-                    </button>
-                </div>
-
             </table>
-
-
+        </div>
     </div>
+    <div class="flex justify-center">
+        <button
+            class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200"
+            on:click={agregarCol}
+        >
+            Agregar Datos
+        </button>
 
+        <button
+            id="editButton"
+            class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200"
+            on:click={opcionesEdicion}
+        >
+            Editar Datos
+        </button>
 
+        <button
+            class="px-3 ml-4 mt-4 bg-sportify h-10 w-auto text-white rounded-lg hover:text-gray-200"
+            on:click={borraColumna}
+        >
+            Borrar Última Columna
+        </button>
+    </div>
+</div>
 
+<style>
+    /* Estilo del scrollbar */
+    /* Ancho del scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 10px;
+    }
 
+    /* Fondo del scrollbar */
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Thumb o barra de desplazamiento */
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+    }
+
+    /* Thumb en estado hover */
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>

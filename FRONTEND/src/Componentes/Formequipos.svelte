@@ -77,35 +77,24 @@
         <p><b>Equipo registrado con éxito</b></p>
     </div>
 {/if}
-
 <style>
-    .a{
-        right: -2000px;
-        top: 100px;
-        bottom: 500px;
-        animation: appear 6s ;
+    .a {
+      right: -2000px;
+      animation: appear 6s;
     }
-    @keyframes appear{
-        0%{
-            top: 100px;
-            bottom: 500px;
-            right: -500px;
-        }
-        10%{
-            top: 100px;
-            bottom: 500px;
-            right: 10px;
-        }
-        80%{
-            top: 100px;
-            bottom: 500px;
-            right: 10px;
-        }
-        100%{
-            top: 100px;
-            bottom: 500px;
-            right: -500px;
-        }
+  
+    @keyframes appear {
+      0% {
+        right: -500px;
+      }
+      10% {
+        right: 10px;
+      }
+      80% {
+        right: 10px;
+      }
+      100% {
+        right: -500px;
+      }
     }
-    
-</style>
+  </style>
