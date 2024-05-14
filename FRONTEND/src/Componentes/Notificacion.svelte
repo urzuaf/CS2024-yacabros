@@ -100,7 +100,7 @@
 
     {#if isOpen}
         <div
-            class="absolute top-10 right-0 trans bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text border shadow-md p-2 w-64 overflow-y-scroll max-h-96 z-50"
+            class="absolute top-12 right-0 trans bg-light-gradient dark:bg-dark-background2 border rounded border-light-border dark:border-dark-border shadow-md p-2 w-64 overflow-y-scroll max-h-96 z-50"
         >
             {#if $Usuario == ''}
                 <p class="text-center">Inicia sesión para ver tus notificaciones</p>
@@ -110,7 +110,7 @@
             {/if}
             {#each data as noti}
                 <div
-                    class="border-b p-2 gap-4 flex flex-col justify-between items-center"
+                    class="border-b border-light-border dark:border-dark-border p-2 gap-4 flex flex-col justify-between items-center"
                 >
                     <div>
                         <p class="font-bold">{noti.descripcion}</p>
