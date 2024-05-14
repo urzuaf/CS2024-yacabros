@@ -1,10 +1,8 @@
 <script>
     let footerNavs = [
-      { href: 'javascript:void(0)', name: '' },
       { href: "/torneo", name: 'Torneo' },
-      { href: 'javascript:void(0)', name: 'Noticias' },
+      { href: '/noticias', name: 'Noticias' },
       { href: '/FormularioForo', name: 'Foros' },
-      { href: 'javascript:void(0)', name: '' }
     ];
   </script>
   <footer class="flex flex-col bg-light-gradient dark:bg-dark-background2 px-4 py-5 w-full mx-auto md:px-8 mt-auto border-t border-light-border dark:border-dark-border">
