@@ -1,4 +1,6 @@
 <script>
+    import { Torneo } from "../stores/torneo_store";
+
     let bases = '';
     let id = 1;
 
@@ -9,6 +11,21 @@
     async function handleSubmit(event) {
         event.preventDefault();
         try {
+            //obtenemos el torneo
+            let ntorneo = $Torneo
+            const resp1 = await fetch(
+                "http://localhost:3000/getTorneo",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ ntorneo }),
+                },
+            );
+            const resp2 = await resp1.json()
+            
+            id = resp2[0].id
             const response = await fetch("http://localhost:3000/torneo", {
                 method: 'POST',
                 headers: {
