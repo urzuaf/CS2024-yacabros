@@ -71,4 +71,11 @@
         right: -500px;
       }
     }
+
+    .opciones{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+    }
   </style>
