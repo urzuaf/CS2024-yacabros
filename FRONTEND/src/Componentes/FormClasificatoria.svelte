@@ -100,16 +100,13 @@
         });
     }
 
-    function borraColumna() {
-        //Función para eliminar la última columna de la tabla
-        const lastColumnIndex =
-            document.querySelectorAll("#cabecera th").length - 1;
-
-        document.querySelectorAll("#cabecera th")[lastColumnIndex].remove();
-
-        document.querySelectorAll("#data tr").forEach((row) => {
-            row.children[lastColumnIndex].remove();
-        });
+    function borraColumna(columnIndex) {
+        //Función para eliminar la columna seleccionada por el usuario
+        const header = document.getElementById("cabecera");
+        const dataRows = document.querySelectorAll("#data tr");
+        
+        header.children[columnIndex].remove();
+        dataRows.forEach(row => row.children[columnIndex].remove());
     }
 
     function opcionesEdicion() {
@@ -230,11 +227,17 @@
         </button>
 
         <button
-            class="px-3 ml-4 mt-4 bg-sportify h-10 w-auto text-white rounded-lg hover:text-gray-200"
-            on:click={borraColumna}
+        class="px-3 ml-4 mt-4 bg-sportify h-10 w-auto text-white rounded-lg hover:text-gray-200"
+        on:click={() => {
+            let colIndex = prompt("Ingrese el índice de la columna a borrar");
+            if (colIndex !== null && colIndex !== "") {
+                borraColumna(parseInt(colIndex, 10) - 1);
+            }
+        }}
         >
-            Borrar Última Columna
+            Borrar Columna
         </button>
+
     </div>
 </div>
 
