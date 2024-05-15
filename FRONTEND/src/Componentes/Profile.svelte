@@ -100,9 +100,13 @@
             <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Crear Torneo
             </a>
-            <a href="/perfilequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
-                Ver Perfil de Equipo
-            </a>
+
+            {#if userProfile.equipo != "" && (userProfile.rol == 'staff' || userProfile.rol == 'admin')}
+                <a href="/perfilequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+                    Ver Perfil de Equipo
+                </a>
+            {/if}
+
             <a href="/user" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Ver Perfil de Usuario
             </a>
