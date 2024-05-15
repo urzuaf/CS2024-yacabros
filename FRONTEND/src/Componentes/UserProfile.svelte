@@ -9,6 +9,8 @@
         password: "",
         email: $Usuario
     };
+    let mensajeEditar = '';
+    let mensajeVisibleEditar = false;
 
     onMount(async () =>{
         try{
@@ -48,8 +50,13 @@
             if (!response.ok)
                 throw new Error("Error al editar datos");
 
-            console.log("Datos editados correctamente");
+            mensajeEditar = "Datos editados correctamente";
+            mensajeVisibleEditar = true;
             toggleEdit(); // Cambiar al modo de visualización normal después de editar
+            setTimeout(() => {
+                mensajeVisibleEditar = false;
+            }, 6000); // 5 segundos
+
         } catch (error) {
             console.error("Error al editar datos:", error);
         }
@@ -105,3 +112,30 @@
     </form>
 {/if}
 
+{#if mensajeVisibleEditar}
+    <div class="bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50 a" style="width: 300px;">
+        <p style="font-size: 16px;">{mensajeEditar}</p>
+    </div>
+{/if}
+
+<style>
+    .a {
+        right: -2000px;
+        animation: appear 6s;
+    }
+
+    @keyframes appear {
+        0% {
+            right: -500px;
+        }
+        10% {
+            right: 10px;
+        }
+        80% {
+            right: 10px;
+        }
+        100% {
+            right: -500px;
+        }
+    }
+</style>
