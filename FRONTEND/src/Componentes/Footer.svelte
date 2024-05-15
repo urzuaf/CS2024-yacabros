@@ -2,7 +2,7 @@
     let footerNavs = [
       { href: 'javascript:void(0)', name: '' },
       { href: "/torneo", name: 'Torneo' },
-      { href: 'javascript:void(0)', name: 'Noticias' },
+      { href: '/noticias', name: 'Noticias' },
       { href: '/FormularioForo', name: 'Foros' },
       { href: 'javascript:void(0)', name: '' }
     ];
