@@ -24,8 +24,6 @@ const getEquipoTorneo = "select * from equipo_torneo join equipo on equipo_torne
 
 const insetBracket = "update torneo set bracketplaceholder = $1 where nombre = $2"
 
-const addColEquipoTorneo = "alter table equipo_torneo add $1 text; update equipo_torneo set $1 = '';" 
-
 
 export default ({
 
@@ -51,7 +49,4 @@ export default ({
     insetBracket,
     existeEquipo,
     existeEquipoenTorneo,
-    addColEquipoTorneo
-
-
 })
