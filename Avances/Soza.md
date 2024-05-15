@@ -42,3 +42,4 @@ tambien a su vez se agrego la forma de editar los datos escribiendo sobre la nue
 
 [15:00-15:20] Cambios con la solucion encontrada y finalizacion de la IS137
 
+[1:30-3:00] Modificacion la funcion de borrar columna para hacerla mas dinamica
