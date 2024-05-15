@@ -167,10 +167,11 @@
     const cabecera = document.getElementById("cabecera");
     const ths = cabecera.getElementsByTagName("th");
     const inputs = cabecera.getElementsByTagName("input");
+    let indexborrar=inputs.length - 1;
 
     // Verificar si hay elementos en inputs y si el último elemento tiene un valor definido
-    if (inputs.length > 0 && inputs[inputs.length - 1].value !== undefined) {
-      let info = inputs[inputs.length - 1].value;
+    if (inputs.length > 0 && inputs[indexborrar].value !== undefined) {
+      let info = inputs[indexborrar].value; //<-----ese index indica el num a borrar verificar arriba tmabien
         console.log(info)
       try {
         const resp = await fetch("http://localhost:3000/delColClasificatoria", {
@@ -191,7 +192,8 @@
     //Función para eliminar la última columna de la tabla
     const lastColumnIndex =
       document.querySelectorAll("#cabecera th").length - 1;
-    if(lastColumnIndex>3){
+    
+      if(lastColumnIndex>3){
     document.querySelectorAll("#cabecera th")[lastColumnIndex].remove();
 
     document.querySelectorAll("#data tr").forEach((row) => {
