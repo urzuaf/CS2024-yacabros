@@ -39,8 +39,10 @@
       console.log("Error: ", error);
     }
   });
-
+  let agregarcol=true;
   function agregarCol() {
+    if(!agregarcol) return;
+    agregarcol=false
     var col = document.getElementById("cabecera");
     const th = document.createElement("th");
     th.classList.add("editable-cell");
@@ -119,7 +121,12 @@
     }
 
     let data=[];
-    obtenerValoresTabla().forEach((row)=>data.push([row[0],row[row.length-1],info]))
+    obtenerValoresTabla().forEach((row)=>
+    {
+      console.log(row)
+      console.log("Datos a pet: "+row[0]+row[row.length-1]+info+row[row.length-2]);
+      data.push([row[0],row[row.length-1],info,row[3]]
+  )})
     
     console.log("info " +data[0])
     
@@ -140,6 +147,7 @@
   }
 
   function obtenerValoresTabla() {
+    
   const filas = document.querySelectorAll("#data tr"); // Selecciona todas las filas en el tbody
   const valores = [];
 
@@ -195,13 +203,16 @@
 
   }
 
+  
   function opcionesEdicion() {
     //Función para habilitar o deshabilitar la edición de los campos dentro de la columna
     editingEnabled = !editingEnabled;
     if (editingEnabled) {
       document.getElementById("editButton").innerText = "Guardar Datos";
+      agregarcol=false;
     } else {
       document.getElementById("editButton").innerText = "Editar Datos";
+      agregarcol=true;
     }
     editingEnabled ? habilitarEdicion() : deshabilitarEdicion();
   }

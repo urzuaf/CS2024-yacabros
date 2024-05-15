@@ -228,12 +228,17 @@ const addInfoColClasificatoria = async (req, resp) => {
             const col = row[2];
             const val = row[1];
             const id = row[0];
+            const tor = row[3];
             
+            console.log("COL VAL ID TOR: "+col,val,id,tor)
+
             // Ejecutar la consulta SQL de manera síncrona
-            await db.query({
-                text: `UPDATE equipo_torneo SET ${col} = $1 WHERE id = $2`,
-                values: [val, id],
-            });
+            if(col.length>0 && val.length>0 && id.length>0 && tor.length >0 && col!=undefined && val!=undefined && id!=undefined && tor!=undefined)
+            {
+                await db.query({
+                text: `UPDATE equipo_torneo SET ${col} = '${val}' WHERE equipo = ${id} and torneo = ${tor}`,
+                });
+            }
         }
 
         // Todas las consultas se han completado con éxito, enviar respuesta
