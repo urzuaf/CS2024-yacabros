@@ -148,6 +148,14 @@ const getTorneo = (req, res) =>{
 
 }
 
+const actDatos = (req, res) => {
+    const { nombre, finicio, ftermino, formato, premio, deporte, id } = req.body
+    db.query({ text: Queries.updateDatos, values: [nombre, finicio, ftermino, formato, premio, deporte, id] }, (error, results) => {
+        if (error) throw error
+        res.status(200).json(results.rows)
+    })
+}
+
 export default {
     getUsers,
     decirWena,
@@ -161,7 +169,8 @@ export default {
     getTeams,
     getTorneo,
     getEquiposTorneos,
-    updateBracket
+    updateBracket,
+    actDatos
 }
 
 

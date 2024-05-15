@@ -2,7 +2,7 @@
     import { Torneo } from "../stores/torneo_store";
 
     let bases = '';
-    let id = 1;
+    let id = 1; 
 
     let showModal;
     let dialog;
