@@ -63,4 +63,4 @@ crear datos 5 minutos
 11.34 inicio tar 13  12.34 parar
 
 
-continuar tar 21.18 
+continuar tar 21.18 fin avance queda ver traer datos y que se guarden las celdas de las columnas anteiores a las ultima 0:16 15/05
