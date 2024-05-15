@@ -43,5 +43,5 @@ commit antes del receso
 Tiempo actual: 5 horas 20 minutos
 
 # Semana 5 
-[12/05] 2:40 - 5:40 Modificar diversos componentes para poder tener multiples torneos activos.
-
+[12/05] 14:40 - 17:40 Modificar diversos componentes para poder tener multiples torneos activos.
+[14/05] 17:00 - 17:25 Cambios esteticos en brackets  
