@@ -6,9 +6,8 @@
     let deporte = '';
     let finicio = '';
     let ftermino = '';
-    let formato = '';
     let premio = '';
-    
+    let formato = '';
     
     let showModal;
     let dialog;

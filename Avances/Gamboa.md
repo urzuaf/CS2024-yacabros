@@ -39,3 +39,5 @@
 
 5ta Semana
 
+[17:30 - 19:00] [1.5h] 13/05/2024 Intento de solución de arreglar estilos al agregar texto guardado al campo de texto, FALLIDO.
+[19:30 - 22:00] [2.5h] 14/05/2024 IS139: Modificar datos de torneo y bases solucionado para un torneo en específico. Queda por arreglar cuando se necesite para más torneos. Botón noticias del footer ahora redirige a noticias.
