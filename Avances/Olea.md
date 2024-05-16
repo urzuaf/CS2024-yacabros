@@ -38,6 +38,11 @@ semana 4
 5/8 agregar informacion y decorar el index [2 hrs]
 5/8 comenzar con el perfil de usuario [1.5 hrs]
 
+Semana 5
+
+13/05/2023 Seguir en el trabajo del index (1 hora)
+14/05/2023  Arreglar el index y el boton de notificaciones (2 horas)
+15/05/2023 Terminar el index y el botot de notificaciones (2 horas)
 
 
 
