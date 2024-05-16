@@ -5,6 +5,7 @@
   let showModal = false;
   let rows = [];
   let editingEnabled = false; //Variable para habilitar o deshabilitar la edición de los campos dentro de la columna
+  let showColumnIndexInput = false;
 
   onMount(async () => {
     let id = 1;
@@ -162,13 +163,13 @@
   return valores;
 }
 
-  async function borraColumna() {
+  async function borraColumna(columnIndex) {
 
     const cabecera = document.getElementById("cabecera");
     const ths = cabecera.getElementsByTagName("th");
     const inputs = cabecera.getElementsByTagName("input");
     let indexborrar=inputs.length - 1;
-
+    indexborrar=columnIndex+1;
     // Verificar si hay elementos en inputs y si el último elemento tiene un valor definido
     if (inputs.length > 0 && inputs[indexborrar].value !== undefined) {
       let info = inputs[indexborrar].value; //<-----ese index indica el num a borrar verificar arriba tmabien
@@ -190,8 +191,8 @@
 
 
     //Función para eliminar la última columna de la tabla
-    const lastColumnIndex =
-      document.querySelectorAll("#cabecera th").length - 1;
+    const lastColumnIndex =columnIndex;
+      //document.querySelectorAll("#cabecera th").length - 1;
     
       if(lastColumnIndex>3){
     document.querySelectorAll("#cabecera th")[lastColumnIndex].remove();
@@ -205,6 +206,9 @@
 
   }
 
+  function toggleColumnIndexInput() {
+        showColumnIndexInput = !showColumnIndexInput;
+    }
   
   function opcionesEdicion() {
     //Función para habilitar o deshabilitar la edición de los campos dentro de la columna
@@ -357,10 +361,37 @@
 
     <button
       class="px-3 ml-4 mt-4 bg-sportify h-10 w-auto text-white rounded-lg hover:text-gray-200"
-      on:click={borraColumna}
+      on:click={() => {
+                toggleColumnIndexInput();
+                borraColumna
+            }}
     >
       Borrar Última Columna
     </button>
+
+    {#if showColumnIndexInput}
+    <div class="mt-2">
+        <input id="columnIndex" type="number" min="1" placeholder="Índice de la columna" class="px-2 ml-2 mt-2 bg-sportify h-10 w-16 text-white rounded-lg hover:text-gray-200">
+        <button
+            class="px-3 ml-2 bg-red-500 text-white rounded-lg hover:text-gray-200"
+            on:click={() => {
+                const colIndexInput = document.getElementById("columnIndex");
+                const colIndex = parseInt(colIndexInput.value, 10);
+                if (!isNaN(colIndex) && colIndex > 0 && colIndex <= document.querySelectorAll("#cabecera th").length) {
+                    borraColumna(colIndex - 1);
+                    toggleColumnIndexInput(); // Oculta el input después de borrar la columna
+                } else {
+                    alert("Ingrese un índice válido");
+                }
+                colIndexInput.value = "";
+            }}
+        >
+            Borrar
+        </button>
+    </div>
+{/if}
+
+
   </div>
 </div>
 
