@@ -8,6 +8,7 @@ router.get('/', Controller.getUsers)
 router.get('/a', Controller.decirWena)
 router.get('/equipos',Controller.getTeams)
 router.post('/equiposludopatasentorneo',Controller.getEquiposTorneos)
+router.post('/getUserByEmail', Controller.getUserByEmail)
 
 router.post('/notificacion', Controller.postNotificacion)
 router.post('/decision', Controller.decision)

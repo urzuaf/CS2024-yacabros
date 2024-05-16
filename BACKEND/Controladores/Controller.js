@@ -19,6 +19,13 @@ const getEquiposTorneos = (req, res) =>{
 
 }
 
+const getUserByEmail = (req, res) =>{
+    const {email} = req.body
+    db.query({text:Queries.getUserByEmail, values : [email]}, (error, result)=>{
+        if(error) throw error
+        res.status(200).json(result.rows)
+    })
+}
 
 const getTeams =(req,resp) =>{
     db.query(Queries.getAllTeams,(error,result)=>{
@@ -161,7 +168,8 @@ export default {
     getTeams,
     getTorneo,
     getEquiposTorneos,
-    updateBracket
+    updateBracket,
+    getUserByEmail
 }
 
 
