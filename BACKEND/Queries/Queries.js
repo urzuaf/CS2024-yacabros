@@ -7,6 +7,7 @@ const rechazarNotificacion = "update solicitud set estado = 'rechazado', visto=t
 const sendNotificacion = "insert into solicitud (descripcion, visto, estado, emisor, destinatario) values ($1, false, 'pendiente', $2, $3)"
 const updateBases = "update torneo set bases = $1 where id = $2"
 const getAllTeams = "select * from equipo"
+const updateDatos = "update torneo set nombre = $1, finicio = $2, ftermino = $3, formato = $4, premio = $5, deporte = $6 where id = $7"
 
 const getUsuarioFromEmail= "select email, username, descripcion, fnacimiento, rol from usuario where email = $1"
 const getTorneoFromEmail= "select email, nombre, bases, finicio, ftermino, premio, deporte, formato from usuario join torneo on usuario.email = torneo.creador where usuario.email = $1"
@@ -23,6 +24,7 @@ const selectEquipo = "select * from equipo where staff = $1"
 const getEquipoTorneo = "select * from equipo_torneo join equipo on equipo_torneo.equipo=equipo.id where equipo_torneo.torneo = $1"
 
 const insetBracket = "update torneo set bracketplaceholder = $1 where nombre = $2"
+
 
 export default ({
 
@@ -47,7 +49,7 @@ export default ({
     getEquipoTorneo,
     insetBracket,
     existeEquipo,
-    existeEquipoenTorneo
-
+    existeEquipoenTorneo,
+    updateDatos
 
 })
