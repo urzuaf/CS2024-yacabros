@@ -59,17 +59,6 @@
 {/if}
 
 {#if userProfile.rol != "creador"}
-<header class="flex justify-between items-center px-10 py-6 w-full text-nowrap border-b border-light-border dark:border-dark-border">
-    <div class="flex flex-col md:flex-row gap-2">
-      <FormBases />
-      <button
-        type="button"
-        class="px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
-        onclick="cambiarDatos()">Cambiar Datos</button
-      >
-    </div>
-    <BuscadorEquipos />
-  </header>
   <DatosTorneo nombreTorneo={nombreTorneo} />
   <FormClasificatoria />
   <Bracket />
