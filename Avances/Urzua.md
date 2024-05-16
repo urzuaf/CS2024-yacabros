@@ -37,3 +37,14 @@ Tiempo actual: 5 horas 20 minutos
 # Semana 4
 commit antes del receso
 [06/05] 06:30 - 09:40 Creación de la base de los brackets 
+[08/05] 20:20 - 21:30 Guardar y resetear bracket
+1 hora a lo largo de la semana para manejar github y resolver consultas
+
+Tiempo actual: 5 horas 20 minutos
+
+# Semana 5 
+[12/05] 14:40 - 17:40 Modificar diversos componentes para poder tener multiples torneos activos.
+[14/05] 17:00 - 17:25 Cambios esteticos en brackets y limitar su modificacion v1
+[15/05] 20:00 - 20:15 Limitar modificacion brackets v2
+[15/05] 20:15 - 21:05 Borrar torneos y limitar su creación
+[15/05] 21:15 - 22:15 Gestionar el acceso en tabla de resultados y demás cambios

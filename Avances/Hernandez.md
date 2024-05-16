@@ -47,3 +47,24 @@ mart 07.05
 continuacion 18.48     20.27 fin avance, añadido boton para agregar info, retoque diseño, falta ver donde guardar la info y los campos para introducir
 
 crear datos 5 minutos
+
+
+
+21.58 corregir error modal 22.59 e input cabecera 23.18
+
+
+
+
+11/05
+17.22 corrección error componente fin 18.21
+
+
+14/05
+11.34 inicio tar 13  12.34 parar
+
+
+continuar tar 21.18 fin avance queda ver traer datos y que se guarden las celdas de las columnas anteiores a las ultima 0:16 15/05
+
+
+15/05
+continuar 18:28     pausa 19:00 continuar 19.34 fin 20.01

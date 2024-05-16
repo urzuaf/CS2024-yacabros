@@ -1,11 +1,26 @@
 ---
 import Layout from "../layouts/Visualizacion.astro"
-
 import Notificacion from "../Componentes/Notificacion.svelte"
 import EnviarNotificacion from "../Componentes/EnviarNotificacion.svelte"
-import PerfilEquipo from "../Componentes/PerfilEquipo.svelte"
+import UserProfile from "../Componentes/UserProfile.svelte"
+import FormIndex from "../Componentes/FormIndex.svelte"
 ---
+<Layout title="Bienvenido | Sportify">
+    <body>
+        
+         
 
-<Layout title="Sportify">
-    
+
+
+        <FormIndex client:only/>
+
+
+        
+    </body>
 </Layout>
+<style>
+    /* Estilo adicional para el efecto de hover */
+    .hover\:scale-105:hover {
+        transform: scale(1.05);
+    }
+</style>
