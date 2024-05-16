@@ -45,6 +45,23 @@ server.post('/getUsername', async (req, res) => {
   })
 });
 
+server.delete('/delTorneo', async (req, res) => {
+  const {email} = req.body;
+  db.query("delete from torneo where creador = $1",[email],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+  })
+});
+server.post('/tieneTorneo', async (req, res) => {
+  const {email} = req.body;
+  db.query("select id from torneo where creador = $1",[email],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+  })
+});
+
+
+
 server.post('/getRol', async (req, res) => {
   const {email} = req.body;
   db.query("select rol from usuario where email = $1",[email],(error,result)=>{

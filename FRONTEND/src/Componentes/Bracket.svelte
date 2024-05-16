@@ -9,6 +9,7 @@
     import { generarBracket } from "../utils/logicaBrackets.js";
     import { Torneo } from "../stores/torneo_store.js";
     import { Usuario } from "../stores/login_store.js";
+    import BotonBorrarTorneo from "./BotonBorrarTorneo.svelte";
 
     let cualquierName = ["prueba", "prueba"];
     let bracketData = [];
@@ -24,24 +25,21 @@
 
     const getRol = async () => {
         let email = $Usuario;
-        const resp1 = await fetch("http://localhost:3000/getRol", {
+
+        let ntorneo = $Torneo;
+        const resp2 = await fetch("http://localhost:3000/getTorneo", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ ntorneo }),
         });
-        const res = await resp1.json();
-        if (res.length <= 0) {
-            console.log("no tiene rol creador");
-            rol = "nocreador";
+        const resp3 = await resp2.json();
+        if(resp3[0].creador == email){
+            rol = "creador";
             return;
         }
-        if (res[0].rol != "creador") {
-            rol = "nocreador";
-            return;
-        }
-        rol = "creador";
+        rol = "no creador"
     };
 
     const equiposEnTorneo = async () => {
@@ -191,6 +189,7 @@
             {#if guardado}
                 <p>Bracket guardado</p>
             {/if}
+            <BotonBorrarTorneo />
         </div>
     {/if}
 </header>
