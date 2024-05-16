@@ -189,7 +189,6 @@
             {#if guardado}
                 <p>Bracket guardado</p>
             {/if}
-            <BotonBorrarTorneo />
         </div>
     {/if}
 </header>

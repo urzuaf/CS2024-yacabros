@@ -47,3 +47,4 @@ Tiempo actual: 5 horas 20 minutos
 [14/05] 17:00 - 17:25 Cambios esteticos en brackets y limitar su modificacion v1
 [15/05] 20:00 - 20:15 Limitar modificacion brackets v2
 [15/05] 20:15 - 21:05 Borrar torneos y limitar su creación
+[15/05] 21:15 - 22:15 Gestionar el acceso en tabla de resultados y demás cambios
