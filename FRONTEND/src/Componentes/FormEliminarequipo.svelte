@@ -78,7 +78,7 @@
         <div>
             <button 
 
-            class="w-full px-20 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
+            class="w-full px-20 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-red-500"
             type="submit"
             on:click={contrasena}>
                 Si
