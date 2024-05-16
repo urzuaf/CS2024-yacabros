@@ -118,11 +118,11 @@
                     Agregar Jugador a equipo
                 </a>
             {/if}-->
-
+            {#if userProfile.equipo != "" && userProfile.rol == 'staff'}
             <a href="/integrante" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Agregar Jugador a equipo
             </a>
-
+            {/if}
             {#if userProfile.equipo == "" && userProfile.rol == 'staff'}
                 <a href="/agregarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                     Agregar Equipo
