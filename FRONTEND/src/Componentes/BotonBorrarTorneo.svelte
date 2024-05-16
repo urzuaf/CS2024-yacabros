@@ -21,7 +21,7 @@
     }
 </script>
 <div class="relative">
-    <button on:click={open} class="bg-red-600 text-white shadow-md hover:bg-red-700 p-2 rounded">
+    <button on:click={open} class="bg-red-600 text-white shadow-md hover:bg-red-700 p-2 rounded-lg">
         Borrar Torneo
     </button>
     {#if show}
