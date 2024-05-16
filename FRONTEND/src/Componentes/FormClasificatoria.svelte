@@ -366,7 +366,7 @@
                 borraColumna
             }}
     >
-      BorrarColumna
+      Borrar Columna
     </button>
 
     {#if showColumnIndexInput}
