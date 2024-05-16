@@ -8,11 +8,11 @@
     import { Usuario } from "../stores/login_store";
     import { Torneo } from '../stores/torneo_store';
     import { onMount } from 'svelte';
+    import BotonBorrarTorneo from './BotonBorrarTorneo.svelte'
     let userProfile = {
       email: $Usuario,
       rol: ""
     }
-    
     let nombreTorneo = ''
 
     onMount(async()=>{
@@ -22,7 +22,7 @@
 
     })
 
-    const getRol = async () => {
+    const getRol2 = async () => {
       const resp2 = await fetch("http://localhost:3000/getRol", {
         method: 'POST',
         headers: {
@@ -40,6 +40,26 @@
         userProfile.rol = result2[0].rol; 
       }
     };
+
+    const getRol = async () => {
+        let email = $Usuario;
+
+        let ntorneo = $Torneo;
+        const resp2 = await fetch("http://localhost:3000/getTorneo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ntorneo }),
+        });
+        const resp3 = await resp2.json();
+        if(resp3[0].creador == email){
+           userProfile.rol= "creador";
+            return;
+        }
+        userProfile.rol = "no creador"
+    };
+
 </script>
 
 {#if userProfile.rol == "creador"}
@@ -47,15 +67,15 @@
     <div class="flex flex-col md:flex-row gap-2">
       <FormBases />
       <Botondatos />
+      <BotonBorrarTorneo />
     </div>
     <BuscadorEquipos />
   </header>
   <DatosTorneo nombreTorneo={nombreTorneo} />
   <FormClasificatoria />
   <Bracket />
-{/if}
 
-{#if userProfile.rol != "creador"}
+{:else}
   <DatosTorneo nombreTorneo={nombreTorneo} />
   <FormClasificatoria />
   <Bracket />
