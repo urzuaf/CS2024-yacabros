@@ -1,9 +1,9 @@
 <script>
     import { Usuario } from "../stores/login_store";
     import { onMount } from 'svelte';
+    import EnviarNotificacion from './EnviarNotificacion.svelte';
 
     let isEditing = false;
-    let isSending = false;
 
     let userData = {
         name: "",
@@ -21,6 +21,14 @@
 
     let mensajeEditar = '';
     let mensajeVisibleEditar = false;
+
+    let showEditing;
+    let dialogEditing;
+    $: if (dialogEditing && showEditing) dialogEditing.showModal();
+
+    let showSending;
+    let dialogSending;
+    $: if (dialogSending && showSending) dialogSending.showModal();
 
     onMount(async () =>{
         try{
@@ -102,21 +110,28 @@
             {userData.descripcion}
         </p>
         <div class="flex w-full items-center justify-center gap-3 py-4 px-4">
-            <!-- Botón de Notificaciones -->
-            <button on:click={toggleSending} class="w-auto px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover">
-                <p>Enviar Mensaje</p>
-            </button>
+            <EnviarNotificacion />
             <!-- Botón de edición -->
-            <button on:click={toggleEdit} class="w-auto px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover">
+            <button on:click={()=>{showEditing = true}} class="w-auto px-6 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover">
                 Editar datos
             </button>
         </div>
     </div>
 {/if}
 
-{#if isEditing}
-    <form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-5">
-        <div class="min-w-72">
+<!-- Modal Editar Datos -->
+<dialog 
+    bind:this={dialogEditing}
+    on:close={() => (showEditing = false)}
+    class="w-full h-70 bg-transparent"
+>
+    <div class="flex justify-center items-center w-full h-full text-light-text dark:text-dark-text">
+        <form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-2 my-4 w-3/5 py-4 px-40 bg-light-background dark:bg-dark-background border rounded-lg border-light-border dark:border-dark-border">
+            <div class="flex justify-center text-wrap">
+                <h2 class="text-2xl font-bold text-center">Editar Datos</h2>
+            </div>
+
+            <span class="flex justify-start font-semibold">Nombre</span>
             <input
                 type="text"
                 id="nombre"
@@ -124,33 +139,42 @@
                 class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
                 bind:value={userProfile.name}
             />
-        </div>
-
-        <div class="min-w-72">
+            
+            <span class="flex justify-start font-semibold">Descripción</span>
             <input
                 type="descripcion"
                 placeholder="Descripción"
                 class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
                 bind:value={userProfile.descripcion}
             />
-        </div>
-
-        <div class="min-w-72">
+            
+            <span class="flex justify-start font-semibold">Contraseña</span>
             <input
                 type="password"
                 placeholder="Contraseña"
                 class="w-full px-4 py-2 bg-light-input dark:bg-dark-input border rounded-lg border-light-border dark:border-dark-border focus:border-sportify focus:ring-sportify focus:outline-none focus:ring focus:ring-opacity-40"
                 bind:value={userProfile.password}
             />
-        </div>
 
-        <button
-            class="w-min px-3 py-auto font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"    
-            type="submit">
-            Confirmar
-        </button>
-    </form>
-{/if}
+            <div class="w-full flex justify-center md:justify-between flex-wrap gap-3 mt-2">
+                <button
+                    on:click={() => dialogEditing.close()}
+                    type="submit" aria-label="save bases modal"
+                    class="w-2/5 min-w-fit px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:bg-sportifyhover"
+                >
+                    Confirmar
+                </button>
+                <button 
+                    on:click={() => dialogEditing.close()}
+                    type="button" aria-label="close bases modal"
+                    class="w-2/5 min-w-fit px-4 py-2 font-medium text-dark-text trans bg-sportify rounded-lg hover:bg-sportifyhover"
+                >
+                    Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</dialog>
 
 {#if mensajeVisibleEditar}
     <div class="bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50 a" style="width: 300px;">
