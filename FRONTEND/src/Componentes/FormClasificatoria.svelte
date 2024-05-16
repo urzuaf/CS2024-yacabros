@@ -213,9 +213,9 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center items-center gap-3 mt-4">
         <button
-            class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200"
+            class="w-auto px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
             on:click={agregarCol}
         >
             Agregar Datos
@@ -223,14 +223,14 @@
 
         <button
             id="editButton"
-            class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200"
+            class="w-auto px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
             on:click={opcionesEdicion}
         >
             Editar Datos
         </button>
 
         <button
-            class="px-3 ml-4 mt-4 bg-sportify h-10 w-auto text-white rounded-lg hover:text-gray-200"
+            class="w-auto px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
             on:click={borraColumna}
         >
             Borrar Última Columna

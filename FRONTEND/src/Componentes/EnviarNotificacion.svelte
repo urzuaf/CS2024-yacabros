@@ -42,9 +42,9 @@
         <input required type="email" bind:value={destinatario} placeholder="destinatario@mail.com" class="border p-2 rounded bg-light-input dark:bg-dark-input" />
         <span class="font-semibold">Mensaje </span>
         <textarea required bind:value={desc} placeholder="Ingresa el mensaje que quieres enviar" class="border p-2 rounded bg-light-input dark:bg-dark-input"></textarea>
-        <button disabled={enviado.exito} type="submit" class=" px-2 py-2 bg-sportify text-dark-text font-semibold rounded disabled:opacity-90 disabled:bg-gray-100 disabled:cursor-wait hover:scale-105">
-            Enviar</button>
-         
+        <button disabled={enviado.exito} type="submit" class="px-2 py-2 bg-sportify text-dark-text font-semibold rounded disabled:opacity-90 disabled:bg-gray-100 disabled:cursor-wait hover:bg-sportifyhover">
+            Enviar
+        </button>
     </form>
     {#if enviado.exito}
     <div class="bg-sportify text-dark-text absolute bottom-8 p-2 px-4 z-50 a">
