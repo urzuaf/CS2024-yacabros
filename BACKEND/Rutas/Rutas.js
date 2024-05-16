@@ -20,5 +20,11 @@ router.post('/getTorneo', Controller.getTorneo)
 router.post('/updateBracket', Controller.updateBracket)
 router.post('/cambiarDatos',Controller.actDatos)
 
+router.post('/addColClasificatoria',Controller.addColEquipoTorneo)
+router.post('/delColClasificatoria',Controller.borrarCol)
+router.post('/addInfoColClasificatoria',Controller.addInfoColClasificatoria)
+
+router.post('/getUserByEmail', Controller.getUserByEmail);
+
 
 export default router

@@ -9,6 +9,11 @@
     };
     async function handleSubmit(event) {
         event.preventDefault();
+
+        if (enviado) {
+            return; 
+        }
+
         try {
             const response = await fetch("http://localhost:3000/registerTeam", {
                 method: "POST",
@@ -69,7 +74,7 @@
         type="submit"
     >
         Registrar Equipo
-    </button>
+    </button> 
 </form>
 
 {#if enviado}

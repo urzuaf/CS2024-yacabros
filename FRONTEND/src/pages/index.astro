@@ -3,6 +3,7 @@ import Layout from "../layouts/Visualizacion.astro"
 import Notificacion from "../Componentes/Notificacion.svelte"
 import EnviarNotificacion from "../Componentes/EnviarNotificacion.svelte"
 import UserProfile from "../Componentes/UserProfile.svelte"
+import FormIndex from "../Componentes/FormIndex.svelte"
 ---
 <Layout title="Bienvenido | Sportify">
     <body>
@@ -11,23 +12,7 @@ import UserProfile from "../Componentes/UserProfile.svelte"
 
 
 
-        <div class="flex h-screen">
-            <!-- Primer fondo blanco -->
-            <a href="http://localhost:4321/perfilequipo" class="w-1/3 bg-white flex flex-col items-center justify-start border-1.5 border-r border-black rounded-lg relative overflow-hidden group">
-                <img src="equipo.jpg" class="w-full h-full object-cover transition duration-300 transform hover:scale-105" alt="Imagen 1">
-                <div class="absolute top-0 left-0 w-full py-2 bg-black bg-opacity-50 text-white  opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">Perfil Equipo</div>
-            </a>
-            <!-- Segundo fondo blanco -->
-            <a href="http://localhost:4321/creacionTorneo" class="w-1/3 bg-white flex flex-col items-center justify-start border-1.5 border-r border-black rounded-lg relative overflow-hidden group">
-                <img src="torneo.jpg" class="w-full h-full object-cover transition duration-300 transform hover:scale-105" alt="Imagen 2">
-                <div class="absolute top-0 left-0 w-full py-2 bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">Crear Torneo</div>
-            </a>
-            <!-- Tercer fondo blanco -->
-            <a href="URL_3" class="w-1/3 bg-white flex flex-col items-center justify-start border-1.5 border-r border-black rounded-lg relative overflow-hidden group">
-                <img src="deportes.jpg" class="w-full h-full object-cover transition duration-300 transform hover:scale-105" alt="Imagen 3">
-                <div class="absolute top-0 left-0 w-full py-2 bg-black bg-opacity-50 text-white  opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">Noticias</div>
-            </a>
-        </div>
+        <FormIndex client:only/>
 
 
         
