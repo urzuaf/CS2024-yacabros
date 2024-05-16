@@ -97,12 +97,19 @@
             <a href="/editData" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Editar Perfil
             </a>
-            <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
-                Crear Torneo
-            </a>
-            <a href="/perfilequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
-                Ver Perfil de Equipo
-            </a>
+
+            {#if userProfile.rol == "creador"}
+                <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+                    Crear Torneo
+                </a>
+            {/if}
+
+            {#if userProfile.equipo != "" && userProfile.rol != ""}
+                <a href="/perfilequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
+                    Ver Perfil de Equipo
+                </a>
+            {/if}
+
             <a href="/user" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Ver Perfil de Usuario
             </a>
@@ -117,19 +124,19 @@
                 Agregar Jugador a equipo
             </a>
 
-            {#if userProfile.equipo == "" && (userProfile.rol == 'staff' || userProfile.rol == 'admin')}
+            {#if userProfile.equipo == "" && userProfile.rol == 'staff'}
                 <a href="/agregarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                     Agregar Equipo
                 </a>
             {/if}
 
-            {#if userProfile.equipo != "" && (userProfile.rol == 'staff' || userProfile.rol == 'admin')}
+            {#if userProfile.equipo != "" && userProfile.rol == 'staff'}
                 <a href="/editarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                     Editar Equipo
                 </a>
             {/if}
 
-            {#if userProfile.equipo != "" && (userProfile.rol == 'staff' || userProfile.rol == 'admin')}
+            {#if userProfile.equipo != "" && userProfile.rol == 'staff'}
                 <a href="/eliminarequipo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                     Eliminar Equipo
                 </a>

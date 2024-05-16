@@ -1,6 +1,5 @@
 <script>
     import { Torneo } from "../stores/torneo_store";
-
     let bases = '';
     let id = 1;
 
@@ -13,8 +12,7 @@
         try {
             //obtenemos el torneo
             let ntorneo = $Torneo
-            const resp1 = await fetch(
-                "http://localhost:3000/getTorneo",
+            const resp1 = await fetch("http://localhost:3000/getTorneo",
                 {
                     method: "POST",
                     headers: {
@@ -37,7 +35,6 @@
                 throw new Error("Error al editar bases");
             }
             const data = await response.json();
-            console.log("Bases editadas:", data);
         }
         catch (error) {
             console.error("Error: "+error);

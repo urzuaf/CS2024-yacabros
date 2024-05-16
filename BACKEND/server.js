@@ -53,6 +53,14 @@ server.post('/getRol', async (req, res) => {
 })
 });
 
+server.post('/getContrasena', async (req, res) => {
+  const {emisor} = req.body;
+  db.query("select password from usuario where email = $1",[emisor],(error,result)=>{
+  if(error) throw error;
+  res.status(200).json(result.rows);
+})
+});
+
 server.post('/getTeam', async (req, res) => {
   const {email} = req.body;
   db.query("select id from equipo where staff = $1",[email],(error,result)=>{
