@@ -42,3 +42,8 @@ tambien a su vez se agrego la forma de editar los datos escribiendo sobre la nue
 
 [15:00-15:20] Cambios con la solucion encontrada y finalizacion de la IS137
 
+[1:30-3:00] Modificacion la funcion de borrar columna para hacerla mas dinamica
+
+[11:00-12:00] Avance en la IS149
+
+[18:30-20:00] Finalizacion de la IS149, conexión con la base de datos para esta issue y agregacion de feedback para la validacion de la acción.
