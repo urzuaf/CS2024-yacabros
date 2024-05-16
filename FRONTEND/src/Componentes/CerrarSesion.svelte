@@ -5,7 +5,7 @@
         Usuario.set('')
         localStorage.clear('email')
         setTimeout(()=>{
-            window.location.href('/')
+            window.location.href = '/'
         }, 100)
     }
 </script>
