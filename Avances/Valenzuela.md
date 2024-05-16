@@ -38,3 +38,4 @@ Semana 5:
 los botones de eliminar equipo.
 [14/05] 19:25-22:05, Se resuelve la IS152: Crear una validacion al eliminar equipo y la IS151: Se sigue viendo la vista de 
 perfil de equipo cuando el staff no tiene ningun equipo creado
+[15/05] 17:20-19:20, Se resuelve la IS136: Validación de roles para el acceso a cada página o componente
