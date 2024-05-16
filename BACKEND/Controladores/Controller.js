@@ -19,7 +19,6 @@ const getEquiposTorneos = (req, res) =>{
 
 }
 
-
 const getTeams =(req,resp) =>{
     db.query(Queries.getAllTeams,(error,result)=>{
         if(error) throw error
@@ -147,18 +146,13 @@ const getTorneo = (req, res) =>{
     })
 
 }
-const getUserByEmail = (req, res) => {
-    const { email } = req.body; // O puedes usar req.params según cómo estés enviando el correo electrónico
-    db.query({ text: Queries.getUsuarioFromEmail, values: [email] }, (error, results) => {
-        if (error) {
-            console.error('Error al obtener el usuario:', error);
-            return res.status(500).json({ error: 'Error interno del servidor' });
-        }
-        if (results.rows.length === 0) {
-            return res.status(404).json({ error: 'Usuario no encontrado' });
-        }
-        res.status(200).json(results.rows[0]);
-    });
+
+const getUserByEmail = (req, res) =>{
+    const {email} = req.body
+    db.query({text:Queries.getUserByEmail, values : [email]}, (error, result)=>{
+        if(error) throw error
+        res.status(200).json(result.rows)
+    })
 }
 
 

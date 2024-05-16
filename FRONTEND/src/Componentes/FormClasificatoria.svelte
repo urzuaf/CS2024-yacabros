@@ -365,7 +365,8 @@
   {#if rol == "creador"}
     <div class="flex justify-center ">
       <button
-        class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200"
+         class="w-auto px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
+        
         on:click={agregarCol}
       >
         Agregar Datos
@@ -373,7 +374,8 @@
 
       <button
         id="editButton"
-        class="ml-4 mt-4 bg-sportify h-10 w-32 text-white rounded-lg hover:text-gray-200"
+      class="w-auto px-4 py-2 font-medium text-dark-text transition-all duration-300 transform bg-sportify rounded-lg hover:bg-sportifyhover"
+            
         on:click={opcionesEdicion}
       >
         Editar Datos
@@ -400,6 +402,7 @@
           />
           <button
             class="px-3 ml-2 bg-red-500 text-white rounded-lg hover:text-gray-200"
+
             on:click={() => {
               const colIndexInput = document.getElementById("columnIndex");
               const colIndex = parseInt(colIndexInput.value, 10);

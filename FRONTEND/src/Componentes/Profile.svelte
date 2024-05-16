@@ -94,9 +94,7 @@
             <p class=" text-light-border dark:text-dark-border px-4">{userProfile.email}</p>
 
             <!-- Botón para editar perfil -->
-            <a href="/editData" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
-                Editar Perfil
-            </a>
+
 
             {#if userProfile.rol == "creador"}
                 <a href="/creacionTorneo" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
@@ -109,6 +107,7 @@
                     Ver Perfil de Equipo
                 </a>
             {/if}
+
 
             <a href="/user" class="block w-full text-left py-2 px-4 rounded-md hover:bg-light-input dark:hover:bg-dark-input focus:outline-none">
                 Ver Perfil de Usuario
