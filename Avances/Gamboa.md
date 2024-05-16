@@ -37,3 +37,7 @@
 [19:15 - 21:45] 08/05/2024: [2.5h] Base de datos. Implementación en una carpeta utils el archivo de logicaBrackets.js por ahora :D
 [21:45 - 22:20] 08/05/2024: [0.5] Generar brackets de manera automática
 
+5ta Semana
+
+[17:30 - 19:00] [1.5h] 13/05/2024 Intento de solución de arreglar estilos al agregar texto guardado al campo de texto, FALLIDO.
+[19:30 - 22:00] [2.5h] 14/05/2024 IS139: Modificar datos de torneo y bases solucionado para un torneo en específico. Queda por arreglar cuando se necesite para más torneos. Botón noticias del footer ahora redirige a noticias.

@@ -1,7 +1,6 @@
 <script>
     import { onMount } from "svelte";
     import { Torneo } from "../stores/torneo_store";
-
     let list = [];
 
     onMount(() => {

@@ -1,8 +1,6 @@
 <script>
     import { Usuario } from "../stores/login_store";
     let nombre = '';
-    let descripcion = '';
-    let password = '';
     let enviado = false;
 
     async function handleSubmit(event) {
