@@ -47,10 +47,13 @@
 <dialog 
     bind:this={dialog}
     on:close={() => (showModal = false)}
-    class="w-auto h-70 bg-light-background dark:bg-dark-background border-sportify rounded-lg"
+    class="w-full h-70 bg-transparent"
 >
     <div class="flex justify-center items-center w-full h-full">
-        <form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-4 w-3/4 md:w-3/5  rounded-lg p-4">
+        <form on:submit|preventDefault={handleSubmit} class="flex flex-col gap-4 my-4 w-4/5 rounded-lg py-4 px-40 bg-light-background dark:bg-dark-background border rounded-lg border-light-border dark:border-dark-border">
+            <div class="flex justify-center text-wrap">
+                <h2 class="text-2xl font-bold text-center text-light-text dark:text-dark-text">Crear Torneo</h2>
+            </div>
             <div class="mb-3">
                 <label for="nombre" class="block text-sm font-medium text-light-text dark:text-dark-text">Nombre del Torneo:</label>
                 <input type="text" id="nombre" v-model="nombre" required
