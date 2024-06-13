@@ -93,3 +93,30 @@ https://github.com/urzuaf/CS2024_1_Ya_cabros/pull/122
 https://github.com/urzuaf/CS2024_1_Ya_cabros/pull/124
 
 [0.5hr] Creación de reporte de Administrador.
+
+SEMANA 5
+
+14/05/24
+
+[1hr] Solución de algunos errores y estilado de página.
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/a1a9366ef22eaab6283572bea394c62584b577e1
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/5c73a5b378fbbfe6c4fcdc2411125812fb19a2d3
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/3a1027a440ecaade47f85aa86cf82fe6aec5d853
+
+[1hr] Tiempo de ayuda a otros miembros del equipo.
+
+15/05/24
+
+[1hr] Algunos cambios en estilado de páginas.
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/f7abc53699e69a5e4ce7eb1af088f80c3a62bdef
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/1e24cc09553612d81d4bf27e8a480fe3a0dfe023
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/38bc90a261b0875fa6c7fbe6e602d7a3d333f9d5
+
+[1hr] Solución de issue para mostrar los datos del usuario de la base de datos en el perfil.
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/eedd6fd6edd724418179198bd849bdb2dce17254
+
+[2hrs] Solución de merge conflict para integrar las distintas issues con respecto al perfil del usuario, y cambio de estilos en el perfil de equipo para ser similar al de usuario.
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/107b4d89ed728a8469e2dec1ff1890e886f6a157
+https://github.com/urzuaf/CS2024_1_Ya_cabros/commit/eca32e6dbcf6088a15f8c0efb4beff829e2a74dc
+
+[0.5hr] Creación de reporte de Administrador.
